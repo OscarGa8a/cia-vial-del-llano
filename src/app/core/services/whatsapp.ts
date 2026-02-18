@@ -7,7 +7,7 @@ import { CONFIG } from '../data/config.data';
  * All browser interactions are SSR-safe guarded with isPlatformBrowser.
  */
 @Injectable({ providedIn: 'root' })
-export class WhatsappService {
+export class Whatsapp {
   private readonly platformId = inject(PLATFORM_ID);
 
   /**
@@ -41,10 +41,14 @@ export class WhatsappService {
     infraction: string,
     originalValue: number,
     discountedValue: number,
-    discountPercent: number
+    discountPercent: number,
   ): string {
     const formatted = (v: number) =>
-      new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(v);
+      new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        maximumFractionDigits: 0,
+      }).format(v);
     const message =
       `Hola, quiero aprovechar el ${discountPercent}% de descuento en mi comparendo.\n` +
       `Infracción: ${infraction}\n` +
