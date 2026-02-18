@@ -20,6 +20,14 @@ export const routes: Routes = [
     title: 'Calculadora de Multas | CIA Vial del Llano',
   },
   {
+    path: 'ubicacion',
+    loadComponent: () =>
+      import('./pages/ubicacion/ubicacion.component').then(
+        (m) => m.UbicacionComponent
+      ),
+    title: 'Ubicación | CIA Vial del Llano',
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',
