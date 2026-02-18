@@ -52,7 +52,14 @@ export const CONFIG = {
   defaultWhatsappMessage:
     'Hola, quiero información sobre los cursos para descuento en comparendos.',
 
-  /** SMDLV value for 2025 in COP */
+  /**
+   * SMDLV 2025 — Salario Mínimo Diario Legal Vigente (daily minimum wage).
+   * Base unit used to calculate all traffic fine amounts.
+   * Category values: A=4×, B=8×, C=15×, D=30×, E=45×
+   */
+  smdlvDaily2025: 47450,
+
+  /** @deprecated use smdlvDaily2025 — kept for backward compatibility */
   smdlv2025: 1423500,
 
   stats: {
