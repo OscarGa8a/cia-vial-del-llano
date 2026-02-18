@@ -1,0 +1,193 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  signal,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { WhatsappService } from '../../../core/services/whatsapp.service';
+import { CONFIG } from '../../../core/data/config.data';
+
+/** Navigation link definition */
+interface NavLink {
+  readonly label: string;
+  readonly path: string;
+  readonly fragment?: string;
+}
+
+/**
+ * Site-wide header with fixed positioning, scroll-based styling,
+ * and a responsive mobile menu.
+ */
+@Component({
+  selector: 'app-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink, RouterLinkActive],
+  template: `
+    <header
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      [class.bg-primary]="isScrolled()"
+      [class.shadow-lg]="isScrolled()"
+      [class.bg-transparent]="!isScrolled()"
+      role="banner"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+
+          <!-- Logo -->
+          <a
+            routerLink="/"
+            class="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded-lg"
+            aria-label="CIA Vial del Llano - Inicio"
+          >
+            <div class="w-10 h-10 rounded-full bg-white/10 border-2 border-white/30 flex items-center justify-center">
+              <span class="text-white font-sans font-bold text-sm leading-none">CIA</span>
+            </div>
+            <div class="hidden sm:block">
+              <p class="text-white font-sans font-bold text-base leading-tight">CIA Vial del Llano</p>
+              <p class="text-white/70 text-xs leading-tight">Cursos para descuento en multas</p>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center gap-6" aria-label="Navegación principal">
+            @for (link of navLinks; track link.path) {
+              <a
+                [routerLink]="link.path"
+                routerLinkActive="text-highlight border-b-2 border-highlight"
+                [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+                class="text-white/90 hover:text-white text-sm font-medium transition-colors pb-1 border-b-2 border-transparent"
+              >
+                {{ link.label }}
+              </a>
+            }
+          </nav>
+
+          <!-- Desktop CTA -->
+          <div class="hidden lg:flex items-center gap-3">
+            <a
+              [href]="whatsappLink()"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-whatsapp hover:bg-whatsapp-hover text-white text-sm font-semibold transition-all hover:scale-105 active:scale-95"
+              aria-label="Contactar por WhatsApp"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              WhatsApp
+            </a>
+          </div>
+
+          <!-- Mobile Menu Toggle -->
+          <button
+            type="button"
+            class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors"
+            (click)="toggleMobileMenu()"
+            [attr.aria-expanded]="isMobileMenuOpen()"
+            aria-controls="mobile-menu"
+            aria-label="Abrir menú de navegación"
+          >
+            @if (isMobileMenuOpen()) {
+              <!-- X icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            } @else {
+              <!-- Hamburger icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            }
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Panel -->
+      <div
+        id="mobile-menu"
+        class="lg:hidden bg-primary border-t border-white/10 transition-all duration-300 overflow-hidden"
+        [class.max-h-0]="!isMobileMenuOpen()"
+        [class.max-h-96]="isMobileMenuOpen()"
+        [attr.aria-hidden]="!isMobileMenuOpen()"
+      >
+        <nav class="px-4 py-4 flex flex-col gap-1" aria-label="Navegación móvil">
+          @for (link of navLinks; track link.path) {
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="bg-white/10 text-highlight"
+              [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+              class="text-white/90 hover:text-white hover:bg-white/10 text-sm font-medium px-4 py-3 rounded-lg transition-colors"
+              (click)="closeMobileMenu()"
+            >
+              {{ link.label }}
+            </a>
+          }
+          <div class="pt-3 mt-2 border-t border-white/10">
+            <a
+              [href]="whatsappLink()"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-lg bg-whatsapp hover:bg-whatsapp-hover text-white text-sm font-semibold transition-colors"
+              (click)="closeMobileMenu()"
+              aria-label="Contactar por WhatsApp"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Contactar por WhatsApp
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+  `,
+})
+export class HeaderComponent implements OnInit, OnDestroy {
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly whatsappService = inject(WhatsappService);
+
+  protected readonly isScrolled = signal(false);
+  protected readonly isMobileMenuOpen = signal(false);
+
+  protected readonly whatsappLink = computed(() =>
+    this.whatsappService.generateLink('Hola, quiero información sobre los cursos para descuento en comparendos.')
+  );
+
+  protected readonly navLinks: readonly NavLink[] = [
+    { label: 'Inicio', path: '/' },
+    { label: 'Cursos', path: '/cursos' },
+    { label: 'Calculadora', path: '/calculadora' },
+    { label: 'Ubicación', path: '/ubicacion' },
+    { label: 'Preguntas', path: '/preguntas-frecuentes' },
+  ];
+
+  private scrollListener?: () => void;
+
+  ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    this.scrollListener = () => {
+      this.isScrolled.set(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', this.scrollListener, { passive: true });
+  }
+
+  ngOnDestroy(): void {
+    if (this.scrollListener && isPlatformBrowser(this.platformId)) {
+      window.removeEventListener('scroll', this.scrollListener);
+    }
+  }
+
+  protected toggleMobileMenu(): void {
+    this.isMobileMenuOpen.update(v => !v);
+  }
+
+  protected closeMobileMenu(): void {
+    this.isMobileMenuOpen.set(false);
+  }
+}
