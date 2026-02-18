@@ -1,0 +1,1673 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursos para Comparendos | CIA VIAL DEL LLANO</title>
+    <meta
+      name="description"
+      content="Realiza tu curso pedagógico y obtén hasta 50% de descuento en tu multa. Certificado por el Ministerio de Transporte."
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#1E3A5F',
+                light: '#2D5A87',
+                lighter: '#E8F0F8',
+                dark: '#152a45',
+              },
+              accent: {
+                red: '#C8102E',
+                'red-hover': '#A50D24',
+                'red-light': '#FFE8EC',
+              },
+              highlight: {
+                DEFAULT: '#F5A623',
+                hover: '#E09000',
+                light: '#FFF8E8',
+              },
+              success: '#10B981',
+              warning: '#F59E0B',
+            },
+            fontFamily: {
+              display: ['Space Grotesk', 'sans-serif'],
+              body: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+            animation: {
+              float: 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 3s ease-in-out infinite',
+              'slide-up': 'slideUp 0.6s ease-out forwards',
+              'fade-in': 'fadeIn 0.8s ease-out forwards',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      * {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+
+      .font-display {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      /* Hero gradient */
+      .hero-gradient {
+        background: linear-gradient(135deg, #1e3a5f 0%, #152a45 60%, #1e3a5f 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-gradient::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          transparent 0%,
+          rgba(200, 16, 46, 0.2) 50%,
+          rgba(200, 16, 46, 0.4) 100%
+        );
+        clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
+      }
+
+      /* Dot pattern */
+      .dot-pattern {
+        background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 30px 30px;
+      }
+
+      /* Card hover effects */
+      .card-hover {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(30, 58, 95, 0.25);
+      }
+
+      /* WhatsApp button glow */
+      .whatsapp-glow {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        animation: whatsapp-pulse 2s infinite;
+      }
+
+      @keyframes whatsapp-pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      /* Timeline */
+      .timeline-item {
+        position: relative;
+      }
+
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 27px;
+        top: 60px;
+        width: 2px;
+        height: calc(100% - 20px);
+        background: linear-gradient(to bottom, #1e3a5f, #c8102e);
+      }
+
+      .timeline-item:last-child::before {
+        display: none;
+      }
+
+      /* FAQ Accordion */
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+      }
+
+      /* Sticky header */
+      .header-scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Mobile menu */
+      .mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .mobile-menu.active {
+        transform: translateX(0);
+      }
+
+      /* Benefit card icon animation */
+      .benefit-card:hover .benefit-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .benefit-icon {
+        transition: transform 0.3s ease;
+      }
+    </style>
+  </head>
+  <body class="font-body text-gray-800 antialiased">
+    <!-- ==================== HEADER ==================== -->
+    <header
+      id="header"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary"
+    >
+      <div class="container mx-auto px-4 lg:px-8">
+        <nav class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <a href="index.html" class="flex items-center gap-3 group">
+            <div
+              class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform"
+            >
+              <span class="font-display font-bold text-primary text-xl">CV</span>
+            </div>
+            <div class="hidden sm:block">
+              <span class="font-display font-bold text-white text-lg leading-tight block"
+                >CIA VIAL</span
+              >
+              <span class="text-white/80 text-xs tracking-wider">DEL LLANO</span>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center gap-8">
+            <a
+              href="index.html"
+              class="text-white/90 hover:text-white font-medium transition-colors relative group"
+            >
+              Inicio
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
+            <a href="cursos.html" class="text-white font-medium transition-colors relative group">
+              Cursos
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-highlight"></span>
+            </a>
+            <a
+              href="calculadora.html"
+              class="text-white/90 hover:text-white font-medium transition-colors relative group"
+            >
+              Calculadora
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
+            <a
+              href="ubicacion.html"
+              class="text-white/90 hover:text-white font-medium transition-colors relative group"
+            >
+              Ubicación
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
+            <a
+              href="nosotros.html"
+              class="text-white/90 hover:text-white font-medium transition-colors relative group"
+            >
+              Nosotros
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
+            <a
+              href="contacto.html"
+              class="text-white/90 hover:text-white font-medium transition-colors relative group"
+            >
+              Contacto
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="hidden lg:block">
+            <a
+              href="https://wa.me/573001234567"
+              target="_blank"
+              class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+              Agenda tu cita
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+            <i data-lucide="menu" class="w-7 h-7"></i>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="mobile-menu fixed top-0 right-0 w-80 h-full bg-primary-dark shadow-2xl lg:hidden z-50"
+      >
+        <div class="p-6">
+          <button id="mobile-menu-close" class="absolute top-6 right-6 text-white">
+            <i data-lucide="x" class="w-7 h-7"></i>
+          </button>
+
+          <div class="mt-16 flex flex-col gap-6">
+            <a
+              href="index.html"
+              class="text-white/80 text-lg font-medium hover:text-highlight transition-colors"
+              >Inicio</a
+            >
+            <a href="cursos.html" class="text-highlight text-lg font-medium">Cursos</a>
+            <a
+              href="calculadora.html"
+              class="text-white/80 text-lg font-medium hover:text-highlight transition-colors"
+              >Calculadora</a
+            >
+            <a
+              href="ubicacion.html"
+              class="text-white/80 text-lg font-medium hover:text-highlight transition-colors"
+              >Ubicación</a
+            >
+            <a
+              href="nosotros.html"
+              class="text-white/80 text-lg font-medium hover:text-highlight transition-colors"
+              >Nosotros</a
+            >
+            <a
+              href="contacto.html"
+              class="text-white/80 text-lg font-medium hover:text-highlight transition-colors"
+              >Contacto</a
+            >
+
+            <a
+              href="https://wa.me/573001234567"
+              target="_blank"
+              class="mt-4 inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-6 py-4 rounded-full"
+            >
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+              Agenda tu cita
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-gradient dot-pattern pt-32 pb-20 lg:pt-40 lg:pb-28 relative">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Left Content -->
+          <div class="text-center lg:text-left">
+            <!-- Breadcrumb -->
+            <nav
+              class="flex items-center justify-center lg:justify-start gap-2 text-white/60 text-sm mb-6"
+            >
+              <a href="index.html" class="hover:text-white transition-colors">Inicio</a>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              <span class="text-white">Cursos</span>
+            </nav>
+
+            <!-- Badge -->
+            <div
+              class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+            >
+              <i data-lucide="award" class="w-4 h-4 text-highlight"></i>
+              <span class="text-white/90 text-sm font-medium">Certificados por MinTransporte</span>
+            </div>
+
+            <!-- Headline -->
+            <h1
+              class="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6"
+            >
+              Cursos para Descuento en
+              <span class="text-highlight">Comparendos</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-xl text-white/80 mb-8 max-w-xl mx-auto lg:mx-0">
+              Ahorra hasta el 50% en tus multas de tránsito con nuestro curso pedagógico
+              certificado. Proceso rápido y sencillo.
+            </p>
+
+            <!-- CTA Button -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a
+                href="https://wa.me/573001234567?text=Hola,%20quiero%20agendar%20un%20curso%20para%20descuento%20en%20comparendo"
+                target="_blank"
+                class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl text-lg whatsapp-glow"
+              >
+                <i data-lucide="message-circle" class="w-6 h-6"></i>
+                Agenda tu curso ahora
+              </a>
+              <a
+                href="#informacion"
+                class="inline-flex items-center justify-center gap-2 text-white font-semibold hover:text-highlight transition-colors"
+              >
+                <span>Más información</span>
+                <i data-lucide="arrow-down" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Content - Illustration -->
+          <div class="hidden lg:flex items-center justify-center relative">
+            <div class="absolute w-72 h-72 bg-highlight/20 rounded-full blur-3xl"></div>
+
+            <!-- Certificate Illustration -->
+            <svg
+              class="w-96 h-auto animate-float relative z-10"
+              viewBox="0 0 400 350"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- Certificate base -->
+              <rect
+                x="50"
+                y="50"
+                width="300"
+                height="220"
+                rx="12"
+                fill="white"
+                stroke="#1E3A5F"
+                stroke-width="3"
+              />
+
+              <!-- Header decoration -->
+              <rect x="50" y="50" width="300" height="60" rx="12" fill="#1E3A5F" />
+              <rect x="50" y="98" width="300" height="12" fill="#1E3A5F" />
+
+              <!-- Logo circle -->
+              <circle cx="200" cy="80" r="25" fill="#F5A623" />
+              <text
+                x="200"
+                y="87"
+                text-anchor="middle"
+                fill="white"
+                font-family="Space Grotesk"
+                font-weight="bold"
+                font-size="20"
+              >
+                CV
+              </text>
+
+              <!-- Certificate text lines -->
+              <rect x="100" y="130" width="200" height="8" rx="4" fill="#E8F0F8" />
+              <rect x="80" y="155" width="240" height="6" rx="3" fill="#F5F7FA" />
+              <rect x="80" y="175" width="240" height="6" rx="3" fill="#F5F7FA" />
+              <rect x="80" y="195" width="180" height="6" rx="3" fill="#F5F7FA" />
+
+              <!-- Signature line -->
+              <line x1="100" y1="240" x2="180" y2="240" stroke="#1E3A5F" stroke-width="2" />
+              <line x1="220" y1="240" x2="300" y2="240" stroke="#1E3A5F" stroke-width="2" />
+
+              <!-- Seal -->
+              <circle cx="320" cy="230" r="35" fill="#C8102E" opacity="0.9" />
+              <circle cx="320" cy="230" r="28" fill="none" stroke="white" stroke-width="2" />
+              <circle cx="320" cy="230" r="20" fill="none" stroke="white" stroke-width="1" />
+              <text
+                x="320"
+                y="226"
+                text-anchor="middle"
+                fill="white"
+                font-size="8"
+                font-weight="bold"
+              >
+                CERTIFICADO
+              </text>
+              <text x="320" y="238" text-anchor="middle" fill="white" font-size="7">OFICIAL</text>
+
+              <!-- Ribbon -->
+              <path d="M80 270 L80 320 L100 300 L120 320 L120 270" fill="#C8102E" />
+              <path d="M280 270 L280 320 L300 300 L320 320 L320 270" fill="#1E3A5F" />
+
+              <!-- Stars decoration -->
+              <path
+                d="M150 290 L153 298 L162 298 L155 303 L158 312 L150 307 L142 312 L145 303 L138 298 L147 298 Z"
+                fill="#F5A623"
+              />
+              <path
+                d="M200 285 L204 296 L216 296 L207 303 L211 315 L200 308 L189 315 L193 303 L184 296 L196 296 Z"
+                fill="#F5A623"
+              />
+              <path
+                d="M250 290 L253 298 L262 298 L255 303 L258 312 L250 307 L242 312 L245 303 L238 298 L247 298 Z"
+                fill="#F5A623"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave divider -->
+      <div class="absolute bottom-0 left-0 right-0">
+        <svg
+          viewBox="0 0 1440 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          class="w-full h-16 lg:h-24"
+        >
+          <path
+            d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ==================== WHAT IS THE COURSE ==================== -->
+    <section id="informacion" class="py-20 lg:py-28 bg-white">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Left Content -->
+          <div>
+            <span
+              class="inline-block bg-primary/10 text-primary font-semibold text-sm px-4 py-2 rounded-full mb-4"
+            >
+              INFORMACIÓN DEL CURSO
+            </span>
+            <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6">
+              ¿Qué es el curso <span class="text-accent-red">pedagógico</span>?
+            </h2>
+            <div class="space-y-4 text-gray-600 text-lg">
+              <p>
+                El curso pedagógico es un programa de educación vial
+                <strong class="text-gray-900">establecido por la Ley 1383 de 2010</strong>, diseñado
+                para sensibilizar y capacitar a los conductores infractores sobre las normas de
+                tránsito y la importancia de la seguridad vial.
+              </p>
+              <p>
+                Al completar el curso, obtienes un
+                <strong class="text-gray-900">certificado oficial</strong> que te permite acceder a
+                descuentos de hasta el <strong class="text-primary">50%</strong> en el valor de tu
+                multa, siempre y cuando lo realices dentro de los plazos establecidos por la ley.
+              </p>
+              <p>
+                Nuestro centro está
+                <strong class="text-gray-900">habilitado por el Ministerio de Transporte</strong> y
+                vigilado por la Superintendencia de Transporte, garantizando la validez de tu
+                certificado en todo el territorio nacional.
+              </p>
+            </div>
+
+            <!-- Quick stats -->
+            <div class="grid grid-cols-3 gap-4 mt-8">
+              <div class="text-center p-4 bg-primary/5 rounded-2xl">
+                <div class="font-display font-bold text-2xl text-primary">4</div>
+                <div class="text-gray-600 text-sm">Horas de duración</div>
+              </div>
+              <div class="text-center p-4 bg-success/10 rounded-2xl">
+                <div class="font-display font-bold text-2xl text-success">50%</div>
+                <div class="text-gray-600 text-sm">Máximo descuento</div>
+              </div>
+              <div class="text-center p-4 bg-highlight/10 rounded-2xl">
+                <div class="font-display font-bold text-2xl text-highlight">100%</div>
+                <div class="text-gray-600 text-sm">Válido nacional</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Content - Image/Illustration -->
+          <div class="relative">
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent-red/10 rounded-3xl transform rotate-3"
+            ></div>
+            <div class="relative bg-white rounded-3xl shadow-xl overflow-hidden">
+              <!-- Classroom illustration -->
+              <div
+                class="aspect-video bg-gradient-to-br from-primary-lighter to-white flex items-center justify-center p-8"
+              >
+                <svg
+                  class="w-full max-w-md"
+                  viewBox="0 0 400 250"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <!-- Whiteboard -->
+                  <rect
+                    x="80"
+                    y="20"
+                    width="240"
+                    height="140"
+                    rx="8"
+                    fill="white"
+                    stroke="#1E3A5F"
+                    stroke-width="3"
+                  />
+                  <rect x="90" y="30" width="220" height="120" fill="#F5F7FA" />
+
+                  <!-- Content on whiteboard -->
+                  <rect x="110" y="50" width="80" height="6" rx="3" fill="#1E3A5F" />
+                  <rect x="110" y="70" width="180" height="4" rx="2" fill="#E0E4E8" />
+                  <rect x="110" y="85" width="160" height="4" rx="2" fill="#E0E4E8" />
+                  <rect x="110" y="100" width="140" height="4" rx="2" fill="#E0E4E8" />
+
+                  <!-- Traffic sign on whiteboard -->
+                  <circle cx="260" cy="90" r="25" fill="#C8102E" />
+                  <rect x="255" y="72" width="10" height="36" fill="white" />
+
+                  <!-- Instructor -->
+                  <circle cx="60" cy="180" r="20" fill="#1E3A5F" />
+                  <rect x="45" y="200" width="30" height="40" rx="4" fill="#1E3A5F" />
+                  <rect x="40" y="205" width="8" height="25" rx="4" fill="#1E3A5F" />
+                  <rect x="72" y="205" width="8" height="25" rx="4" fill="#1E3A5F" />
+
+                  <!-- Students -->
+                  <circle cx="150" cy="200" r="15" fill="#2D5A87" />
+                  <rect x="140" y="215" width="20" height="30" rx="4" fill="#2D5A87" />
+
+                  <circle cx="200" cy="200" r="15" fill="#C8102E" />
+                  <rect x="190" y="215" width="20" height="30" rx="4" fill="#C8102E" />
+
+                  <circle cx="250" cy="200" r="15" fill="#F5A623" />
+                  <rect x="240" y="215" width="20" height="30" rx="4" fill="#F5A623" />
+
+                  <circle cx="300" cy="200" r="15" fill="#10B981" />
+                  <rect x="290" y="215" width="20" height="30" rx="4" fill="#10B981" />
+
+                  <!-- Desks -->
+                  <rect x="130" y="235" width="50" height="8" rx="2" fill="#374151" />
+                  <rect x="180" y="235" width="50" height="8" rx="2" fill="#374151" />
+                  <rect x="230" y="235" width="50" height="8" rx="2" fill="#374151" />
+                  <rect x="280" y="235" width="50" height="8" rx="2" fill="#374151" />
+                </svg>
+              </div>
+
+              <!-- Caption -->
+              <div class="p-6 text-center bg-gray-50">
+                <p class="text-gray-600 font-medium">
+                  Clases presenciales con instructores certificados
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COURSE BENEFITS ==================== -->
+    <section class="py-20 lg:py-28 bg-gray-50">
+      <div class="container mx-auto px-4 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="inline-block bg-highlight/10 text-highlight font-semibold text-sm px-4 py-2 rounded-full mb-4"
+          >
+            BENEFICIOS
+          </span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6">
+            ¿Por qué tomar el curso con <span class="text-primary">nosotros</span>?
+          </h2>
+          <p class="text-gray-600 text-lg">
+            Ofrecemos la mejor experiencia para que obtengas tu descuento de manera rápida y cómoda
+          </p>
+        </div>
+
+        <!-- Benefits Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <!-- Benefit 1 -->
+          <div class="benefit-card bg-white rounded-2xl p-6 lg:p-8 shadow-lg card-hover">
+            <div
+              class="benefit-icon w-16 h-16 bg-success/10 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i data-lucide="piggy-bank" class="w-8 h-8 text-success"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-3">
+              Hasta 50% de descuento
+            </h3>
+            <p class="text-gray-600">
+              Ahorra la mitad del valor de tu multa realizando el curso dentro de los plazos
+              establecidos por la ley.
+            </p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="benefit-card bg-white rounded-2xl p-6 lg:p-8 shadow-lg card-hover">
+            <div
+              class="benefit-icon w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i data-lucide="badge-check" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-3">
+              Certificado válido nacional
+            </h3>
+            <p class="text-gray-600">
+              Tu certificado es reconocido en todo Colombia, respaldado por el Ministerio de
+              Transporte.
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="benefit-card bg-white rounded-2xl p-6 lg:p-8 shadow-lg card-hover">
+            <div
+              class="benefit-icon w-16 h-16 bg-highlight/10 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i data-lucide="clock" class="w-8 h-8 text-highlight"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-3">Duración: 4 horas</h3>
+            <p class="text-gray-600">
+              Curso rápido y eficiente. Llegas, tomas el curso y el mismo día recibes tu
+              certificado.
+            </p>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="benefit-card bg-white rounded-2xl p-6 lg:p-8 shadow-lg card-hover">
+            <div
+              class="benefit-icon w-16 h-16 bg-accent-red/10 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i data-lucide="calendar-clock" class="w-8 h-8 text-accent-red"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-3">Horarios flexibles</h3>
+            <p class="text-gray-600">
+              Múltiples horarios disponibles de lunes a sábado para que elijas el que mejor se
+              adapte a ti.
+            </p>
+          </div>
+
+          <!-- Benefit 5 -->
+          <div class="benefit-card bg-white rounded-2xl p-6 lg:p-8 shadow-lg card-hover">
+            <div
+              class="benefit-icon w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i data-lucide="users" class="w-8 h-8 text-blue-600"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-3">
+              Atención personalizada
+            </h3>
+            <p class="text-gray-600">
+              Grupos reducidos para garantizar una experiencia de aprendizaje efectiva y
+              personalizada.
+            </p>
+          </div>
+
+          <!-- Benefit 6 -->
+          <div class="benefit-card bg-white rounded-2xl p-6 lg:p-8 shadow-lg card-hover">
+            <div
+              class="benefit-icon w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i data-lucide="building" class="w-8 h-8 text-purple-600"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-3">Instalaciones cómodas</h3>
+            <p class="text-gray-600">
+              Salones con aire acondicionado, sillas ergonómicas y parqueadero gratuito para tu
+              comodidad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DISCOUNT TABLE ==================== -->
+    <section class="py-20 lg:py-28 bg-white">
+      <div class="container mx-auto px-4 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="inline-block bg-accent-red/10 text-accent-red font-semibold text-sm px-4 py-2 rounded-full mb-4"
+          >
+            DESCUENTOS
+          </span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6">
+            Tabla de <span class="text-primary">Descuentos</span>
+          </h2>
+          <p class="text-gray-600 text-lg">
+            Los descuentos varían según el tipo de comparendo y los días hábiles transcurridos
+          </p>
+        </div>
+
+        <!-- Discount Cards -->
+        <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- Manual -->
+          <div
+            class="bg-gradient-to-br from-primary to-primary-light rounded-3xl overflow-hidden shadow-xl"
+          >
+            <div class="p-8 text-white">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center">
+                  <i data-lucide="file-text" class="w-7 h-7"></i>
+                </div>
+                <div>
+                  <h3 class="font-display font-bold text-2xl">Comparendo Manual</h3>
+                  <p class="text-white/80">Impuesto en vía por un agente</p>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <!-- 50% -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-display font-bold text-3xl text-success">50%</span>
+                    <span
+                      class="bg-success/20 text-success px-3 py-1 rounded-full text-sm font-semibold"
+                      >Máximo ahorro</span
+                    >
+                  </div>
+                  <p class="text-white/90">
+                    Realiza el curso dentro de los <strong>primeros 5 días hábiles</strong> después
+                    de la imposición del comparendo.
+                  </p>
+                </div>
+
+                <!-- 25% -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-display font-bold text-3xl text-warning">25%</span>
+                    <span
+                      class="bg-warning/20 text-warning px-3 py-1 rounded-full text-sm font-semibold"
+                      >Buen ahorro</span
+                    >
+                  </div>
+                  <p class="text-white/90">
+                    Realiza el curso entre el <strong>día 6 y 20 hábil</strong> después de la
+                    imposición del comparendo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Electrónico -->
+          <div
+            class="bg-gradient-to-br from-accent-red to-highlight rounded-3xl overflow-hidden shadow-xl"
+          >
+            <div class="p-8 text-white">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center">
+                  <i data-lucide="camera" class="w-7 h-7"></i>
+                </div>
+                <div>
+                  <h3 class="font-display font-bold text-2xl">Fotomulta / Electrónico</h3>
+                  <p class="text-white/80">Detectado por cámara o sensor</p>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <!-- 50% -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-display font-bold text-3xl text-green-300">50%</span>
+                    <span
+                      class="bg-green-400/20 text-green-300 px-3 py-1 rounded-full text-sm font-semibold"
+                      >Máximo ahorro</span
+                    >
+                  </div>
+                  <p class="text-white/90">
+                    Realiza el curso entre el <strong>día 1 y 11 hábil</strong> después de la
+                    notificación.
+                  </p>
+                </div>
+
+                <!-- 25% -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-display font-bold text-3xl text-yellow-300">25%</span>
+                    <span
+                      class="bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full text-sm font-semibold"
+                      >Buen ahorro</span
+                    >
+                  </div>
+                  <p class="text-white/90">
+                    Realiza el curso entre el <strong>día 12 y 26 hábil</strong> después de la
+                    notificación.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Note -->
+        <div class="max-w-3xl mx-auto mt-8">
+          <div class="flex items-start gap-4 bg-blue-50 border border-blue-200 rounded-2xl p-5">
+            <div
+              class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0"
+            >
+              <i data-lucide="info" class="w-5 h-5 text-blue-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">¿Cómo se cuentan los días hábiles?</h4>
+              <p class="text-gray-600">
+                Los días hábiles son de lunes a viernes, excluyendo fines de semana y festivos. El
+                conteo inicia el día siguiente a la imposición (manual) o notificación (electrónico)
+                del comparendo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== REQUIREMENTS ==================== -->
+    <section class="py-20 lg:py-28 bg-gray-50">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Left - Requirements List -->
+          <div>
+            <span
+              class="inline-block bg-primary/10 text-primary font-semibold text-sm px-4 py-2 rounded-full mb-4"
+            >
+              REQUISITOS
+            </span>
+            <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6">
+              ¿Qué necesitas para el <span class="text-accent-red">curso</span>?
+            </h2>
+            <p class="text-gray-600 text-lg mb-8">
+              Solo necesitas unos pocos documentos para realizar tu curso. ¡Es muy sencillo!
+            </p>
+
+            <!-- Checklist -->
+            <div class="space-y-4">
+              <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-md">
+                <div
+                  class="w-10 h-10 bg-success/10 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="check" class="w-5 h-5 text-success"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Documento de identidad original</h4>
+                  <p class="text-gray-600 text-sm">Cédula de ciudadanía o extranjería vigente</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-md">
+                <div
+                  class="w-10 h-10 bg-success/10 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="check" class="w-5 h-5 text-success"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Número del comparendo o placa</h4>
+                  <p class="text-gray-600 text-sm">
+                    Si no lo tienes, nosotros te ayudamos a consultarlo
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-md">
+                <div
+                  class="w-10 h-10 bg-success/10 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="check" class="w-5 h-5 text-success"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Correo electrónico activo</h4>
+                  <p class="text-gray-600 text-sm">Para enviarte la confirmación del curso</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-md">
+                <div
+                  class="w-10 h-10 bg-highlight/10 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="clock" class="w-5 h-5 text-highlight"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Llegar 30 minutos antes</h4>
+                  <p class="text-gray-600 text-sm">
+                    Para realizar el proceso de registro sin contratiempos
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right - What You'll Learn -->
+          <div>
+            <span
+              class="inline-block bg-highlight/10 text-highlight font-semibold text-sm px-4 py-2 rounded-full mb-4"
+            >
+              CONTENIDO
+            </span>
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-gray-900 mb-6">
+              ¿Qué aprenderás?
+            </h2>
+            <p class="text-gray-600 text-lg mb-8">
+              El curso te brindará conocimientos esenciales para ser un mejor conductor
+            </p>
+
+            <!-- Topics -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="bg-white p-6 rounded-2xl shadow-md card-hover">
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4"
+                >
+                  <i data-lucide="book-open" class="w-6 h-6 text-primary"></i>
+                </div>
+                <h4 class="font-bold text-gray-900 mb-2">Normas de tránsito</h4>
+                <p class="text-gray-600 text-sm">
+                  Código Nacional de Tránsito y regulaciones vigentes
+                </p>
+              </div>
+
+              <div class="bg-white p-6 rounded-2xl shadow-md card-hover">
+                <div
+                  class="w-12 h-12 bg-accent-red/10 rounded-xl flex items-center justify-center mb-4"
+                >
+                  <i data-lucide="octagon" class="w-6 h-6 text-accent-red"></i>
+                </div>
+                <h4 class="font-bold text-gray-900 mb-2">Señales de tránsito</h4>
+                <p class="text-gray-600 text-sm">
+                  Significado y correcta interpretación de señales
+                </p>
+              </div>
+
+              <div class="bg-white p-6 rounded-2xl shadow-md card-hover">
+                <div
+                  class="w-12 h-12 bg-success/10 rounded-xl flex items-center justify-center mb-4"
+                >
+                  <i data-lucide="shield-check" class="w-6 h-6 text-success"></i>
+                </div>
+                <h4 class="font-bold text-gray-900 mb-2">Seguridad vial</h4>
+                <p class="text-gray-600 text-sm">Prevención de accidentes y conducción defensiva</p>
+              </div>
+
+              <div class="bg-white p-6 rounded-2xl shadow-md card-hover">
+                <div
+                  class="w-12 h-12 bg-highlight/10 rounded-xl flex items-center justify-center mb-4"
+                >
+                  <i data-lucide="user-check" class="w-6 h-6 text-highlight"></i>
+                </div>
+                <h4 class="font-bold text-gray-900 mb-2">Responsabilidades</h4>
+                <p class="text-gray-600 text-sm">Deberes y obligaciones del conductor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP BY STEP PROCESS ==================== -->
+    <section class="py-20 lg:py-28 bg-white">
+      <div class="container mx-auto px-4 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="inline-block bg-primary/10 text-primary font-semibold text-sm px-4 py-2 rounded-full mb-4"
+          >
+            PROCESO
+          </span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6">
+            Proceso <span class="text-accent-red">paso a paso</span>
+          </h2>
+          <p class="text-gray-600 text-lg">
+            Desde que nos contactas hasta que recibes tu certificado
+          </p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="max-w-3xl mx-auto">
+          <!-- Step 1 -->
+          <div class="timeline-item flex gap-6 pb-12">
+            <div class="flex-shrink-0">
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center shadow-lg"
+              >
+                <i data-lucide="message-circle" class="w-7 h-7 text-white"></i>
+              </div>
+            </div>
+            <div class="flex-grow pt-2">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="bg-primary/10 text-primary font-bold text-sm px-3 py-1 rounded-full"
+                  >Paso 1</span
+                >
+                <h3 class="font-display font-bold text-xl text-gray-900">Contáctanos</h3>
+              </div>
+              <p class="text-gray-600">
+                Escríbenos por WhatsApp o llámanos. Cuéntanos sobre tu comparendo y te asesoramos de
+                inmediato.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="timeline-item flex gap-6 pb-12">
+            <div class="flex-shrink-0">
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-primary-light to-accent-red rounded-2xl flex items-center justify-center shadow-lg"
+              >
+                <i data-lucide="search" class="w-7 h-7 text-white"></i>
+              </div>
+            </div>
+            <div class="flex-grow pt-2">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="bg-primary/10 text-primary font-bold text-sm px-3 py-1 rounded-full"
+                  >Paso 2</span
+                >
+                <h3 class="font-display font-bold text-xl text-gray-900">
+                  Verificamos tu comparendo
+                </h3>
+              </div>
+              <p class="text-gray-600">
+                Consultamos tu comparendo en el SIMIT para verificar los plazos disponibles y el
+                descuento al que puedes acceder.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline-item flex gap-6 pb-12">
+            <div class="flex-shrink-0">
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-accent-red to-highlight rounded-2xl flex items-center justify-center shadow-lg"
+              >
+                <i data-lucide="calendar-check" class="w-7 h-7 text-white"></i>
+              </div>
+            </div>
+            <div class="flex-grow pt-2">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="bg-accent-red/10 text-accent-red font-bold text-sm px-3 py-1 rounded-full"
+                  >Paso 3</span
+                >
+                <h3 class="font-display font-bold text-xl text-gray-900">Agendamos tu cita</h3>
+              </div>
+              <p class="text-gray-600">
+                Reservamos tu cupo en el horario que más te convenga. Tenemos disponibilidad de
+                lunes a sábado.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="timeline-item flex gap-6 pb-12">
+            <div class="flex-shrink-0">
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-highlight to-success rounded-2xl flex items-center justify-center shadow-lg"
+              >
+                <i data-lucide="graduation-cap" class="w-7 h-7 text-white"></i>
+              </div>
+            </div>
+            <div class="flex-grow pt-2">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="bg-highlight/10 text-highlight font-bold text-sm px-3 py-1 rounded-full"
+                  >Paso 4</span
+                >
+                <h3 class="font-display font-bold text-xl text-gray-900">Realizas el curso</h3>
+              </div>
+              <p class="text-gray-600">
+                Asistes a nuestras instalaciones el día agendado. El curso tiene una duración de
+                aproximadamente 4 horas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="timeline-item flex gap-6">
+            <div class="flex-shrink-0">
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-success to-green-400 rounded-2xl flex items-center justify-center shadow-lg"
+              >
+                <i data-lucide="award" class="w-7 h-7 text-white"></i>
+              </div>
+            </div>
+            <div class="flex-grow pt-2">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="bg-success/10 text-success font-bold text-sm px-3 py-1 rounded-full"
+                  >Paso 5</span
+                >
+                <h3 class="font-display font-bold text-xl text-gray-900">Recibes tu certificado</h3>
+              </div>
+              <p class="text-gray-600">
+                Al finalizar el curso, recibes tu certificado de manera inmediata. ¡Ya puedes pagar
+                tu multa con el descuento!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-14">
+          <a
+            href="https://wa.me/573001234567?text=Hola,%20quiero%20agendar%20mi%20curso%20para%20descuento%20en%20comparendo"
+            target="_blank"
+            class="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl text-lg whatsapp-glow"
+          >
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+            Iniciar proceso ahora
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ SECTION ==================== -->
+    <section class="py-20 lg:py-28 bg-gray-50">
+      <div class="container mx-auto px-4 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="inline-block bg-highlight/10 text-highlight font-semibold text-sm px-4 py-2 rounded-full mb-4"
+          >
+            PREGUNTAS FRECUENTES
+          </span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6">
+            Dudas sobre el <span class="text-primary">curso</span>
+          </h2>
+          <p class="text-gray-600 text-lg">
+            Resolvemos las preguntas más comunes sobre nuestros cursos
+          </p>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="max-w-3xl mx-auto space-y-4">
+          <!-- FAQ 1 -->
+          <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-md">
+            <button
+              class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+              onclick="this.parentElement.classList.toggle('active')"
+            >
+              <span class="font-bold text-gray-900 text-lg pr-4"
+                >¿El curso es presencial o virtual?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="w-6 h-6 text-primary faq-icon transition-transform duration-300 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-6 text-gray-600">
+                El curso es <strong>100% presencial</strong>. Debes asistir a nuestras instalaciones
+                para tomarlo. Esto garantiza una mejor experiencia de aprendizaje y cumple con los
+                requisitos del Ministerio de Transporte.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-md">
+            <button
+              class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+              onclick="this.parentElement.classList.toggle('active')"
+            >
+              <span class="font-bold text-gray-900 text-lg pr-4"
+                >¿Puedo hacer el curso el mismo día que llamo?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="w-6 h-6 text-primary faq-icon transition-transform duration-300 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-6 text-gray-600">
+                <strong>¡Sí!</strong> Dependiendo de la disponibilidad de cupos, podemos programarte
+                para el mismo día. Te recomendamos contactarnos temprano para verificar la
+                disponibilidad. Si tu plazo está por vencer, hacemos todo lo posible para atenderte
+                de inmediato.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-md">
+            <button
+              class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+              onclick="this.parentElement.classList.toggle('active')"
+            >
+              <span class="font-bold text-gray-900 text-lg pr-4"
+                >¿El certificado sirve para cualquier ciudad de Colombia?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="w-6 h-6 text-primary faq-icon transition-transform duration-300 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-6 text-gray-600">
+                <strong>Sí</strong>, nuestro certificado tiene <strong>validez nacional</strong>. Al
+                estar habilitados por el Ministerio de Transporte, el certificado es reconocido en
+                todo el territorio colombiano, sin importar dónde te hayan impuesto el comparendo.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-md">
+            <button
+              class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+              onclick="this.parentElement.classList.toggle('active')"
+            >
+              <span class="font-bold text-gray-900 text-lg pr-4"
+                >¿Qué pasa si no puedo asistir el día agendado?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="w-6 h-6 text-primary faq-icon transition-transform duration-300 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-6 text-gray-600">
+                No te preocupes, puedes <strong>reprogramar tu cita</strong> sin costo adicional.
+                Solo avísanos con anticipación para asignar tu cupo a otra persona y reagendar tu
+                curso. Recuerda que es importante no perder los plazos para el descuento.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-md">
+            <button
+              class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+              onclick="this.parentElement.classList.toggle('active')"
+            >
+              <span class="font-bold text-gray-900 text-lg pr-4"
+                >¿El pago del curso incluye el pago de la multa?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="w-6 h-6 text-primary faq-icon transition-transform duration-300 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-6 text-gray-600">
+                <strong>No</strong>, son pagos separados. El pago del curso (equivalente al 25% del
+                valor de la multa) se realiza en nuestras instalaciones. Después de recibir tu
+                certificado, debes pagar el saldo restante de la multa (con el descuento aplicado)
+                en la entidad correspondiente.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-md">
+            <button
+              class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+              onclick="this.parentElement.classList.toggle('active')"
+            >
+              <span class="font-bold text-gray-900 text-lg pr-4"
+                >¿Qué pasa si ya se venció mi plazo para el descuento?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="w-6 h-6 text-primary faq-icon transition-transform duration-300 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-6 text-gray-600">
+                Si se venció el plazo, lamentablemente
+                <strong>ya no puedes acceder al descuento</strong> y deberás pagar el 100% de la
+                multa. Sin embargo, aún puedes tomar el curso para evitar la suspensión de tu
+                licencia. Contáctanos para asesorarte según tu caso específico.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Link to all FAQs -->
+        <div class="text-center mt-10">
+          <a
+            href="preguntas-frecuentes.html"
+            class="inline-flex items-center gap-2 text-primary hover:text-primary-light font-semibold transition-colors"
+          >
+            Ver todas las preguntas frecuentes
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FINAL CTA ==================== -->
+    <section
+      class="py-20 lg:py-28 bg-gradient-to-r from-primary via-primary-dark to-accent-red relative overflow-hidden"
+    >
+      <!-- Background elements -->
+      <div class="absolute inset-0 dot-pattern opacity-20"></div>
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"
+      ></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <!-- Icon -->
+          <div
+            class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full mb-8"
+          >
+            <i data-lucide="rocket" class="w-10 h-10 text-white"></i>
+          </div>
+
+          <!-- Headline -->
+          <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-6">
+            ¿Listo para ahorrar en tu multa?
+          </h2>
+
+          <!-- Subheadline -->
+          <p class="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+            Agenda tu curso ahora y obtén tu descuento. Nuestro equipo está listo para ayudarte.
+          </p>
+
+          <!-- Trust elements -->
+          <div class="flex flex-wrap justify-center gap-6 mb-10">
+            <div
+              class="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2"
+            >
+              <i data-lucide="users" class="w-5 h-5 text-highlight"></i>
+              <span class="text-white font-medium">+5,000 cursos realizados</span>
+            </div>
+            <div
+              class="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2"
+            >
+              <i data-lucide="award" class="w-5 h-5 text-highlight"></i>
+              <span class="text-white font-medium">Certificados por MinTransporte</span>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <a
+            href="https://wa.me/573001234567?text=Hola,%20quiero%20agendar%20un%20curso%20para%20descuento%20en%20mi%20comparendo"
+            target="_blank"
+            class="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-10 py-5 rounded-full transition-all duration-300 hover:scale-105 shadow-2xl text-xl whatsapp-glow"
+          >
+            <i data-lucide="message-circle" class="w-7 h-7"></i>
+            Agenda tu curso por WhatsApp
+          </a>
+
+          <!-- Response time -->
+          <p class="mt-6 text-white/60 flex items-center justify-center gap-2">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+            Respuesta en menos de 5 minutos
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          <!-- Brand -->
+          <div class="lg:col-span-1">
+            <a href="index.html" class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
+                <span class="font-display font-bold text-primary text-xl">CV</span>
+              </div>
+              <div>
+                <span class="font-display font-bold text-white text-lg leading-tight block"
+                  >CIA VIAL</span
+                >
+                <span class="text-gray-400 text-xs tracking-wider">DEL LLANO</span>
+              </div>
+            </a>
+            <p class="text-gray-400 mb-6">
+              Centro Integral de Atención certificado por el Ministerio de Transporte. Más de 10
+              años ayudando a conductores.
+            </p>
+            <!-- Social Media -->
+            <div class="flex gap-3">
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors"
+              >
+                <i data-lucide="facebook" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors"
+              >
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="https://wa.me/573001234567"
+                class="w-10 h-10 bg-[#25D366] hover:bg-[#20bd5a] rounded-lg flex items-center justify-center transition-colors"
+              >
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-display font-bold text-lg mb-6">Enlaces Rápidos</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a href="cursos.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Cursos</a
+                >
+              </li>
+              <li>
+                <a href="calculadora.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Calculadora</a
+                >
+              </li>
+              <li>
+                <a
+                  href="consultar-multas.html"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Consultar Multas</a
+                >
+              </li>
+              <li>
+                <a href="ubicacion.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Ubicación</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Information -->
+          <div>
+            <h4 class="font-display font-bold text-lg mb-6">Información</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="nosotros.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Nosotros</a
+                >
+              </li>
+              <li>
+                <a
+                  href="preguntas-frecuentes.html"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Preguntas Frecuentes</a
+                >
+              </li>
+              <li>
+                <a href="contacto.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Contacto</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"
+                  >Política de Privacidad</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h4 class="font-display font-bold text-lg mb-6">Contacto</h4>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <i data-lucide="map-pin" class="w-5 h-5 text-highlight flex-shrink-0 mt-0.5"></i>
+                <span class="text-gray-400">Calle 35 # 28-50, Centro<br />Villavicencio, Meta</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="phone" class="w-5 h-5 text-highlight flex-shrink-0"></i>
+                <span class="text-gray-400">(608) 123 4567</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="message-circle" class="w-5 h-5 text-highlight flex-shrink-0"></i>
+                <span class="text-gray-400">300 123 4567</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="clock" class="w-5 h-5 text-highlight flex-shrink-0"></i>
+                <span class="text-gray-400">Lun-Vie: 7am-6pm<br />Sáb: 8am-1pm</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap items-center justify-center gap-6 py-8 border-t border-gray-800">
+          <span class="text-gray-500 text-sm">Avalados por:</span>
+          <div class="flex items-center gap-2 text-gray-500">
+            <i data-lucide="building-2" class="w-4 h-4"></i>
+            <span class="text-sm">MinTransporte</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-500">
+            <i data-lucide="database" class="w-4 h-4"></i>
+            <span class="text-sm">RUNT</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-500">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span class="text-sm">SIMIT</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-500">
+            <i data-lucide="landmark" class="w-4 h-4"></i>
+            <span class="text-sm">SuperTransporte</span>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center pt-8 border-t border-gray-800">
+          <p class="text-gray-500 text-sm">
+            © 2025 CIA VIAL DEL LLANO. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+    <a
+      href="https://wa.me/573001234567?text=Hola,%20quiero%20información%20sobre%20los%20cursos%20para%20comparendos"
+      target="_blank"
+      class="fixed bottom-6 right-6 z-50 group"
+    >
+      <div class="relative">
+        <!-- Tooltip -->
+        <div
+          class="absolute bottom-full right-0 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        >
+          <div
+            class="bg-gray-900 text-white text-sm font-medium px-4 py-2 rounded-lg whitespace-nowrap shadow-lg"
+          >
+            ¿Necesitas ayuda?
+            <div
+              class="absolute top-full right-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-900"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Button -->
+        <div
+          class="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 whatsapp-glow"
+        >
+          <i data-lucide="message-circle" class="w-8 h-8 text-white"></i>
+        </div>
+      </div>
+    </a>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // Header scroll effect
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('header-scrolled');
+        } else {
+          header.classList.remove('header-scrolled');
+        }
+      });
+
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+      });
+
+      mobileMenuClose.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+
+      // Close mobile menu when clicking on a link
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+        });
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

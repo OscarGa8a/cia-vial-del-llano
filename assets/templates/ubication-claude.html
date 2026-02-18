@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ubicación | CIA VIAL DEL LLANO</title>
+    <meta
+      name="description"
+      content="Visítanos en nuestra sede en Villavicencio, Meta. Dirección, horarios de atención y cómo llegar a CIA VIAL DEL LLANO."
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#1E3A5F',
+                light: '#2D5A87',
+                lighter: '#E8F0F8',
+                dark: '#152a45',
+              },
+              accent: {
+                red: '#C8102E',
+                'red-hover': '#A50D24',
+                'red-light': '#FFE8EC',
+              },
+              highlight: {
+                DEFAULT: '#F5A623',
+                hover: '#E09000',
+                light: '#FFF8E8',
+              },
+              success: '#10B981',
+              warning: '#F59E0B',
+              danger: '#EF4444',
+            },
+            fontFamily: {
+              display: ['Space Grotesk', 'sans-serif'],
+              body: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      * {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+
+      .font-display {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      /* Hero gradient */
+      .hero-gradient {
+        background: linear-gradient(135deg, #1e3a5f 0%, #152a45 60%, #1e3a5f 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-gradient::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          transparent 0%,
+          rgba(200, 16, 46, 0.15) 50%,
+          rgba(200, 16, 46, 0.25) 100%
+        );
+        clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
+      }
+
+      /* Dot pattern */
+      .dot-pattern {
+        background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 30px 30px;
+      }
+
+      /* WhatsApp button glow */
+      .whatsapp-glow {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        animation: whatsapp-pulse 2s infinite;
+      }
+
+      @keyframes whatsapp-pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      /* Card hover */
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px -12px rgba(30, 58, 95, 0.2);
+      }
+
+      /* Header scroll */
+      .header-scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Mobile menu */
+      .mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .mobile-menu.active {
+        transform: translateX(0);
+      }
+
+      /* Status indicator pulse */
+      .status-open {
+        animation: statusPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes statusPulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+
+      /* Copy toast */
+      .toast {
+        animation: toastIn 0.3s ease-out forwards;
+      }
+
+      @keyframes toastIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Photo overlay */
+      .photo-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(30, 58, 95, 0.8) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .photo-card:hover::before {
+        opacity: 1;
+      }
+
+      .photo-card:hover .photo-label {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .photo-label {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+      }
+
+      /* FAQ Accordion */
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body class="font-body text-gray-800 antialiased">
+    <!-- ==================== HEADER ==================== -->
+    <header
+      id="header"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary"
+    >
+      <div class="container mx-auto px-4 lg:px-8">
+        <nav class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <a href="index.html" class="flex items-center gap-3 group">
+            <div
+              class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform"
+            >
+              <span class="font-display font-bold text-primary text-xl">CV</span>
+            </div>
+            <div class="hidden sm:block">
+              <span class="font-display font-bold text-white text-lg leading-tight block"
+                >CIA VIAL</span
+              >
+              <span class="text-white/80 text-xs tracking-wider">DEL LLANO</span>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center gap-8">
+            <a
+              href="index.html"
+              class="text-white/90 hover:text-white font-medium transition-colors relative group"
+            >
+              Inicio
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
+            <a
+              href="cursos.html"
+              class="text-white/90 hover:text-white font-medium transition-colors relative group"
+            >
+              Cursos
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
+            <a
+              href="calculadora.html"
+              class="text-white/90 hover:text-white font-medium transition-colors relative group"
+            >
+              Calculadora
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
+            <a
+              href="ubicacion.html"
+              class="text-white font-medium transition-colors relative group"
+            >
+              Ubicación
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-highlight"></span>
+            </a>
+            <a
+              href="nosotros.html"
+              class="text-white/90 hover:text-white font-medium transition-colors relative group"
+            >
+              Nosotros
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
+            <a
+              href="contacto.html"
+              class="text-white/90 hover:text-white font-medium transition-colors relative group"
+            >
+              Contacto
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="hidden lg:block">
+            <a
+              href="https://wa.me/573001234567"
+              target="_blank"
+              class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+              Agenda tu cita
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+            <i data-lucide="menu" class="w-7 h-7"></i>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="mobile-menu fixed top-0 right-0 w-80 h-full bg-primary-dark shadow-2xl lg:hidden z-50"
+      >
+        <div class="p-6">
+          <button id="mobile-menu-close" class="absolute top-6 right-6 text-white">
+            <i data-lucide="x" class="w-7 h-7"></i>
+          </button>
+
+          <div class="mt-16 flex flex-col gap-6">
+            <a
+              href="index.html"
+              class="text-white/80 text-lg font-medium hover:text-highlight transition-colors"
+              >Inicio</a
+            >
+            <a
+              href="cursos.html"
+              class="text-white/80 text-lg font-medium hover:text-highlight transition-colors"
+              >Cursos</a
+            >
+            <a
+              href="calculadora.html"
+              class="text-white/80 text-lg font-medium hover:text-highlight transition-colors"
+              >Calculadora</a
+            >
+            <a href="ubicacion.html" class="text-highlight text-lg font-medium">Ubicación</a>
+            <a
+              href="nosotros.html"
+              class="text-white/80 text-lg font-medium hover:text-highlight transition-colors"
+              >Nosotros</a
+            >
+            <a
+              href="contacto.html"
+              class="text-white/80 text-lg font-medium hover:text-highlight transition-colors"
+              >Contacto</a
+            >
+
+            <a
+              href="https://wa.me/573001234567"
+              target="_blank"
+              class="mt-4 inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-6 py-4 rounded-full"
+            >
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+              Agenda tu cita
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-gradient dot-pattern pt-32 pb-16 lg:pt-36 lg:pb-20 relative">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <!-- Breadcrumb -->
+          <nav class="flex items-center justify-center gap-2 text-white/60 text-sm mb-6">
+            <a href="index.html" class="hover:text-white transition-colors">Inicio</a>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            <span class="text-white">Ubicación</span>
+          </nav>
+
+          <!-- Icon -->
+          <div
+            class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl mb-6"
+          >
+            <i data-lucide="map-pin" class="w-10 h-10 text-highlight"></i>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-4">
+            Nuestra <span class="text-highlight">Ubicación</span>
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="text-xl text-white/80 max-w-2xl mx-auto">
+            Estamos en el corazón de Villavicencio para tu comodidad. Visítanos y conoce nuestras
+            instalaciones.
+          </p>
+        </div>
+      </div>
+
+      <!-- Wave divider -->
+      <div class="absolute bottom-0 left-0 right-0">
+        <svg
+          viewBox="0 0 1440 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          class="w-full h-12 lg:h-16"
+        >
+          <path
+            d="M0 80L60 70C120 60 240 40 360 30C480 20 600 20 720 25C840 30 960 40 1080 45C1200 50 1320 50 1380 50L1440 50V80H1380C1320 80 1200 80 1080 80C960 80 840 80 720 80C600 80 480 80 360 80C240 80 120 80 60 80H0Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <section class="py-12 lg:py-16 bg-white">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-5 gap-8 lg:gap-12">
+          <!-- Left Column - Contact Info -->
+          <div class="lg:col-span-2 space-y-6">
+            <!-- Address Card -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 card-hover">
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="map-pin" class="w-6 h-6 text-primary"></i>
+                </div>
+                <div class="flex-grow">
+                  <h3 class="font-display font-bold text-lg text-gray-900 mb-2">Dirección</h3>
+                  <p class="text-gray-700 mb-1">Calle 35 # 28-50, Centro</p>
+                  <p class="text-gray-700 mb-3">Villavicencio, Meta</p>
+                  <p class="text-gray-500 text-sm mb-4">
+                    <i data-lucide="info" class="w-4 h-4 inline mr-1"></i>
+                    Frente al Parque Los Libertadores, al lado del Banco de Bogotá
+                  </p>
+                  <button
+                    onclick="copyAddress()"
+                    class="inline-flex items-center gap-2 text-primary hover:text-primary-light font-medium text-sm transition-colors"
+                  >
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                    Copiar dirección
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Business Hours Card -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 card-hover">
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-12 h-12 bg-highlight/10 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="clock" class="w-6 h-6 text-highlight"></i>
+                </div>
+                <div class="flex-grow">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-display font-bold text-lg text-gray-900">
+                      Horarios de Atención
+                    </h3>
+                    <span
+                      id="status-badge"
+                      class="inline-flex items-center gap-1.5 bg-success/10 text-success text-xs font-bold px-2.5 py-1 rounded-full"
+                    >
+                      <span class="w-2 h-2 bg-success rounded-full status-open"></span>
+                      Abierto
+                    </span>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                      <span class="text-gray-600">Lunes a Viernes</span>
+                      <span class="font-semibold text-gray-900">7:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                      <span class="text-gray-600">Sábados</span>
+                      <span class="font-semibold text-gray-900">8:00 AM - 1:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2">
+                      <span class="text-gray-600">Domingos</span>
+                      <span class="font-semibold text-danger">Cerrado</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phone Card -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 card-hover">
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-12 h-12 bg-success/10 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="phone" class="w-6 h-6 text-success"></i>
+                </div>
+                <div class="flex-grow">
+                  <h3 class="font-display font-bold text-lg text-gray-900 mb-3">Teléfonos</h3>
+                  <div class="space-y-3">
+                    <a
+                      href="tel:+576081234567"
+                      class="flex items-center gap-3 text-gray-700 hover:text-primary transition-colors"
+                    >
+                      <i data-lucide="phone-call" class="w-5 h-5 text-gray-400"></i>
+                      <span class="font-medium">(608) 123 4567</span>
+                      <span class="text-xs text-gray-400">Fijo</span>
+                    </a>
+                    <a
+                      href="https://wa.me/573001234567"
+                      target="_blank"
+                      class="flex items-center gap-3 text-gray-700 hover:text-[#25D366] transition-colors"
+                    >
+                      <svg class="w-5 h-5 text-[#25D366]" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                        />
+                      </svg>
+                      <span class="font-medium">300 123 4567</span>
+                      <span class="text-xs text-[#25D366] font-medium">WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Email Card -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 card-hover">
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-12 h-12 bg-accent-red/10 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="mail" class="w-6 h-6 text-accent-red"></i>
+                </div>
+                <div class="flex-grow">
+                  <h3 class="font-display font-bold text-lg text-gray-900 mb-2">
+                    Correo Electrónico
+                  </h3>
+                  <a
+                    href="mailto:contacto@ciavialdelllano.com"
+                    class="text-primary hover:text-primary-light font-medium transition-colors"
+                  >
+                    contacto@ciavialdelllano.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column - Map -->
+          <div class="lg:col-span-3">
+            <div
+              class="bg-white rounded-3xl shadow-xl overflow-hidden h-full min-h-[400px] lg:min-h-[600px]"
+            >
+              <!-- Map -->
+              <div class="h-full w-full">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.5!2d-73.6266!3d4.1420!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMDgnMzEuMiJOIDczwrAzNyczNS44Ilc!5e0!3m2!1ses!2sco!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style="border: 0; min-height: 400px"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="w-full h-full"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=4.1420,-73.6266"
+            target="_blank"
+            class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-light text-white font-semibold px-6 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+              />
+            </svg>
+            Abrir en Google Maps
+          </a>
+          <a
+            href="https://waze.com/ul?ll=4.1420,-73.6266&navigate=yes"
+            target="_blank"
+            class="inline-flex items-center justify-center gap-2 bg-[#33CCFF] hover:bg-[#00BFFF] text-white font-semibold px-6 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+              />
+            </svg>
+            Abrir en Waze
+          </a>
+          <button
+            onclick="copyAddress()"
+            class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-4 rounded-xl border-2 border-gray-200 transition-all duration-300"
+          >
+            <i data-lucide="copy" class="w-5 h-5"></i>
+            Copiar Dirección
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== HOW TO GET THERE ==================== -->
+    <section class="py-12 lg:py-16 bg-gray-50">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span
+            class="inline-block bg-primary/10 text-primary font-semibold text-sm px-4 py-2 rounded-full mb-4"
+          >
+            INDICACIONES
+          </span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-gray-900 mb-4">
+            ¿Cómo <span class="text-accent-red">llegar</span>?
+          </h2>
+          <p class="text-gray-600">Te explicamos las diferentes formas de llegar a nuestra sede</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <!-- En carro -->
+          <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+            <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
+              <i data-lucide="car" class="w-7 h-7 text-primary"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-3">En Carro</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start gap-2">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-primary mt-1 flex-shrink-0"></i>
+                <span>Desde la Avenida del Llano, toma la Calle 35 hacia el centro</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-primary mt-1 flex-shrink-0"></i>
+                <span>Continúa 3 cuadras hasta el Parque Los Libertadores</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-primary mt-1 flex-shrink-0"></i>
+                <span>Estamos al frente del parque, edificio azul</span>
+              </li>
+            </ul>
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <div class="flex items-center gap-2 text-success">
+                <i data-lucide="parking-circle" class="w-5 h-5"></i>
+                <span class="font-medium text-sm">Parqueadero gratuito</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transporte público -->
+          <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+            <div
+              class="w-14 h-14 bg-highlight/10 rounded-2xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="bus" class="w-7 h-7 text-highlight"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-3">Transporte Público</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start gap-2">
+                <i
+                  data-lucide="chevron-right"
+                  class="w-4 h-4 text-highlight mt-1 flex-shrink-0"
+                ></i>
+                <span>Rutas que pasan cerca: Centro, San Fernando, Popular</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i
+                  data-lucide="chevron-right"
+                  class="w-4 h-4 text-highlight mt-1 flex-shrink-0"
+                ></i>
+                <span>Bájate en el Parque Los Libertadores</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i
+                  data-lucide="chevron-right"
+                  class="w-4 h-4 text-highlight mt-1 flex-shrink-0"
+                ></i>
+                <span>Camina 1 cuadra hacia el oriente</span>
+              </li>
+            </ul>
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <div class="flex items-center gap-2 text-highlight">
+                <i data-lucide="footprints" class="w-5 h-5"></i>
+                <span class="font-medium text-sm">A 2 min caminando del paradero</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Puntos de referencia -->
+          <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+            <div
+              class="w-14 h-14 bg-accent-red/10 rounded-2xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="landmark" class="w-7 h-7 text-accent-red"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-3">Puntos de Referencia</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-success mt-1 flex-shrink-0"></i>
+                <span>Frente al Parque Los Libertadores</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-success mt-1 flex-shrink-0"></i>
+                <span>Al lado del Banco de Bogotá</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-success mt-1 flex-shrink-0"></i>
+                <span>A 2 cuadras de la Alcaldía</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-success mt-1 flex-shrink-0"></i>
+                <span>Edificio de 3 pisos color azul y blanco</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PARKING INFO ==================== -->
+    <section class="py-8 bg-white">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div
+            class="bg-gradient-to-r from-success/10 to-success/5 border border-success/20 rounded-2xl p-6 lg:p-8"
+          >
+            <div class="flex flex-col md:flex-row items-center gap-6">
+              <div
+                class="w-16 h-16 bg-success/20 rounded-2xl flex items-center justify-center flex-shrink-0"
+              >
+                <i data-lucide="car" class="w-8 h-8 text-success"></i>
+              </div>
+              <div class="flex-grow text-center md:text-left">
+                <h3 class="font-display font-bold text-xl text-gray-900 mb-2">
+                  Parqueadero Gratuito
+                </h3>
+                <p class="text-gray-600">
+                  Contamos con parqueadero privado <strong>sin costo adicional</strong> para
+                  nuestros clientes. Capacidad para carros y motos. Si está lleno, hay parqueaderos
+                  públicos a menos de 50 metros.
+                </p>
+              </div>
+              <div class="flex-shrink-0">
+                <span
+                  class="inline-flex items-center gap-2 bg-success text-white font-bold px-4 py-2 rounded-full"
+                >
+                  <i data-lucide="check" class="w-4 h-4"></i>
+                  Gratis
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PHOTO GALLERY ==================== -->
+    <section class="py-12 lg:py-16 bg-gray-50">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span
+            class="inline-block bg-highlight/10 text-highlight font-semibold text-sm px-4 py-2 rounded-full mb-4"
+          >
+            GALERÍA
+          </span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-gray-900 mb-4">
+            Conoce nuestras <span class="text-primary">instalaciones</span>
+          </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          <!-- Photo 1 -->
+          <div
+            class="photo-card relative aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-primary to-primary-light flex items-center justify-center"
+            >
+              <i data-lucide="building-2" class="w-16 h-16 text-white/30"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-4">
+              <p class="photo-label text-white font-semibold">Fachada Principal</p>
+            </div>
+          </div>
+
+          <!-- Photo 2 -->
+          <div
+            class="photo-card relative aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-accent-red to-highlight flex items-center justify-center"
+            >
+              <i data-lucide="door-open" class="w-16 h-16 text-white/30"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-4">
+              <p class="photo-label text-white font-semibold">Recepción</p>
+            </div>
+          </div>
+
+          <!-- Photo 3 -->
+          <div
+            class="photo-card relative aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-highlight to-success flex items-center justify-center"
+            >
+              <i data-lucide="presentation" class="w-16 h-16 text-white/30"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-4">
+              <p class="photo-label text-white font-semibold">Salón de Clases</p>
+            </div>
+          </div>
+
+          <!-- Photo 4 -->
+          <div
+            class="photo-card relative aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-success to-primary flex items-center justify-center"
+            >
+              <i data-lucide="car" class="w-16 h-16 text-white/30"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-4">
+              <p class="photo-label text-white font-semibold">Parqueadero</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SCHEDULE CTA ==================== -->
+    <section class="py-12 lg:py-16 bg-white">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div
+            class="bg-gradient-to-r from-primary to-primary-dark rounded-3xl p-8 lg:p-12 text-center relative overflow-hidden"
+          >
+            <!-- Background pattern -->
+            <div class="absolute inset-0 dot-pattern opacity-10"></div>
+
+            <div class="relative z-10">
+              <div
+                class="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl mb-6"
+              >
+                <i data-lucide="calendar-check" class="w-8 h-8 text-white"></i>
+              </div>
+
+              <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-4">
+                ¿Listo para visitarnos?
+              </h2>
+              <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+                Agenda tu cita y te esperamos en nuestra sede. Te recomendamos agendar para
+                garantizar tu cupo.
+              </p>
+
+              <a
+                href="https://wa.me/573001234567?text=Hola,%20quiero%20agendar%20una%20cita%20para%20visitarlos"
+                target="_blank"
+                class="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-xl text-lg whatsapp-glow"
+              >
+                <i data-lucide="message-circle" class="w-6 h-6"></i>
+                Agendar cita por WhatsApp
+              </a>
+
+              <p class="mt-4 text-white/60 text-sm">
+                <i data-lucide="info" class="w-4 h-4 inline mr-1"></i>
+                También aceptamos visitas sin cita, sujeto a disponibilidad
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ MINI SECTION ==================== -->
+    <section class="py-12 lg:py-16 bg-gray-50">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <h2 class="font-display font-bold text-2xl md:text-3xl text-gray-900 mb-4">
+            Preguntas sobre tu visita
+          </h2>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-4">
+          <!-- FAQ 1 -->
+          <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-md">
+            <button
+              class="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"
+              onclick="this.parentElement.classList.toggle('active')"
+            >
+              <span class="font-bold text-gray-900 pr-4">¿Necesito cita previa?</span>
+              <i
+                data-lucide="chevron-down"
+                class="w-5 h-5 text-primary faq-icon transition-transform duration-300 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-answer">
+              <div class="px-5 pb-5 text-gray-600">
+                <strong>Recomendamos agendar cita</strong> para garantizar tu cupo y evitar esperas.
+                Sin embargo, también atendemos clientes sin cita previa, sujeto a disponibilidad.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-md">
+            <button
+              class="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"
+              onclick="this.parentElement.classList.toggle('active')"
+            >
+              <span class="font-bold text-gray-900 pr-4">¿Tienen parqueadero?</span>
+              <i
+                data-lucide="chevron-down"
+                class="w-5 h-5 text-primary faq-icon transition-transform duration-300 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-answer">
+              <div class="px-5 pb-5 text-gray-600">
+                <strong>Sí, contamos con parqueadero gratuito</strong> para nuestros clientes. Hay
+                espacio para carros y motos. Si está lleno, hay parqueaderos públicos cerca.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-md">
+            <button
+              class="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"
+              onclick="this.parentElement.classList.toggle('active')"
+            >
+              <span class="font-bold text-gray-900 pr-4">¿Puedo ir el mismo día que llamo?</span>
+              <i
+                data-lucide="chevron-down"
+                class="w-5 h-5 text-primary faq-icon transition-transform duration-300 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-answer">
+              <div class="px-5 pb-5 text-gray-600">
+                <strong>¡Sí!</strong> Dependiendo de la disponibilidad, podemos atenderte el mismo
+                día. Te recomendamos llamar o escribir primero para confirmar que hay cupos
+                disponibles.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-md">
+            <button
+              class="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"
+              onclick="this.parentElement.classList.toggle('active')"
+            >
+              <span class="font-bold text-gray-900 pr-4">¿Qué documentos debo llevar?</span>
+              <i
+                data-lucide="chevron-down"
+                class="w-5 h-5 text-primary faq-icon transition-transform duration-300 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-answer">
+              <div class="px-5 pb-5 text-gray-600">
+                Solo necesitas tu <strong>cédula de ciudadanía original</strong> y el
+                <strong>número de tu comparendo</strong>. Si no tienes el número, nosotros te
+                ayudamos a consultarlo.
+                <a href="cursos.html" class="text-primary hover:underline"
+                  >Ver todos los requisitos →</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FINAL CTA ==================== -->
+    <section
+      class="py-16 lg:py-20 bg-gradient-to-r from-primary via-primary-dark to-accent-red relative overflow-hidden"
+    >
+      <div class="absolute inset-0 dot-pattern opacity-20"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-4">
+            ¿Tienes dudas sobre cómo llegar?
+          </h2>
+          <p class="text-xl text-white/80 mb-6">Escríbenos y te ayudamos con las indicaciones</p>
+
+          <!-- Phone number -->
+          <div class="flex items-center justify-center gap-3 mb-8">
+            <div class="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
+              <a
+                href="tel:+573001234567"
+                class="flex items-center gap-2 text-white font-semibold text-lg"
+              >
+                <i data-lucide="phone" class="w-5 h-5 text-highlight"></i>
+                300 123 4567
+              </a>
+            </div>
+          </div>
+
+          <a
+            href="https://wa.me/573001234567?text=Hola,%20necesito%20ayuda%20con%20las%20indicaciones%20para%20llegar%20a%20CIA%20VIAL%20DEL%20LLANO"
+            target="_blank"
+            class="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-10 py-5 rounded-full transition-all duration-300 hover:scale-105 shadow-2xl text-lg whatsapp-glow"
+          >
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+            Pedir indicaciones por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          <!-- Brand -->
+          <div class="lg:col-span-1">
+            <a href="index.html" class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
+                <span class="font-display font-bold text-primary text-xl">CV</span>
+              </div>
+              <div>
+                <span class="font-display font-bold text-white text-lg leading-tight block"
+                  >CIA VIAL</span
+                >
+                <span class="text-gray-400 text-xs tracking-wider">DEL LLANO</span>
+              </div>
+            </a>
+            <p class="text-gray-400 mb-6">
+              Centro Integral de Atención certificado por el Ministerio de Transporte. Más de 10
+              años ayudando a conductores.
+            </p>
+            <div class="flex gap-3">
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors"
+              >
+                <i data-lucide="facebook" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors"
+              >
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="https://wa.me/573001234567"
+                class="w-10 h-10 bg-[#25D366] hover:bg-[#20bd5a] rounded-lg flex items-center justify-center transition-colors"
+              >
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-display font-bold text-lg mb-6">Enlaces Rápidos</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a href="cursos.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Cursos</a
+                >
+              </li>
+              <li>
+                <a href="calculadora.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Calculadora</a
+                >
+              </li>
+              <li>
+                <a href="ubicacion.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Ubicación</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Information -->
+          <div>
+            <h4 class="font-display font-bold text-lg mb-6">Información</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="nosotros.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Nosotros</a
+                >
+              </li>
+              <li>
+                <a
+                  href="preguntas-frecuentes.html"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Preguntas Frecuentes</a
+                >
+              </li>
+              <li>
+                <a href="contacto.html" class="text-gray-400 hover:text-white transition-colors"
+                  >Contacto</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"
+                  >Política de Privacidad</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h4 class="font-display font-bold text-lg mb-6">Contacto</h4>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <i data-lucide="map-pin" class="w-5 h-5 text-highlight flex-shrink-0 mt-0.5"></i>
+                <span class="text-gray-400">Calle 35 # 28-50, Centro<br />Villavicencio, Meta</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="phone" class="w-5 h-5 text-highlight flex-shrink-0"></i>
+                <span class="text-gray-400">(608) 123 4567</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="message-circle" class="w-5 h-5 text-highlight flex-shrink-0"></i>
+                <span class="text-gray-400">300 123 4567</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="clock" class="w-5 h-5 text-highlight flex-shrink-0"></i>
+                <span class="text-gray-400">Lun-Vie: 7am-6pm<br />Sáb: 8am-1pm</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap items-center justify-center gap-6 py-8 border-t border-gray-800">
+          <span class="text-gray-500 text-sm">Avalados por:</span>
+          <div class="flex items-center gap-2 text-gray-500">
+            <i data-lucide="building-2" class="w-4 h-4"></i>
+            <span class="text-sm">MinTransporte</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-500">
+            <i data-lucide="database" class="w-4 h-4"></i>
+            <span class="text-sm">RUNT</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-500">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span class="text-sm">SIMIT</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-500">
+            <i data-lucide="landmark" class="w-4 h-4"></i>
+            <span class="text-sm">SuperTransporte</span>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center pt-8 border-t border-gray-800">
+          <p class="text-gray-500 text-sm">
+            © 2025 CIA VIAL DEL LLANO. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+    <a
+      href="https://wa.me/573001234567?text=Hola,%20quiero%20saber%20cómo%20llegar%20a%20CIA%20VIAL%20DEL%20LLANO"
+      target="_blank"
+      class="fixed bottom-6 right-6 z-50 group"
+    >
+      <div class="relative">
+        <div
+          class="absolute bottom-full right-0 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        >
+          <div
+            class="bg-gray-900 text-white text-sm font-medium px-4 py-2 rounded-lg whitespace-nowrap shadow-lg"
+          >
+            ¿Necesitas ayuda?
+            <div
+              class="absolute top-full right-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-900"
+            ></div>
+          </div>
+        </div>
+
+        <div
+          class="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 whatsapp-glow"
+        >
+          <i data-lucide="message-circle" class="w-8 h-8 text-white"></i>
+        </div>
+      </div>
+    </a>
+
+    <!-- Toast notification -->
+    <div
+      id="toast"
+      class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-xl shadow-xl hidden z-50"
+    >
+      <div class="flex items-center gap-2">
+        <i data-lucide="check-circle" class="w-5 h-5 text-success"></i>
+        <span>Dirección copiada al portapapeles</span>
+      </div>
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // Mobile menu
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+      mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
+      mobileMenuClose.addEventListener('click', () => mobileMenu.classList.remove('active'));
+
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+      });
+
+      // Header scroll
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('header-scrolled', window.scrollY > 50);
+      });
+
+      // Copy address function
+      function copyAddress() {
+        const address = 'Calle 35 # 28-50, Centro, Villavicencio, Meta, Colombia';
+        navigator.clipboard.writeText(address).then(() => {
+          showToast();
+        });
+      }
+
+      // Show toast notification
+      function showToast() {
+        const toast = document.getElementById('toast');
+        toast.classList.remove('hidden');
+        toast.classList.add('toast');
+
+        setTimeout(() => {
+          toast.classList.add('hidden');
+          toast.classList.remove('toast');
+        }, 3000);
+      }
+
+      // Check if currently open/closed
+      function updateStatus() {
+        const now = new Date();
+        const day = now.getDay(); // 0 = Sunday, 6 = Saturday
+        const hour = now.getHours();
+        const minute = now.getMinutes();
+        const currentTime = hour + minute / 60;
+
+        const badge = document.getElementById('status-badge');
+        let isOpen = false;
+
+        if (day >= 1 && day <= 5) {
+          // Monday to Friday: 7:00 - 18:00
+          isOpen = currentTime >= 7 && currentTime < 18;
+        } else if (day === 6) {
+          // Saturday: 8:00 - 13:00
+          isOpen = currentTime >= 8 && currentTime < 13;
+        }
+        // Sunday: closed
+
+        if (isOpen) {
+          badge.innerHTML = `
+                    <span class="w-2 h-2 bg-success rounded-full status-open"></span>
+                    Abierto
+                `;
+          badge.className =
+            'inline-flex items-center gap-1.5 bg-success/10 text-success text-xs font-bold px-2.5 py-1 rounded-full';
+        } else {
+          badge.innerHTML = `
+                    <span class="w-2 h-2 bg-danger rounded-full"></span>
+                    Cerrado
+                `;
+          badge.className =
+            'inline-flex items-center gap-1.5 bg-danger/10 text-danger text-xs font-bold px-2.5 py-1 rounded-full';
+        }
+      }
+
+      // Update status on load and every minute
+      updateStatus();
+      setInterval(updateStatus, 60000);
+    </script>
+  </body>
+</html>
