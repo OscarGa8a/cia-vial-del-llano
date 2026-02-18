@@ -12,6 +12,14 @@ export const routes: Routes = [
     title: 'Curso Pedagógico | CIA Vial del Llano',
   },
   {
+    path: 'calculadora',
+    loadComponent: () =>
+      import('./pages/calculator/calculator.component').then(
+        (m) => m.CalculatorComponent
+      ),
+    title: 'Calculadora de Multas | CIA Vial del Llano',
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',
