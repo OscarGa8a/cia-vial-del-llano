@@ -29,9 +29,9 @@ interface NavLink {
  */
 @Component({
   selector: 'app-header',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {
   /** Provides WhatsApp link generation for the CTA actions. */

@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from './shared/components';
-import { FooterComponent } from './shared/components/footer/footer.component';
+import { Header, Footer } from './shared/components';
 import { WhatsappButtonComponent } from './shared/components/whatsapp-button/whatsapp-button.component';
 
 /**
@@ -11,7 +10,7 @@ import { WhatsappButtonComponent } from './shared/components/whatsapp-button/wha
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, Header, FooterComponent, WhatsappButtonComponent],
+  imports: [RouterOutlet, Header, Footer, WhatsappButtonComponent],
   templateUrl: './app.html',
 })
 export class App {}
