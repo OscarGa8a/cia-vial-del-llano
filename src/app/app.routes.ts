@@ -44,6 +44,14 @@ export const routes: Routes = [
     title: 'Nosotros | CIA Vial del Llano',
   },
   {
+    path: 'contacto',
+    loadComponent: () =>
+      import('./pages/contact/contact-page.component').then(
+        (m) => m.ContactPageComponent
+      ),
+    title: 'Contacto | CIA Vial del Llano',
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',
