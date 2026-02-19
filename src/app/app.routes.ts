@@ -28,6 +28,14 @@ export const routes: Routes = [
     title: 'Ubicación | CIA Vial del Llano',
   },
   {
+    path: 'preguntas-frecuentes',
+    loadComponent: () =>
+      import('./pages/faq/faq-page.component').then(
+        (m) => m.FaqPageComponent
+      ),
+    title: 'Preguntas Frecuentes | CIA Vial del Llano',
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',
