@@ -36,6 +36,14 @@ export const routes: Routes = [
     title: 'Preguntas Frecuentes | CIA Vial del Llano',
   },
   {
+    path: 'nosotros',
+    loadComponent: () =>
+      import('./pages/about/about-page.component').then(
+        (m) => m.AboutPageComponent
+      ),
+    title: 'Nosotros | CIA Vial del Llano',
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',
