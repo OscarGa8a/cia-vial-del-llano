@@ -71,7 +71,7 @@ export class Header {
     { label: 'Calculadora', path: '/calculadora' },
     { label: 'Ubicación', path: '/ubicacion' },
     { label: 'Preguntas', path: '/preguntas-frecuentes' },
-    { label: 'Sobre nosotros', path: '/sobre-nosotros' },
+    { label: 'Nosotros', path: '/nosotros' },
   ];
 
   /** Toggles the visibility of the mobile navigation panel. */
