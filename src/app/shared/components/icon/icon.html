@@ -1,0 +1,10 @@
+@let localSource = source(); @let localSize = size(); @let localColor = color();
+@if (localSource === 'lucide') {
+  <lucide-icon
+    [img]="lucideIcon()"
+    [size]="localSize"
+    [color]="localColor"
+    [strokeWidth]="strokeWidth()"
+    [class]="className()"
+  />
+}
