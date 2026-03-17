@@ -1,0 +1,29 @@
+<div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
+  <!-- Tooltip -->
+  @if (isTooltipVisible()) {
+    <div
+      class="bg-gray-900 text-white text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap animate-fade-in"
+      role="tooltip"
+      id="whatsapp-tooltip"
+    >
+      ¿Necesitas ayuda?
+      <div class="absolute bottom-0 right-5 translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+    </div>
+  }
+
+  <!-- FAB Button -->
+  <a
+    [href]="whatsappLink()"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="w-14 h-14 rounded-full bg-whatsapp hover:bg-whatsapp-hover flex items-center justify-center shadow-xl transition-all hover:scale-110 active:scale-95 animate-whatsapp-pulse"
+    aria-label="Chatear por WhatsApp"
+    [attr.aria-describedby]="isTooltipVisible() ? 'whatsapp-tooltip' : null"
+    (mouseenter)="showTooltip()"
+    (mouseleave)="hideTooltip()"
+    (focus)="showTooltip()"
+    (blur)="hideTooltip()"
+  >
+    <img src="icons/whatsapp.svg" alt="WhatsApp" width="28" height="28" />
+  </a>
+</div>

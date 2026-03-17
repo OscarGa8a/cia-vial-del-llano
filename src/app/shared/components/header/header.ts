@@ -10,6 +10,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Whatsapp } from '@core/services';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { distinctUntilChanged, fromEvent, map, startWith } from 'rxjs';
+import { Icon } from '../icon/icon';
+import { MenuIcon, XIcon } from 'lucide-angular';
 
 /** Navigation link definition for the header menu. */
 interface NavLink {
@@ -29,7 +31,7 @@ interface NavLink {
  */
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, Icon],
   templateUrl: './header.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -73,6 +75,12 @@ export class Header {
     { label: 'Preguntas', path: '/preguntas-frecuentes' },
     { label: 'Nosotros', path: '/nosotros' },
   ];
+
+  /** Icon reference for the mobile menu toggle button. */
+  protected readonly MenuIcon = MenuIcon;
+
+  /** Icon reference for the mobile menu close button. */
+  protected readonly XIcon = XIcon;
 
   /** Toggles the visibility of the mobile navigation panel. */
   protected toggleMobileMenu(): void {
