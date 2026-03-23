@@ -1,0 +1,38 @@
+<section
+  class="bg-gray-50 border-y border-border py-10"
+  aria-label="Entidades que nos autorizan y vigilan"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="text-center text-sm font-medium text-text-secondary uppercase tracking-widest mb-8">
+      Habilitados y vigilados por las entidades oficiales
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      @for (badge of badges; track badge.name) {
+        <div
+          class="flex flex-col items-center gap-3 p-4 rounded-xl bg-white border border-border hover:border-primary/30 hover:shadow-md transition-all group"
+          [attr.title]="badge.fullName"
+        >
+          <!-- Icon / Emblem placeholder -->
+          <div
+            class="w-14 h-14 rounded-full flex items-center justify-center"
+            [class]="badge.class"
+            aria-hidden="true"
+          >
+            <app-icon [lucideIcon]="badge.icon" [size]="24" />
+          </div>
+          <div class="text-center">
+            <p
+              class="font-sans font-bold text-sm text-text-primary group-hover:text-primary transition-colors"
+            >
+              {{ badge.name }}
+            </p>
+            <p class="text-xs text-text-secondary mt-0.5 leading-tight">
+              {{ badge.description }}
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
