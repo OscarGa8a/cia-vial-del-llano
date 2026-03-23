@@ -1,0 +1,9 @@
+export { CalculatorPreviewSection } from './calculator-preview-section/calculator-preview-section';
+export { DiscountsSection } from './discounts-section/discounts-section';
+export { FaqSection } from './faq-section/faq-section';
+export { FinalCtaSection } from './final-cta-section/final-cta-section';
+export { HeroSection } from './hero-section/hero-section';
+export { LocationSection } from './location-section/location-section';
+export { StepsSection } from './steps-section/steps-section';
+export { TestimonialsSection } from './testimonials-section/testimonials-section';
+export { TrustBadgesSection } from './trust-badges-section/trust-badges-section';

@@ -1,0 +1,24 @@
+@let localStep = step();
+<div class="relative z-10 flex flex-col items-center text-center">
+  <!-- Step number badge -->
+  <div
+    class="w-8 h-8 rounded-full text-white text-sm font-bold font-sans flex items-center justify-center mb-3 -mt-1 ring-4 ring-surface-alt"
+    [class]="localStep.gradientClass"
+    [attr.aria-label]="'Paso ' + localStep.number"
+  >
+    {{ localStep.number }}
+  </div>
+
+  <!-- Icon circle -->
+  <div
+    class="w-20 h-20 rounded-2xl flex items-center justify-center mb-5 -mt-12 ring-4 ring-surface-alt shadow-lg"
+    [class]="localStep.gradientClass"
+    aria-hidden="true"
+  >
+    <app-icon [lucideIcon]="localStep.icon" [size]="32" class="text-white" />
+  </div>
+
+  <!-- Content -->
+  <h3 class="font-sans font-bold text-lg text-text-primary mb-2">{{ localStep.title }}</h3>
+  <p class="text-text-secondary text-sm leading-relaxed">{{ localStep.description }}</p>
+</div>

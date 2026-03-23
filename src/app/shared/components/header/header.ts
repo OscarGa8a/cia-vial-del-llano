@@ -33,6 +33,7 @@ interface NavLink {
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive, Icon],
   templateUrl: './header.html',
+  styleUrl: './header.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {

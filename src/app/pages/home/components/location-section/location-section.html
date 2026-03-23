@@ -1,0 +1,124 @@
+<section class="py-12 md:py-20 bg-white" id="ubicacion" aria-labelledby="location-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-14">
+      <span
+        class="inline-block bg-primary-lighter text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
+      >
+        Ubicación
+      </span>
+      <h2
+        id="location-heading"
+        class="font-sans font-bold text-3xl sm:text-4xl text-text-primary mb-4"
+      >
+        Visítanos en nuestra sede
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        Estamos ubicados en Villavicencio, Meta. Fácil acceso y estacionamiento disponible.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      <!-- Info column -->
+      <div class="flex flex-col gap-6">
+        <!-- Address card -->
+        <div class="bg-surface-alt rounded-2xl p-6 border border-border">
+          <h3 class="font-sans font-bold text-lg text-text-primary mb-4 flex items-center gap-2">
+            <app-icon [lucideIcon]="MapPinIcon" [size]="20" />
+            Dirección
+          </h3>
+          <p class="text-text-secondary text-sm leading-relaxed">{{ config.address.full }}</p>
+        </div>
+
+        <!-- Hours card -->
+        <div class="bg-surface-alt rounded-2xl p-6 border border-border">
+          <h3 class="font-sans font-bold text-lg text-text-primary mb-4 flex items-center gap-2">
+            <app-icon [lucideIcon]="Clock4Icon" [size]="20" />
+            Horarios de atención
+          </h3>
+          <div class="flex flex-col gap-2">
+            @for (schedule of schedules; track schedule.days) {
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-text-secondary">{{ schedule.days }}</span>
+                <span
+                  class="font-medium"
+                  [class.text-text-primary]="schedule.open"
+                  [class.text-error]="!schedule.open"
+                  >{{ schedule.hours }}</span
+                >
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="bg-surface-alt rounded-2xl p-6 border border-border">
+          <h3 class="font-sans font-bold text-lg text-text-primary mb-4 flex items-center gap-2">
+            <app-icon [lucideIcon]="PhoneIcon" [size]="20" />
+            Contáctanos
+          </h3>
+          <div class="flex flex-col gap-3">
+            <a
+              [href]="'tel:' + config.contact.phone.replace(' ', '')"
+              class="flex items-center gap-2 text-sm text-primary hover:underline"
+              aria-label="Llamar al teléfono"
+            >
+              <app-icon [lucideIcon]="PhoneIcon" [size]="16" />
+              {{ config.contact.phone }}
+            </a>
+            <a
+              [href]="config.social.whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-sm text-whatsapp hover:underline"
+              aria-label="Abrir WhatsApp"
+            >
+              <app-icon source="custom" name="whatsapp-custom" [size]="16" />
+              Escribir por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="grid grid-cols-2 gap-3">
+          <a
+            [href]="config.googleMapsUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary hover:bg-primary-light text-white font-semibold text-sm transition-all"
+            aria-label="Abrir en Google Maps"
+          >
+            <app-icon [lucideIcon]="MapPinIcon" [size]="18" />
+            Google Maps
+          </a>
+          <a
+            [href]="config.wazeUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm transition-all"
+            aria-label="Abrir en Waze"
+          >
+            <app-icon [lucideIcon]="CircleUserIcon" [size]="18" />
+            Waze
+          </a>
+        </div>
+      </div>
+
+      <!-- Map column -->
+      <div
+        class="rounded-3xl overflow-hidden shadow-xl border border-border h-125 lg:h-full min-h-100"
+      >
+        <iframe
+          [src]="mapSrc"
+          width="100%"
+          height="100%"
+          style="border: 0; display: block"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de CIA Vial del Llano en Villavicencio, Meta"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>

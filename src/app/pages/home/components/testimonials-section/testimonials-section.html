@@ -1,0 +1,34 @@
+<section
+  class="py-12 md:py-20 bg-surface-alt"
+  id="testimonios"
+  aria-labelledby="testimonials-heading"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-10">
+      <span
+        class="inline-block bg-success-light text-success text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
+      >
+        Testimonios
+      </span>
+      <h2
+        id="testimonials-heading"
+        class="font-sans font-bold text-3xl sm:text-4xl text-text-primary mb-4"
+      >
+        Lo que dicen nuestros clientes
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        Más de 1.000 conductores ya han aprovechado su descuento con nosotros.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="flex flex-wrap justify-center">
+      @for (testimonial of testimonials; track testimonial.id) {
+        <div class="w-full md:w-1/2 lg:w-1/3 md:px-4 py-4">
+          <app-testimonial-item [testimonial]="testimonial" />
+        </div>
+      }
+    </div>
+  </div>
+</section>

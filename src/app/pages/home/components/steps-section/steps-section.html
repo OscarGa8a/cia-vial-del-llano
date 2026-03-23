@@ -1,0 +1,48 @@
+<section class="py-12 md:py-20 bg-surface-alt" aria-labelledby="steps-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <span
+        class="inline-block bg-primary-lighter text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
+      >
+        Proceso simple
+      </span>
+      <h2
+        id="steps-heading"
+        class="font-sans font-bold text-3xl sm:text-4xl text-text-primary mb-4"
+      >
+        Obtén tu descuento en 4 simples pasos
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        El proceso es rápido y sencillo. Nuestro equipo te acompaña durante todo el camino.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+      <!-- Connector line (desktop only) -->
+      <div
+        class="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 bg-linear-to-r from-primary via-highlight to-success z-0"
+        aria-hidden="true"
+      ></div>
+
+      @for (step of steps; track step.number) {
+        <app-step-item [step]="step" />
+      }
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-14 text-center">
+      <a
+        [href]="whatsappLink()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary hover:bg-primary-light text-white font-semibold text-lg transition-all hover:scale-105 active:scale-95 shadow-lg"
+        aria-label="Comenzar el proceso por WhatsApp"
+      >
+        <app-icon source="custom" name="whatsapp-custom" [size]="24" />
+        Comenzar ahora
+      </a>
+    </div>
+  </div>
+</section>

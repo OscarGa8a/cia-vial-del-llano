@@ -1,0 +1,50 @@
+<section class="py-12 md:py-20 bg-white" aria-labelledby="discounts-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-14">
+      <span
+        class="inline-block bg-accent-light text-accent text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
+      >
+        Descuentos disponibles
+      </span>
+      <h2
+        id="discounts-heading"
+        class="font-sans font-bold text-3xl sm:text-4xl text-text-primary mb-4"
+      >
+        Conoce los descuentos disponibles
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        Actúa rápido. El porcentaje de descuento depende de cuándo realices el curso después de
+        recibir la notificación de tu comparendo.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+      @for (discount of discountCards; track discount.id) {
+        <app-card-discount
+          [infoDiscount]="discount"
+          (clickChange)="openWhatsapp(discount.whatsappMessage)"
+        />
+      }
+    </div>
+
+    <!-- Warning banner -->
+    <div
+      class="flex items-start gap-4 p-5 rounded-2xl bg-warning-light border border-warning/30"
+      role="alert"
+    >
+      <div class="w-10 h-10 rounded-full bg-warning/20 flex items-center justify-center shrink-0">
+        <app-icon [lucideIcon]="TriangleAlertIcon" [size]="20" class="text-warning" />
+      </div>
+      <div>
+        <p class="font-semibold text-gray-800">Importante: Los plazos son estrictos</p>
+        <p class="text-sm text-text-secondary mt-1">
+          Si no realizas el curso dentro de los plazos establecidos,
+          <strong>perderás el derecho al descuento</strong>
+          y deberás pagar el valor total del comparendo. ¡No esperes más!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

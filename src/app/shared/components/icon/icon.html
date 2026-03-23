@@ -7,4 +7,19 @@
     [strokeWidth]="strokeWidth()"
     [class]="className()"
   />
+} @else if (localSource === 'custom') {
+  @switch (name()) {
+    @case ('whatsapp-custom') {
+      <svg
+        [attr.width]="localSize"
+        [attr.height]="localSize"
+        [attr.fill]="localColor"
+        [class]="className()"
+        fill="currentColor"
+        viewBox="0 0 32 32"
+      >
+        <path [attr.d]="customIcons['whatsapp-custom']" />
+      </svg>
+    }
+  }
 }
