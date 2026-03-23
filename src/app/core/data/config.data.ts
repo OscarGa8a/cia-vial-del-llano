@@ -9,21 +9,20 @@ export const CONFIG = {
     slogan: 'Cursos para descuento en comparendos y fotomultas',
     nit: '', // Fill in when available
   },
-
   contact: {
     /** WhatsApp number in international format without + */
-    whatsappNumber: '573001234567',
-    phone: '+57 300 123 4567',
-    email: 'info@ciavialdelllano.com',
+    whatsappNumber: '573212878660',
+    phone: '+57 321 287 8660',
+    email: 'ciavialdelllano@gmail.com',
   },
 
   address: {
-    street: 'Calle 15 # 30-45',
-    neighborhood: 'Centro',
+    street: 'Calle 37B # 19A-49',
+    neighborhood: 'Los Caracoles',
     city: 'Villavicencio',
     department: 'Meta',
     country: 'Colombia',
-    full: 'Calle 15 # 30-45, Centro, Villavicencio, Meta',
+    full: 'Calle 37B # 19A-49, Los Caracoles, Villavicencio, Meta',
   },
 
   hours: {
@@ -45,7 +44,7 @@ export const CONFIG = {
   social: {
     facebook: 'https://facebook.com/ciavialdelllano',
     instagram: 'https://instagram.com/ciavialdelllano',
-    whatsapp: 'https://wa.me/573001234567',
+    whatsapp: 'https://wa.me/573212878660',
   },
 
   /** Default WhatsApp message when no specific context is provided */
@@ -63,8 +62,8 @@ export const CONFIG = {
   smdlv2025: 1423500,
 
   stats: {
-    courses: '5.000+',
+    courses: '1.000+',
     satisfaction: '98%',
-    yearsExperience: '10+',
+    yearsExperience: '2+',
   },
 } as const;

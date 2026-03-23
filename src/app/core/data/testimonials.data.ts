@@ -31,7 +31,7 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     location: 'Villavicencio',
     quote:
       'Tenía dos comparendos y me ayudaron con los dos. El curso duró exactamente 4 horas como dijeron. Instalaciones cómodas y el instructor muy claro. Ahorro total: $680.000.',
-    rating: 5,
+    rating: 4,
     initials: 'AM',
     avatarColor: 'bg-success',
   },
