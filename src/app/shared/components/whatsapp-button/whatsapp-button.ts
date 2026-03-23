@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { Whatsapp } from '@core/services/whatsapp';
+import { Icon } from '../icon/icon';
 
 /**
  * Floating WhatsApp action button fixed to the bottom-right corner.
@@ -8,7 +9,9 @@ import { Whatsapp } from '@core/services/whatsapp';
 @Component({
   selector: 'app-whatsapp-button',
   templateUrl: './whatsapp-button.html',
+  styleUrl: './whatsapp-button.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [Icon],
 })
 export class WhatsappButton {
   private readonly whatsapp = inject(Whatsapp);
