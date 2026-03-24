@@ -1,9 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Whatsapp } from '@core/services';
-import { DiscountCard } from '../../models/discount';
-import { CardDiscount } from './card-discount/card-discount';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CameraIcon, CarFrontIcon, TriangleAlertIcon } from 'lucide-angular';
-import { Icon } from '@shared/components';
+import { DiscountCard, Icon } from '@shared/components';
+import { DiscountCard as IDiscountCard } from '@core/models/discount';
 
 /**
  * Displays available fine discounts with different tiers for manual and electronic fines.
@@ -19,22 +17,19 @@ import { Icon } from '@shared/components';
  */
 @Component({
   selector: 'app-discounts-section',
-  imports: [CardDiscount, Icon],
+  imports: [DiscountCard, Icon],
   templateUrl: './discounts-section.html',
   styleUrl: './discounts-section.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DiscountsSection {
-  /** Service for generating WhatsApp sharing links. */
-  private readonly whatsapp = inject(Whatsapp);
-
   /**
    * Collection of discount cards for different fine types.
    *
    * Contains configurations for manual and electronic fines with their respective
    * discount tiers and WhatsApp messaging templates.
    */
-  protected readonly discountCards: readonly DiscountCard[] = [
+  protected readonly discountCards: IDiscountCard[] = [
     {
       id: 'manual',
       icon: CarFrontIcon,
@@ -85,12 +80,4 @@ export class DiscountsSection {
 
   /** Icon representing an alert for discount expiration. */
   protected readonly TriangleAlertIcon = TriangleAlertIcon;
-
-  /**
-   * Opens a WhatsApp chat with a pre-filled message to inquire about booking a discount course.
-   * @param message The pre-filled message to send in the WhatsApp chat.
-   */
-  protected openWhatsapp(message: string): void {
-    this.whatsapp.openChat(message);
-  }
 }

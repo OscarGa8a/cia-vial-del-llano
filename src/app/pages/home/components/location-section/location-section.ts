@@ -33,12 +33,16 @@ export class LocationSection {
   /** Sanitized Google Maps embed URL safe for iframe rendering. */
   protected readonly mapSrc = this.sanitizer.bypassSecurityTrustResourceUrl(CONFIG.mapEmbedUrl);
 
+  /** Map pin icon used for location display. */
   protected readonly MapPinIcon = MapPinIcon;
 
+  /** Clock icon used for schedule display. */
   protected readonly Clock4Icon = Clock4Icon;
 
+  /** Phone icon used for contact information display. */
   protected readonly PhoneIcon = PhoneIcon;
 
+  /** Circle user icon used for staff or contact person display. */
   protected readonly CircleUserIcon = CircleUserIcon;
 
   /**
