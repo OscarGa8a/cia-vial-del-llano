@@ -1,0 +1,62 @@
+<section class="py-12 md:py-16 bg-surface-alt" id="faq" aria-labelledby="faq-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <h2 id="faq-heading" class="font-sans font-bold text-2xl md:text-3xl text-text-primary mb-4">
+        Preguntas sobre tu visita
+      </h2>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="max-w-3xl mx-auto space-y-4">
+      @for (faq of faqItems; track faq.question; let idx = $index) {
+        <div
+          class="bg-white rounded-2xl border border-border overflow-hidden shadow-sm"
+          role="listitem"
+        >
+          <button
+            type="button"
+            class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/40 cursor-pointer"
+            (click)="toggleItem(faq.id)"
+            [attr.aria-expanded]="openItemId() === faq.id"
+            [attr.aria-controls]="'faq-answer-' + faq.id"
+          >
+            <span class="font-semibold text-text-primary text-sm sm:text-base leading-snug">
+              {{ faq.question }}
+            </span>
+            <!-- Chevron -->
+            <span
+              class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center shrink-0 transition-transform duration-300"
+              [class.rotate-180]="openItemId() === faq.id"
+              [class.bg-primary-lighter]="openItemId() === faq.id"
+              aria-hidden="true"
+            >
+              <app-icon
+                [class.text-primary]="openItemId() === faq.id"
+                [lucideIcon]="ChevronDownIcon"
+                [size]="14"
+              />
+            </span>
+          </button>
+
+          <!-- Answer panel -->
+          <div
+            [id]="'faq-answer-' + faq.id"
+            class="faq-content"
+            [class.open]="openItemId() === faq.id"
+            role="region"
+            [attr.aria-labelledby]="'faq-btn-' + faq.id"
+          >
+            <div>
+              <p
+                class="px-6 pb-5 text-sm text-text-secondary leading-relaxed border-t border-border pt-4"
+              >
+                {{ faq.answer }}
+              </p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
