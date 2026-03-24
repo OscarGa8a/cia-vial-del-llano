@@ -1,0 +1,107 @@
+<section
+  class="hero-gradient h-dvh flex flex-col justify-center pt-20 pb-0 relative overflow-hidden"
+  aria-labelledby="courses-hero-heading"
+>
+  <div class="absolute inset-0 w-full h-full">
+    <img
+      ngSrc="banner-main_btc1ln"
+      fill
+      priority
+      class="w-full h-full object-cover opacity-20"
+      alt="Curso pedagógico para descuento en comparendos"
+    />
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div class="grid grid-cols-1 max-w-3xl gap-12 items-center pt-8 pb-8">
+      <!-- Left: Content -->
+      <div class="text-white z-10">
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-2 text-white/60 text-sm">
+            <li>
+              <a routerLink="/" class="hover:text-white transition-colors">Inicio</a>
+            </li>
+            <li aria-hidden="true">
+              <app-icon [lucideIcon]="ChevronRightIcon" [size]="14" />
+            </li>
+            <li aria-current="page" class="text-white font-medium">Cursos</li>
+          </ol>
+        </nav>
+
+        <!-- Certification badge -->
+        <div
+          class="inline-flex items-center gap-2 bg-success/20 border border-success/40 text-success text-sm font-semibold px-4 py-2 rounded-full mb-6"
+        >
+          <app-icon [lucideIcon]="ShieldIcon" [size]="16" />
+          Certificados por el MinTransporte
+        </div>
+
+        <!-- Heading -->
+        <h1
+          id="courses-hero-heading"
+          class="font-sans font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6"
+        >
+          Curso pedagógico para
+          <span class="text-highlight">descuento en comparendos</span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-white/80 text-lg sm:text-xl leading-relaxed mb-8 max-w-xl">
+          Ahorra hasta el 50% en tu multa de tránsito con nuestro curso avalado por el Ministerio de
+          Transporte. Certificado con validez nacional.
+        </p>
+
+        <!-- CTA -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-10">
+          <a
+            [href]="whatsappLink()"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-whatsapp hover:bg-whatsapp-hover text-white font-semibold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl"
+            aria-label="Agendar curso por WhatsApp"
+          >
+            <app-icon source="custom" name="whatsapp-custom" [size]="22" />
+            Agendar mi curso
+          </a>
+          <a
+            routerLink="/calculadora"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-white/40 hover:border-white/80 text-white font-semibold text-lg transition-all hover:bg-white/10 cursor-pointer"
+            aria-label="Ir a la calculadora de descuentos"
+          >
+            <app-icon [lucideIcon]="CalculatorIcon" [size]="20" />
+            Calcular mi descuento
+          </a>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="flex flex-wrap items-center gap-6 text-white/70 text-sm">
+          @for (stat of quickStats; track stat.label) {
+            <div class="flex items-center gap-2">
+              <app-icon
+                [lucideIcon]="CheckIcon"
+                [size]="14"
+                [strokeWidth]="3"
+                class="text-success"
+              />
+
+              <span>{{ stat.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave divider -->
+  <div class="absolute bottom-0 w-full h-20 overflow-hidden hidden sm:block">
+    <svg
+      class="absolute bottom-0 w-full"
+      viewBox="0 0 1440 80"
+      preserveAspectRatio="none"
+      fill="white"
+      aria-hidden="true"
+    >
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" />
+    </svg>
+  </div>
+</section>

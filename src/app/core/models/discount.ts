@@ -1,4 +1,4 @@
-import { LucideIconData } from "lucide-angular";
+import { LucideIconData } from 'lucide-angular';
 
 /**
  * Configuration for a discount tier card displaying fine reduction percentages.
@@ -15,16 +15,21 @@ export interface DiscountCard {
   /** Tailwind gradient class for visual styling. */
   gradientClass: string;
   /** Discount tiers available for this fine type. */
-  tiers: {
-    /** Discount percentage value. */
-    percent: number;
-    /** Display label for the discount tier. */
-    label: string;
-    /** Time window for applying the discount. */
-    days: string;
-    /** Tailwind color classes for visual distinction. */
-    colorClass: string;
-  }[];
+  tiers: DiscountTier[];
   /** Pre-filled WhatsApp message for booking inquiries. */
   whatsappMessage: string;
+}
+
+/**
+ * Represents a single discount tier within a discount card.
+ */
+interface DiscountTier {
+  /** Discount percentage applied for the tier. */
+  readonly percent: number;
+  /** User-facing label describing the discount condition. */
+  readonly label: string;
+  /** Time window text associated with the discount tier. */
+  readonly days: string;
+  /** Tailwind color utility classes used to style the tier badge. */
+  readonly colorClass: string;
 }

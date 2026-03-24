@@ -4,6 +4,7 @@ import { Whatsapp } from '@core/services/whatsapp';
 import { CONFIG } from '@core/data/config.data';
 import { CalculatorIcon, CheckIcon, Clock4Icon } from 'lucide-angular';
 import { Icon } from '@shared/components';
+import { NgOptimizedImage } from '@angular/common';
 
 /**
  * Main hero section for the home page with primary messaging and conversion actions.
@@ -18,7 +19,7 @@ import { Icon } from '@shared/components';
  */
 @Component({
   selector: 'app-hero-section',
-  imports: [RouterLink, Icon],
+  imports: [RouterLink, Icon, NgOptimizedImage],
   templateUrl: './hero-section.html',
   styleUrl: './hero-section.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

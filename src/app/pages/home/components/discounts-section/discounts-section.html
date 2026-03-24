@@ -22,10 +22,7 @@
     <!-- Cards grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
       @for (discount of discountCards; track discount.id) {
-        <app-card-discount
-          [infoDiscount]="discount"
-          (clickChange)="openWhatsapp(discount.whatsappMessage)"
-        />
+        <app-discount-card [infoDiscount]="discount" />
       }
     </div>
 

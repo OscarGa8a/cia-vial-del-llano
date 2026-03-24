@@ -1,34 +1,27 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CameraIcon, CarFrontIcon, TriangleAlertIcon } from 'lucide-angular';
-import { DiscountCard, Icon } from '@shared/components';
 import { DiscountCard as IDiscountCard } from '@core/models/discount';
+import { DiscountCard, Icon } from '@shared/components';
+import { CameraIcon, CarFrontIcon, TriangleAlertIcon } from 'lucide-angular';
 
 /**
- * Displays available fine discounts with different tiers for manual and electronic fines.
- *
- * Shows two main categories of traffic fines ("Comparendo Manual" and "Fotomulta")
- * with their respective discount percentages and time windows. Users can initiate
- * WhatsApp conversations to book courses for obtaining discounts.
+ * Discount tables section showing the specific discount windows
+ * for manual comparendos vs electronic/fotomulta comparendos.
+ * Includes an informational note about business days.
  *
  * @example
  * ```typescript
- * <app-discounts-section />
+ * <app-discount-table-section />
  * ```
  */
 @Component({
-  selector: 'app-discounts-section',
-  imports: [DiscountCard, Icon],
-  templateUrl: './discounts-section.html',
-  styleUrl: './discounts-section.css',
+  selector: 'app-discount-table-section',
+  imports: [Icon, DiscountCard],
+  templateUrl: './discount-table-section.html',
+  styleUrl: './discount-table-section.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DiscountsSection {
-  /**
-   * Collection of discount cards for different fine types.
-   *
-   * Contains configurations for manual and electronic fines with their respective
-   * discount tiers and WhatsApp messaging templates.
-   */
+export class DiscountTableSection {
+  /** Discount card data grouped by manual and electronic ticket types. */
   protected readonly discountCards: IDiscountCard[] = [
     {
       id: 'manual',
@@ -40,7 +33,7 @@ export class DiscountsSection {
         {
           percent: 50,
           label: '50% de descuento',
-          days: 'Primeros 5 días hábiles',
+          days: 'Primeros 1 a 5 días hábiles',
           colorClass: 'bg-success-light text-success',
         },
         {
@@ -51,10 +44,10 @@ export class DiscountsSection {
         },
       ],
       whatsappMessage:
-        'Hola, tengo un comparendo manual y quiero obtener el descuento. ¿Cómo puedo agendar mi curso?',
+        'Hola, tengo un comparendo manual y quiero obtener el descuento. ¿Cuándo puedo tomar el curso?',
     },
     {
-      id: 'fotomulta',
+      id: 'electronico',
       icon: CameraIcon,
       title: 'Fotomulta / Electrónico',
       subtitle: 'Capturado por cámara de tránsito',
@@ -74,10 +67,10 @@ export class DiscountsSection {
         },
       ],
       whatsappMessage:
-        'Hola, tengo una fotomulta y quiero obtener el descuento. ¿Cómo puedo agendar mi curso?',
+        'Hola, tengo una fotomulta y quiero obtener el descuento. ¿Cuándo puedo tomar el curso?',
     },
   ];
 
-  /** Icon representing an alert for discount expiration. */
+  /** Alert icon displayed in the business-days advisory note. */
   protected readonly TriangleAlertIcon = TriangleAlertIcon;
 }
