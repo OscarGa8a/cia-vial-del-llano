@@ -1,0 +1,46 @@
+<section
+  class="py-16 lg:py-20 bg-linear-to-br from-primary via-primary-dark to-accent relative overflow-hidden"
+  id="final-cta"
+  aria-labelledby="final-cta-heading"
+>
+  <!-- Background pattern -->
+  <div class="absolute inset-0 dot-pattern opacity-20"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-3xl mx-auto text-center">
+      <!-- Heading -->
+      <h2 id="final-cta-heading" class="font-sans font-bold text-3xl md:text-4xl text-white mb-4">
+        ¿Tienes dudas sobre cómo llegar?
+      </h2>
+
+      <!-- Subheading -->
+      <p class="text-xl text-white/80 mb-8">Escríbenos y te ayudamos con las indicaciones</p>
+
+      <!-- Phone Number Pill -->
+      <div class="flex items-center justify-center gap-3 mb-8">
+        <div class="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
+          <a
+            [href]="'tel:' + config.contact.phone.replace(/\\s/g, '')"
+            class="inline-flex items-center gap-2 text-white font-semibold text-lg hover:text-highlight transition-colors"
+            aria-label="Llamar por teléfono"
+          >
+            <app-icon [lucideIcon]="PhoneIcon" [size]="18" class="text-highlight" />
+            {{ config.contact.phone }}
+          </a>
+        </div>
+      </div>
+
+      <!-- WhatsApp CTA Button -->
+      <a
+        [href]="whatsappLink()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold px-10 py-5 rounded-full transition-all duration-300 hover:scale-105 shadow-2xl text-lg whatsapp-glow"
+        aria-label="Pedir indicaciones por WhatsApp"
+      >
+        <app-icon source="custom" name="whatsapp-custom" [size]="24" />
+        Pedir indicaciones por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>

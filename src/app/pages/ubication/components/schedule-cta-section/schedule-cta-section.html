@@ -1,0 +1,50 @@
+<section class="py-12 md:py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div
+        class="bg-linear-to-r from-primary to-primary-dark rounded-3xl p-8 lg:p-12 text-center relative overflow-hidden"
+      >
+        <!-- Background pattern -->
+        <div class="absolute inset-0 dot-pattern opacity-10"></div>
+
+        <div class="relative z-10">
+          <!-- Icon -->
+          <div
+            class="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl mb-6"
+          >
+            <app-icon [lucideIcon]="CalendarDaysIcon" [size]="32" class="text-white" />
+          </div>
+
+          <!-- Heading -->
+          <h2 class="font-sans font-bold text-3xl md:text-4xl text-white mb-4">
+            ¿Listo para visitarnos?
+          </h2>
+
+          <!-- Subheading -->
+          <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+            Agenda tu cita y te esperamos en nuestra sede. Te recomendamos agendar para garantizar
+            tu cupo.
+          </p>
+
+          <!-- WhatsApp CTA Button -->
+          <a
+            [href]="whatsapp.generateLink('Hola, quiero agendar una cita para visitarlos')"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-xl text-lg whatsapp-glow"
+            aria-label="Agendar cita por WhatsApp"
+          >
+            <app-icon source="custom" name="whatsapp-custom" [size]="22" />
+            Agendar cita por WhatsApp
+          </a>
+
+          <!-- Walk-in note -->
+          <p class="mt-4 text-white/60 text-sm flex items-center justify-center gap-2">
+            <app-icon [lucideIcon]="InfoIcon" [size]="16" />
+            También aceptamos visitas sin cita, sujeto a disponibilidad
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

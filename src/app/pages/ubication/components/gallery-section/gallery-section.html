@@ -1,0 +1,37 @@
+<section class="py-12 lg:py-16 bg-surface-alt" id="galeria" aria-labelledby="gallery-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <span
+        class="inline-block bg-highlight/10 text-highlight font-semibold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
+      >
+        Galería
+      </span>
+      <h2
+        id="gallery-heading"
+        class="font-sans font-bold text-3xl md:text-4xl text-text-primary mb-4"
+      >
+        Conoce nuestras <span class="text-primary">instalaciones</span>
+      </h2>
+    </div>
+
+    <!-- Photo grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+      @for (item of galleryItems; track item.label) {
+        <div
+          class="photo-card relative aspect-square rounded-2xl overflow-hidden"
+          [attr.aria-label]="'Foto de ' + item.label"
+        >
+          <img [ngSrc]="item.image" class="h-full w-full object-cover" [alt]="item.label" fill />
+
+          <!-- Label -->
+          <div class="absolute bottom-0 left-0 right-0 p-4">
+            <p class="photo-label text-white font-semibold w-fit bg-black/30 px-4 rounded-2xl">
+              {{ item.label }}
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

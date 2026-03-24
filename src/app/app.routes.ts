@@ -18,8 +18,7 @@ export const routes: Routes = [
   },
   {
     path: 'ubicacion',
-    loadComponent: () =>
-      import('./pages/ubicacion/ubicacion.component').then((m) => m.UbicacionComponent),
+    loadComponent: () => import('./pages/ubication/ubication').then((m) => m.Ubication),
     title: 'Ubicación | CIA Vial del Llano',
   },
   {

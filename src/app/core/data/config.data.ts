@@ -59,9 +59,6 @@ export const CONFIG = {
    */
   smdlvDaily2025: 58363.5,
 
-  /** @deprecated use smdlvDaily2025 — kept for backward compatibility */
-  smdlv2025: 1423500,
-
   stats: {
     courses: '1.000+',
     satisfaction: '98%',

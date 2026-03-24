@@ -1,5 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Whatsapp } from '@core/services';
 import { Icon } from '@shared/components';
 import { CalculatorIcon, CheckIcon, ChevronRightIcon, ShieldIcon } from 'lucide-angular';
@@ -16,7 +17,7 @@ import { CalculatorIcon, CheckIcon, ChevronRightIcon, ShieldIcon } from 'lucide-
  */
 @Component({
   selector: 'app-hero-section',
-  imports: [Icon, NgOptimizedImage],
+  imports: [Icon, NgOptimizedImage, RouterLink],
   templateUrl: './hero-section.html',
   styleUrl: './hero-section.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
