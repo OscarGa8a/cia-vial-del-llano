@@ -3,6 +3,7 @@
  * All static company data lives here — no backend required.
  */
 export const CONFIG = {
+  cloudinary: 'https://res.cloudinary.com/dgv4wlorw',
   company: {
     name: 'CIA Vial del Llano',
     fullName: 'Centro Integral de Atención Vial del Llano',
