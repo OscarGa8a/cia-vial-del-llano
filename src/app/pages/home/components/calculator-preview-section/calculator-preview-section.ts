@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { Whatsapp } from '@core/services';
 import { CalculatorIcon } from 'lucide-angular';
-import { Icon } from '@shared/components';
+import { Icon, CalculatorForm } from '@shared/components';
 
 /**
  * Preview section showcasing the fine calculator functionality.
@@ -16,7 +16,7 @@ import { Icon } from '@shared/components';
  */
 @Component({
   selector: 'app-calculator-preview-section',
-  imports: [Icon],
+  imports: [Icon, CalculatorForm],
   templateUrl: './calculator-preview-section.html',
   styleUrl: './calculator-preview-section.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,0 +1,13 @@
+<app-calculator-hero-section />
+
+<app-calculator-form [preSelected]="selectedInfraction()" />
+
+<app-smdlv-info-section />
+
+<app-infractions-table-section (infractionSelected)="onInfractionSelected($event)" />
+
+<app-discounts-deadlines-section />
+
+<app-how-to-use-section />
+
+<app-calculator-cta-section />
