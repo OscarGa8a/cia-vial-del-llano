@@ -1,0 +1,45 @@
+<section class="py-12 md:py-20 bg-surface-alt" aria-labelledby="contact-cta-heading">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Icon -->
+    <div
+      class="w-16 h-16 mx-auto rounded-full bg-accent-light flex items-center justify-center mb-6"
+      aria-hidden="true"
+    >
+      <app-icon [lucideIcon]="MessageSquareIcon" [size]="26" class="text-accent" />
+    </div>
+
+    <h2
+      id="contact-cta-heading"
+      class="font-sans font-bold text-2xl sm:text-3xl text-text-primary mb-3"
+    >
+      ¿No encontraste tu respuesta?
+    </h2>
+    <p class="text-text-secondary text-lg max-w-xl mx-auto mb-8">
+      Nuestro equipo está listo para resolver cualquier duda. Contáctanos y te responderemos en
+      minutos.
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        [href]="whatsappLink()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-whatsapp hover:bg-whatsapp-hover text-white font-semibold text-base transition-all hover:scale-105 active:scale-95 shadow-lg"
+        aria-label="Contactar por WhatsApp"
+      >
+        <app-icon source="custom" name="whatsapp-custom" [size]="20" />
+        Escribir por WhatsApp
+      </a>
+
+      <a
+        [href]="'tel:' + phoneRaw"
+        class="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold text-base transition-all"
+        aria-label="Llamar por teléfono"
+      >
+        <app-icon [lucideIcon]="PhoneIcon" [size]="20" />
+        {{ phone }}
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<app-faq-hero-section />
+
+<app-search-section
+  [(searchQuery)]="searchQuery"
+  [(activeCategory)]="activeCategory"
+  [categories]="categories"
+  [resultCount]="filteredFaqs().length"
+  (expandAll)="onExpandAll()"
+  (collapseAll)="onCollapseAll()"
+/>
+
+<app-faq-content-section
+  [filteredFaqs]="filteredFaqs()"
+  [groupedFaqs]="groupedFaqs()"
+  [openItemIds]="openItemIds()"
+  (toggleItem)="onToggleItem($event)"
+/>
+
+<app-contact-cta-section />
+<app-quick-links-section />
+<app-faq-final-cta-section />

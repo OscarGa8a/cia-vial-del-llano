@@ -1,0 +1,98 @@
+<section class="py-10 bg-white" aria-label="Buscar y filtrar preguntas frecuentes">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Search input -->
+    <div class="relative mb-8">
+      <label for="faq-search" class="sr-only">Buscar preguntas</label>
+      <div
+        class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"
+        aria-hidden="true"
+      >
+        <app-icon [lucideIcon]="SearchIcon" [size]="20" class="text-text-secondary" />
+      </div>
+      <input
+        id="faq-search"
+        type="search"
+        placeholder="Buscar preguntas... ej: descuento, curso, certificado"
+        class="w-full pl-12 pr-4 py-4 rounded-xl border border-border bg-surface-alt text-text-primary placeholder:text-text-secondary focus:outline-none focus:ring-1 focus:ring-primary/40 focus:border-primary transition-colors text-base"
+        [value]="searchQuery()"
+        (input)="onSearch($any($event.target).value)"
+        autocomplete="off"
+      />
+      @if (searchQuery()) {
+        <button
+          type="button"
+          class="absolute inset-y-0 right-0 pr-4 flex items-center text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+          (click)="onSearch('')"
+          aria-label="Limpiar búsqueda"
+        >
+          <app-icon [lucideIcon]="XIcon" [size]="16" class="text-text-secondary!" />
+        </button>
+      }
+    </div>
+
+    @let localActiveCategory = activeCategory();
+    <!-- Category tabs -->
+    <div class="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Filtrar por categoría">
+      <button
+        type="button"
+        role="tab"
+        class="px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer"
+        [class]="
+          localActiveCategory === null
+            ? 'bg-primary text-white shadow-md'
+            : 'bg-gray-100 text-text-secondary hover:bg-gray-200'
+        "
+        [attr.aria-selected]="localActiveCategory === null"
+        (click)="onCategoryChange(null)"
+      >
+        Todas
+      </button>
+      @for (cat of categories(); track cat.id) {
+        <button
+          type="button"
+          role="tab"
+          class="px-4 py-2 rounded-full text-sm font-medium transition-all inline-flex items-center gap-1.5 cursor-pointer"
+          [class]="
+            localActiveCategory === cat.id
+              ? 'bg-primary text-white shadow-md'
+              : 'bg-gray-100 text-text-secondary hover:bg-gray-200'
+          "
+          [attr.aria-selected]="localActiveCategory === cat.id"
+          (click)="onCategoryChange(cat.id)"
+        >
+          <app-icon [lucideIcon]="cat.icon" [size]="16" />
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Expand/Collapse controls -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <p class="text-sm text-text-secondary order-2 sm:order-1">
+        {{ resultCount() }}
+        {{ resultCount() === 1 ? 'pregunta encontrada' : 'preguntas encontradas' }}
+      </p>
+      <div class="flex items-center gap-3 order-1 sm:order-2">
+        <button
+          type="button"
+          class="text-sm text-primary hover:text-primary-light font-medium transition-colors inline-flex items-center gap-1 cursor-pointer"
+          (click)="onExpandAll()"
+          aria-label="Expandir todas las preguntas"
+        >
+          <app-icon [lucideIcon]="ChevronsDownIcon" [size]="14" />
+          Expandir todo
+        </button>
+        <span class="text-border">|</span>
+        <button
+          type="button"
+          class="text-sm text-primary hover:text-primary-light font-medium transition-colors inline-flex items-center gap-1 cursor-pointer"
+          (click)="onCollapseAll()"
+          aria-label="Colapsar todas las preguntas"
+        >
+          <app-icon [lucideIcon]="ChevronsUpIcon" [size]="14" />
+          Colapsar todo
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

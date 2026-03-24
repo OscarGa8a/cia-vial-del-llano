@@ -23,7 +23,7 @@ export const routes: Routes = [
   },
   {
     path: 'preguntas-frecuentes',
-    loadComponent: () => import('./pages/faq/faq-page.component').then((m) => m.FaqPageComponent),
+    loadComponent: () => import('./pages/faq/faq').then((m) => m.Faq),
     title: 'Preguntas Frecuentes | CIA Vial del Llano',
   },
   {

@@ -1,3 +1,11 @@
+import {
+  CreditCardIcon,
+  GraduationCapIcon,
+  LucideIconData,
+  NotepadTextIcon,
+  PercentIcon,
+  ShieldCheckIcon,
+} from 'lucide-angular';
 import type { CategorizedFaq, FaqCategory } from '../models/faq.model';
 
 /**
@@ -5,52 +13,47 @@ import type { CategorizedFaq, FaqCategory } from '../models/faq.model';
  * Each category has a label, an icon identifier, and a Tailwind color class.
  */
 export interface FaqCategoryMeta {
+  /** Unique identifier matching the FAQ category field. */
   readonly id: FaqCategory;
+  /** Display label for the category. */
   readonly label: string;
-  /** SVG icon path data for the category tab */
-  readonly iconPath: string;
-  /** Tailwind color class for the category icon background */
-  readonly colorClass: string;
-  /** Tailwind text color class for the category icon */
-  readonly textColorClass: string;
+  /** Icon reference from lucide-angular for the category. */
+  readonly icon: LucideIconData;
+  /** CSS classes for styling the category. */
+  readonly classes: string;
 }
 
 /** Ordered list of FAQ categories with display metadata. */
-export const FAQ_CATEGORIES: readonly FaqCategoryMeta[] = [
+export const FAQ_CATEGORIES: FaqCategoryMeta[] = [
   {
     id: 'Comparendos',
     label: 'Comparendos',
-    iconPath: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8 M10 9H8',
-    colorClass: 'bg-primary/10',
-    textColorClass: 'text-primary',
+    icon: NotepadTextIcon,
+    classes: 'bg-primary/10 text-primary',
   },
   {
     id: 'Cursos',
     label: 'Cursos',
-    iconPath: 'M22 10v6M2 10l10-5 10 5-10 5z M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5',
-    colorClass: 'bg-accent/10',
-    textColorClass: 'text-accent',
+    icon: GraduationCapIcon,
+    classes: 'bg-accent/10 text-accent',
   },
   {
     id: 'Descuentos',
     label: 'Descuentos',
-    iconPath: 'M19 5L5 19 M9 6.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z M15 12.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z',
-    colorClass: 'bg-success/10',
-    textColorClass: 'text-success',
+    icon: PercentIcon,
+    classes: 'bg-success/10 text-success',
   },
   {
     id: 'Pagos',
     label: 'Pagos',
-    iconPath: 'M1 4h22v16H1z M1 10h22',
-    colorClass: 'bg-highlight/10',
-    textColorClass: 'text-highlight',
+    icon: CreditCardIcon,
+    classes: 'bg-highlight/10 text-highlight',
   },
   {
     id: 'Certificados',
     label: 'Certificados',
-    iconPath: 'M12 15l-2 5 2-1 2 1-2-5z M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0z M12 2L2 7l10 5 10-5-10-5z M2 17l10 5 10-5 M2 12l10 5 10-5',
-    colorClass: 'bg-info/10',
-    textColorClass: 'text-info',
+    icon: ShieldCheckIcon,
+    classes: 'bg-info/10 text-info',
   },
 ];
 
@@ -59,7 +62,7 @@ export const FAQ_CATEGORIES: readonly FaqCategoryMeta[] = [
  * Contains 31 FAQs across 5 categories, merging content from both templates.
  * Answers use simple HTML for rich formatting (lists, strong, links).
  */
-export const FAQ_PAGE_DATA: readonly CategorizedFaq[] = [
+export const FAQ_PAGE_DATA: CategorizedFaq[] = [
   // ── COMPARENDOS (8) ──────────────────────────────────────────
   {
     id: 201,
@@ -71,8 +74,7 @@ export const FAQ_PAGE_DATA: readonly CategorizedFaq[] = [
   {
     id: 202,
     category: 'Comparendos',
-    question:
-      '¿Cuál es la diferencia entre comparendo manual y electrónico (fotomulta)?',
+    question: '¿Cuál es la diferencia entre comparendo manual y electrónico (fotomulta)?',
     answer:
       '<p class="mb-3"><strong>Comparendo Manual:</strong> Es impuesto directamente por un agente de tránsito en vía. El agente te entrega una copia del comparendo en el momento.</p><p><strong>Comparendo Electrónico (Fotomulta):</strong> Es generado automáticamente por cámaras o sensores de velocidad. La notificación llega por correo certificado o correo electrónico a la dirección registrada en el RUNT.</p><p class="mt-3 text-sm bg-highlight-light p-3 rounded-lg"><strong>Importante:</strong> Los plazos para descuento son diferentes. Manual: 5 días para 50%. Electrónico: 11 días para 50%.</p>',
   },
