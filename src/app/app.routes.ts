@@ -8,8 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'cursos',
-    loadComponent: () =>
-      import('./pages/courses/courses.component').then((m) => m.CoursesComponent),
+    loadComponent: () => import('./pages/courses/courses').then((m) => m.CoursesComponent),
     title: 'Curso Pedagógico | CIA Vial del Llano',
   },
   {

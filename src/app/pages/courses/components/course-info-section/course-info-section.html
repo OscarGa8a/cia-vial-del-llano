@@ -1,0 +1,65 @@
+<section class="py-12 md:py-20 bg-white" aria-labelledby="course-info-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex gap-16 items-center">
+      <!-- Left: Text content -->
+      <div class="w-full lg:w-1/2 xl:w-3/5">
+        <span
+          class="inline-block bg-primary-lighter text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
+        >
+          Sobre el curso
+        </span>
+        <h2
+          id="course-info-heading"
+          class="font-sans font-bold text-3xl sm:text-4xl text-text-primary mb-6"
+        >
+          ¿Qué es el curso pedagógico?
+        </h2>
+        <p class="text-text-secondary text-lg leading-relaxed mb-6">
+          El curso pedagógico por infracción a las normas de tránsito es un programa educativo
+          establecido por la
+          <strong class="text-text-primary">Ley 1383 de 2010</strong>, que permite a los conductores
+          infractores obtener un descuento de hasta el 50% en el valor de su comparendo o fotomulta.
+        </p>
+        <p class="text-text-secondary text-base leading-relaxed mb-8">
+          Nuestro curso está avalado por el Ministerio de Transporte y es impartido por instructores
+          certificados. Al completarlo, recibirás un certificado oficial registrado en el RUNT con
+          validez en todo el territorio nacional.
+        </p>
+
+        <!-- Quick stats row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+          @for (stat of quickStats; track stat.label) {
+            <div class="flex items-center gap-3 p-4 rounded-2xl border border-border">
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                [class]="stat.classes"
+                aria-hidden="true"
+              >
+                <app-icon [lucideIcon]="stat.icon" [size]="20" />
+              </div>
+              <div>
+                <p class="font-sans font-bold text-lg text-text-primary">{{ stat.value }}</p>
+                <p class="text-text-secondary text-xs">{{ stat.label }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Right: SVG Illustration -->
+      <div
+        class="w-1/2 xl:w-2/5 hidden lg:flex items-center justify-center relative"
+        aria-hidden="true"
+      >
+        <div class="w-full h-full relative aspect-square rounded-2xl">
+          <img
+            ngSrc="certificado_akfci7"
+            fill
+            alt="Certificado de curso pedagógico para descuento en comparendos"
+            class="w-full h-auto object-cover object-left rounded-2xl"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
