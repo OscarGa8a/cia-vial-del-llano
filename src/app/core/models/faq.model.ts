@@ -10,12 +10,7 @@ export interface Faq {
 }
 
 /** Valid FAQ categories for the dedicated FAQ page. */
-export type FaqCategory =
-  | 'Comparendos'
-  | 'Cursos'
-  | 'Descuentos'
-  | 'Pagos'
-  | 'Certificados';
+export type FaqCategory = 'Comparendos' | 'Cursos' | 'Descuentos' | 'Pagos' | 'Certificados';
 
 /**
  * FAQ entry with a category, used on the dedicated FAQ page.
