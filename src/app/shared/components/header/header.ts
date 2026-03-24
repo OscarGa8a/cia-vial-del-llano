@@ -12,6 +12,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { distinctUntilChanged, fromEvent, map, startWith } from 'rxjs';
 import { Icon } from '../icon/icon';
 import { MenuIcon, XIcon } from 'lucide-angular';
+import { NgOptimizedImage } from '@angular/common';
 
 /** Navigation link definition for the header menu. */
 interface NavLink {
@@ -31,7 +32,7 @@ interface NavLink {
  */
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, Icon],
+  imports: [RouterLink, RouterLinkActive, Icon, NgOptimizedImage],
   templateUrl: './header.html',
   styleUrl: './header.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
