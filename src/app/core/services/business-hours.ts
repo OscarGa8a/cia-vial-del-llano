@@ -18,7 +18,7 @@ interface ScheduleEntry {
 @Injectable({
   providedIn: 'root',
 })
-export class BusinessHoursService {
+export class BusinessHours {
   private readonly platformId = inject(PLATFORM_ID);
 
   /**

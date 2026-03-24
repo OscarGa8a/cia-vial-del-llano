@@ -1,0 +1,270 @@
+<section class="py-10 -mt-4 bg-white" aria-labelledby="calc-form-heading">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div
+      class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200 grid lg:grid-cols-12"
+    >
+      <!-- ===== LEFT: Form ===== -->
+      <div class="lg:col-span-7 p-6 md:p-10 border-r border-gray-100">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="bg-primary p-2 rounded-lg text-white" aria-hidden="true">
+            <app-icon [lucideIcon]="CalculatorIcon" [size]="20" />
+          </div>
+          <h2 id="calc-form-heading" class="font-sans font-bold text-2xl text-primary">
+            Calcula tu descuento
+          </h2>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6" novalidate>
+          <!-- Ticket type -->
+          <fieldset>
+            <legend class="block text-sm font-bold text-gray-700 mb-3">Tipo de Comparendo</legend>
+            <div class="grid grid-cols-2 gap-4" role="radiogroup">
+              <!-- Manual -->
+              <label class="cursor-pointer">
+                <input type="radio" formControlName="ticketType" value="manual" class="sr-only" />
+                <div
+                  class="p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 hover:bg-gray-50"
+                  [class]="
+                    isTicketTypeManual() ? 'border-primary bg-primary-lighter' : 'border-gray-200'
+                  "
+                >
+                  <app-icon
+                    [lucideIcon]="HatGlassesIcon"
+                    [size]="22"
+                    [class]="isTicketTypeManual() ? 'text-primary' : 'text-gray-400'"
+                  />
+                  <span
+                    class="font-bold text-sm"
+                    [class]="isTicketTypeManual() ? 'text-primary' : 'text-gray-700'"
+                    >Manual (Agente)</span
+                  >
+                </div>
+              </label>
+
+              <!-- Fotomulta -->
+              <label class="cursor-pointer">
+                <input
+                  type="radio"
+                  formControlName="ticketType"
+                  value="fotomulta"
+                  class="sr-only"
+                />
+                <div
+                  class="p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 hover:bg-gray-50"
+                  [class]="
+                    isTicketTypeFotomulta() ? 'border-accent bg-accent-light' : 'border-gray-200'
+                  "
+                >
+                  <app-icon
+                    [lucideIcon]="CameraIcon"
+                    [size]="22"
+                    [class]="isTicketTypeFotomulta() ? 'text-accent' : 'text-gray-400'"
+                  />
+                  <span
+                    class="font-bold text-sm"
+                    [class]="isTicketTypeFotomulta() ? 'text-accent' : 'text-gray-700'"
+                    >Fotomulta</span
+                  >
+                </div>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Infraction code -->
+          <div>
+            <label for="infractionCode" class="block text-sm font-bold text-gray-700 mb-2">
+              Código de la Infracción
+            </label>
+            <select
+              id="infractionCode"
+              formControlName="infractionCode"
+              class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary outline-none font-medium text-gray-700"
+              [class.border-error]="codeInvalid()"
+              aria-required="true"
+              [attr.aria-invalid]="codeInvalid()"
+            >
+              <option value="">Selecciona una infracción...</option>
+              @for (group of categoryGroups; track group.label) {
+                <optgroup [label]="group.label">
+                  @for (inf of group.infractions; track inf.code) {
+                    <option [value]="inf.code">{{ inf.code }} — {{ inf.description }}</option>
+                  }
+                </optgroup>
+              }
+            </select>
+            @if (codeInvalid()) {
+              <p class="text-error text-xs mt-1" role="alert">
+                Selecciona una infracción para continuar.
+              </p>
+            }
+            <p class="text-xs text-gray-400 mt-2">
+              ¿No conoces el código? Búscalo en la tabla de infracciones más abajo.
+            </p>
+          </div>
+
+          <!-- Date -->
+          <div>
+            <label for="infractionDate" class="block text-sm font-bold text-gray-700 mb-2">
+              Fecha del Comparendo
+            </label>
+            <div class="relative">
+              <input
+                type="date"
+                id="infractionDate"
+                formControlName="infractionDate"
+                class="w-full p-4 pl-12 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary outline-none font-medium"
+                [class.border-error]="dateInvalid()"
+                aria-required="true"
+                [attr.aria-invalid]="dateInvalid()"
+                [max]="todayIso"
+              />
+              <app-icon
+                class="w-6 h-6 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
+                [lucideIcon]="CalendarDaysIcon"
+              />
+            </div>
+            @if (dateInvalid()) {
+              <p class="text-error text-xs mt-1" role="alert">
+                Ingresa una fecha válida (no puede ser futura).
+              </p>
+            }
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all flex justify-center items-center gap-2 group"
+            [class.opacity-60]="form.invalid && form.touched"
+          >
+            <span>Calcular mi descuento</span>
+
+            <app-icon
+              [lucideIcon]="MoveRightIcon"
+              class="group-hover:translate-x-1 transition-transform"
+            />
+          </button>
+        </form>
+      </div>
+
+      @let localResult = result();
+
+      <!-- ===== RIGHT: Results panel ===== -->
+      <div
+        class="lg:col-span-5 bg-gray-50 p-6 md:p-10 flex flex-col justify-center min-h-96"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        @if (!localResult) {
+          <!-- Empty state -->
+          <div class="text-center opacity-60">
+            <div
+              class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6"
+              aria-hidden="true"
+            >
+              <app-icon [lucideIcon]="CalculatorIcon" class="text-gray-400" [size]="48" />
+            </div>
+            <h3 class="text-xl font-bold text-gray-700 mb-1">Esperando datos…</h3>
+            <p class="text-gray-500 text-sm">Completa el formulario para ver cuánto te ahorras.</p>
+          </div>
+        } @else {
+          @let infraction = localResult!.infraction;
+          @let discountPercent = localResult!.discountPercent;
+          <!-- Results -->
+          <div class="space-y-5">
+            <!-- Header row -->
+            <div class="flex justify-between items-start border-b border-gray-200 pb-4">
+              <div>
+                <span
+                  class="inline-block px-2 py-0.5 bg-gray-200 text-gray-700 text-xs font-bold rounded mb-1"
+                >
+                  {{ infraction.code }}
+                </span>
+                <h3 class="font-bold text-primary leading-tight text-sm">
+                  {{ infraction.description }}
+                </h3>
+              </div>
+              <div class="text-right shrink-0 ml-3">
+                <p class="text-xs text-gray-500">Valor Original</p>
+                <p class="text-gray-400 line-through font-medium text-sm">
+                  {{ formatCOP(localResult!.originalValue) }}
+                </p>
+              </div>
+            </div>
+
+            @if (discountPercent > 0) {
+              <!-- Discount banner -->
+              <div
+                class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100"
+              >
+                <div
+                  class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-sm shrink-0"
+                  [class.bg-success]="discountPercent === 50"
+                  [class.bg-warning]="discountPercent === 25"
+                  aria-hidden="true"
+                >
+                  -{{ discountPercent }}%
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500 font-medium">¡Descuento aplicado!</p>
+                  <p class="text-success font-bold text-lg">
+                    Ahorras {{ formatCOP(localResult!.discountAmount) }}
+                  </p>
+                </div>
+              </div>
+            } @else {
+              <!-- No-discount banner -->
+              <div class="bg-error-light p-4 rounded-xl border border-error/20 flex gap-3">
+                <app-icon [lucideIcon]="InfoIcon" class="text-error shrink-0" [size]="24" />
+                <p class="text-error text-sm font-medium">
+                  El plazo de descuento ha vencido. Debes pagar el 100% más intereses.
+                </p>
+              </div>
+            }
+
+            <!-- Total to pay -->
+            <div class="text-center py-2">
+              <p class="text-xs uppercase tracking-widest text-gray-500 font-bold mb-1">
+                Total a Pagar
+              </p>
+              <p
+                class="text-4xl font-sans font-bold"
+                [class.text-primary]="discountPercent > 0"
+                [class.text-error]="discountPercent === 0"
+              >
+                {{ formatCOP(localResult.totalToPay) }}
+              </p>
+            </div>
+
+            @if (discountPercent > 0) {
+              <!-- Urgency indicator -->
+              <div class="bg-gray-100 p-3 rounded-lg flex items-center gap-3">
+                <div
+                  class="w-3 h-3 rounded-full animate-pulse shrink-0"
+                  [class.bg-success]="localResult!.urgency === 'green'"
+                  [class.bg-warning]="localResult!.urgency === 'yellow'"
+                  [class.bg-error]="localResult!.urgency === 'red'"
+                  aria-hidden="true"
+                ></div>
+                <p class="text-xs text-gray-600 flex-1">
+                  {{ localResult!.deadlineMessage }}
+                </p>
+              </div>
+            }
+
+            <!-- WhatsApp CTA -->
+            <a
+              [href]="whatsappLink()"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-4 rounded-xl shadow-lg flex justify-center items-center gap-2 transition-colors"
+              aria-label="Contactar por WhatsApp para agendar el curso"
+            >
+              <app-icon source="custom" name="whatsapp-custom" [size]="24" />
+              Quiero este descuento
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

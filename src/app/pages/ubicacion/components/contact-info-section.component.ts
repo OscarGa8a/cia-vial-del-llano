@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CONFIG } from '../../../core/data/config.data';
-import { BusinessHoursService } from '../../../core/services/business-hours.service';
+import { BusinessHours } from '../../../core/services/business-hours';
 import { Whatsapp } from '@core/services/whatsapp';
 
 /**
@@ -333,7 +333,7 @@ import { Whatsapp } from '@core/services/whatsapp';
 })
 export class ContactInfoSectionComponent {
   protected readonly config = CONFIG;
-  protected readonly businessHours = inject(BusinessHoursService);
+  protected readonly businessHours = inject(BusinessHours);
   protected readonly whatsapp = inject(Whatsapp);
 
   private readonly sanitizer = inject(DomSanitizer);

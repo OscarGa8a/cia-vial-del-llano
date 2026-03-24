@@ -27,7 +27,7 @@ const PHOTO_TIERS: readonly DiscountTier[] = [
  * No browser APIs — fully SSR-safe.
  */
 @Injectable({ providedIn: 'root' })
-export class CalculatorService {
+export class Calculator {
   /**
    * Counts the number of business days (Mon–Fri) between two dates.
    * The start date itself is NOT counted; only days strictly after it are.
@@ -78,10 +78,7 @@ export class CalculatorService {
    */
   getDiscountTier(elapsed: number, ticketType: TicketType): DiscountTier {
     const tiers = ticketType === 'manual' ? MANUAL_TIERS : PHOTO_TIERS;
-    return (
-      tiers.find((t) => elapsed >= t.fromDay && elapsed <= t.toDay) ??
-      tiers[tiers.length - 1]
-    );
+    return tiers.find((t) => elapsed >= t.fromDay && elapsed <= t.toDay) ?? tiers[tiers.length - 1];
   }
 
   /**
@@ -112,11 +109,7 @@ export class CalculatorService {
    * @param ticketType - Ticket type.
    * @param infractionDate - Original infraction date.
    */
-  buildDeadlineMessage(
-    elapsed: number,
-    ticketType: TicketType,
-    infractionDate: Date
-  ): string {
+  buildDeadlineMessage(elapsed: number, ticketType: TicketType, infractionDate: Date): string {
     const tier = this.getDiscountTier(elapsed, ticketType);
 
     if (tier.percent === 0) {
@@ -161,7 +154,7 @@ export class CalculatorService {
     infraction: Infraction,
     ticketType: TicketType,
     infractionDate: Date,
-    today: Date = new Date()
+    today: Date = new Date(),
   ): CalculationResult {
     const originalValue = infraction.smdlv * CONFIG.smdlvDaily2025;
     const businessDaysElapsed = this.countBusinessDays(infractionDate, today);
@@ -172,7 +165,7 @@ export class CalculatorService {
     const deadlineMessage = this.buildDeadlineMessage(
       businessDaysElapsed,
       ticketType,
-      infractionDate
+      infractionDate,
     );
 
     return {

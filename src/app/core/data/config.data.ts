@@ -57,7 +57,7 @@ export const CONFIG = {
    * Base unit used to calculate all traffic fine amounts.
    * Category values: A=4×, B=8×, C=15×, D=30×, E=45×
    */
-  smdlvDaily2025: 47450,
+  smdlvDaily2025: 58363.5,
 
   /** @deprecated use smdlvDaily2025 — kept for backward compatibility */
   smdlv2025: 1423500,

@@ -13,8 +13,7 @@ export const routes: Routes = [
   },
   {
     path: 'calculadora',
-    loadComponent: () =>
-      import('./pages/calculator/calculator.component').then((m) => m.CalculatorComponent),
+    loadComponent: () => import('./pages/calculator/calculator').then((m) => m.Calculator),
     title: 'Calculadora de Multas | CIA Vial del Llano',
   },
   {
