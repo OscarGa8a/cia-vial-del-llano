@@ -16,16 +16,11 @@
       <!-- Left: Content -->
       <div class="text-white z-10">
         <!-- Breadcrumb -->
-        <nav aria-label="Breadcrumb" class="mb-6">
-          <ol class="flex items-center gap-2 text-white/60 text-sm">
-            <li>
-              <a routerLink="/" class="hover:text-white transition-colors">Inicio</a>
-            </li>
-            <li aria-hidden="true">
-              <app-icon [lucideIcon]="ChevronRightIcon" [size]="14" />
-            </li>
-            <li aria-current="page" class="text-white font-medium">Cursos</li>
-          </ol>
+
+        <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-white/60 mb-6">
+          <a routerLink="/" class="hover:text-white transition-colors">Inicio</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-highlight font-semibold">Cursos</span>
         </nav>
 
         <!-- Certification badge -->
