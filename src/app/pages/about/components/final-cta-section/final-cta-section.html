@@ -1,0 +1,57 @@
+<section
+  class="py-12 md:py-20 bg-linear-to-br from-primary via-primary-dark to-accent relative overflow-hidden"
+  aria-labelledby="about-cta-heading"
+>
+  <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Icon -->
+    <div
+      class="w-20 h-20 mx-auto rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center mb-8"
+      aria-hidden="true"
+    >
+      <app-icon [lucideIcon]="MapPinIcon" [size]="36" class="text-white" />
+    </div>
+
+    <h2
+      id="about-cta-heading"
+      class="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-white mb-6 leading-tight"
+    >
+      ¿Listo para conocernos
+      <span class="text-highlight">en persona</span>?
+    </h2>
+
+    <p class="text-white/80 text-lg sm:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+      Visítanos y descubre por qué somos la mejor opción para tu curso pedagógico en Villavicencio
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        routerLink="/ubicacion"
+        class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-primary font-bold px-8 py-4 rounded-full transition-all hover:scale-105 shadow-xl"
+      >
+        <app-icon [lucideIcon]="MapPinIcon" [size]="20" />
+        Ver ubicación
+      </a>
+
+      <a
+        [href]="whatsappLink()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold px-8 py-4 rounded-full transition-all hover:scale-105 shadow-xl animate-whatsapp-pulse"
+        aria-label="Agendar cita por WhatsApp"
+      >
+        <app-icon source="custom" name="whatsapp-custom" />
+        Agendar cita por WhatsApp
+      </a>
+    </div>
+
+    <!-- Response indicator -->
+    <p class="mt-5 text-white/60 text-sm flex items-center justify-center gap-2">
+      <span
+        class="w-2 h-2 rounded-full bg-whatsapp animate-ping inline-block"
+        aria-hidden="true"
+      ></span>
+      Respuesta en menos de 5 minutos
+    </p>
+  </div>
+</section>

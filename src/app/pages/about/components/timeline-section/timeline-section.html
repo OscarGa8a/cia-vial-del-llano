@@ -1,0 +1,43 @@
+<section class="py-12 md:py-20 bg-gray-50" aria-labelledby="about-timeline-heading">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span
+        class="inline-block bg-primary/10 text-primary font-semibold text-sm px-4 py-2 rounded-full mb-4"
+      >
+        NUESTRA TRAYECTORIA
+      </span>
+      <h2
+        id="about-timeline-heading"
+        class="font-sans font-bold text-3xl md:text-4xl text-gray-900 mb-4"
+      >
+        Hitos de nuestra <span class="text-accent">historia</span>
+      </h2>
+    </div>
+
+    <!-- Timeline -->
+    <div class="space-y-8">
+      @for (item of timelineItems; track item.year) {
+        <div class="relative pl-8">
+          <!-- Line & dot -->
+          <div class="timeline-line" aria-hidden="true"></div>
+          <div class="timeline-dot" aria-hidden="true"></div>
+
+          <!-- Card -->
+          <div class="bg-white rounded-2xl p-6 shadow-md ml-4">
+            <span
+              class="inline-block text-white font-bold text-sm px-3 py-1 rounded-full mb-2"
+              [class]="item.badgeColor"
+            >
+              {{ item.year }}
+            </span>
+            <h3 class="font-bold text-gray-900 mb-1">
+              {{ item.title }}
+            </h3>
+            <p class="text-gray-600">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

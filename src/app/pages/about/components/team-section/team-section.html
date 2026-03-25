@@ -1,0 +1,57 @@
+<section class="py-12 md:py-20 bg-gray-50" aria-labelledby="about-team-heading">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span
+        class="inline-block bg-primary/10 text-primary font-semibold text-sm px-4 py-2 rounded-full mb-4"
+      >
+        NUESTRO EQUIPO
+      </span>
+      <h2
+        id="about-team-heading"
+        class="font-sans font-bold text-3xl md:text-4xl text-gray-900 mb-4"
+      >
+        Las personas detrás de
+        <span class="text-highlight">CIA VIAL</span>
+      </h2>
+      <p class="text-gray-600 text-lg">Un equipo profesional y comprometido con tu bienestar</p>
+    </div>
+
+    <!-- Team cards -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (member of teamMembers; track member.name; let last = $last) {
+        <div
+          [class]="
+            'bg-white rounded-3xl p-6 shadow-lg text-center card-hover' +
+            (last ? ' sm:col-span-2 lg:col-span-1' : '')
+          "
+        >
+          <!-- Avatar -->
+          <div
+            [class]="
+              'w-28 h-28 bg-linear-to-br rounded-full mx-auto mb-4 flex items-center justify-center ' +
+              member.gradientFrom +
+              ' ' +
+              member.gradientTo
+            "
+            aria-hidden="true"
+          >
+            <span class="text-white/50 font-bold text-2xl">
+              {{ member.initials }}
+            </span>
+          </div>
+
+          <h3 class="font-sans font-bold text-xl text-gray-900 mb-1">
+            {{ member.name }}
+          </h3>
+          <p class="text-primary font-medium mb-3">
+            {{ member.role }}
+          </p>
+          <p class="text-gray-600 text-sm">
+            {{ member.description }}
+          </p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
