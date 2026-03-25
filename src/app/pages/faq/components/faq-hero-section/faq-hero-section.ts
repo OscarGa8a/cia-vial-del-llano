@@ -1,7 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Icon } from '@shared/components';
-import { CircleQuestionMarkIcon } from 'lucide-angular';
 
 /**
  * Hero section for the FAQ page.
@@ -10,12 +8,9 @@ import { CircleQuestionMarkIcon } from 'lucide-angular';
  */
 @Component({
   selector: 'app-faq-hero-section',
-  imports: [NgOptimizedImage, Icon],
+  imports: [NgOptimizedImage],
   templateUrl: './faq-hero-section.html',
   styleUrl: './faq-hero-section.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FaqHeroSection {
-  /** Expose the CircleQuestionMarkIcon for use in the template */
-  protected readonly CircleQuestionIcon = CircleQuestionMarkIcon;
-}
+export class FaqHeroSection {}

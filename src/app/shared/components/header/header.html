@@ -32,9 +32,9 @@
         @for (link of navLinks; track link.path) {
           <a
             [routerLink]="link.path"
-            routerLinkActive="text-highlight border-b-2 border-highlight"
+            routerLinkActive="text-highlight! border-b-2 border-highlight!"
             [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-            class="text-white/90 hover:text-white text-sm font-medium transition-colors pb-1 border-b-2 border-transparent"
+            class="text-white hover:text-highlight hover:border-b-2 hover:border-highlight! text-sm font-medium transition-colors pb-1 border-b-2 border-transparent"
           >
             {{ link.label }}
           </a>
@@ -73,7 +73,7 @@
   <div
     id="mobile-menu"
     class="lg:hidden bg-primary border-t border-white/10 transition-all duration-300 overflow-hidden"
-    [class]="isMenuOpen ? 'max-h-96' : 'max-h-0'"
+    [class]="isMenuOpen ? 'max-h-110' : 'max-h-0'"
     [attr.aria-hidden]="!isMenuOpen"
   >
     <nav class="px-4 py-4 flex flex-col gap-1" aria-label="Navegación móvil">
