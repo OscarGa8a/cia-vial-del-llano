@@ -1,8 +1,14 @@
-/**
- * Static data for the About (Nosotros) page.
- * Contains team members, timeline milestones, certifications,
- * facilities, advantages, and testimonials.
- */
+import {
+  BadgeCheckIcon,
+  Building2Icon,
+  BusIcon,
+  CircleCheckIcon,
+  Clock4Icon,
+  DatabaseIcon,
+  LandmarkIcon,
+  LucideIconData,
+  UsersIcon,
+} from 'lucide-angular';
 
 // ── Interfaces ────────────────────────────────────────────────
 
@@ -28,20 +34,15 @@ export interface TimelineItem {
 export interface Certification {
   readonly name: string;
   readonly description: string;
-  readonly iconBg: string;
-  readonly iconColor: string;
-  /** SVG path data for the certification icon. */
-  readonly iconPath: string;
+  readonly icon: LucideIconData;
+  readonly classes: string;
 }
 
 /** A facility area for the gallery section. */
 export interface Facility {
   readonly name: string;
   readonly subtitle?: string;
-  readonly gradientFrom: string;
-  readonly gradientTo: string;
-  /** SVG path data for the placeholder icon. */
-  readonly iconPath: string;
+  image: string;
   /** Whether this item spans 2 columns in the grid. */
   readonly colSpan2?: boolean;
 }
@@ -50,10 +51,8 @@ export interface Facility {
 export interface Advantage {
   readonly title: string;
   readonly description: string;
-  readonly iconBg: string;
-  readonly iconColor: string;
-  /** SVG path data for the advantage icon. */
-  readonly iconPath: string;
+  readonly icon: LucideIconData;
+  readonly classes: string;
 }
 
 /** A customer testimonial. */
@@ -75,7 +74,7 @@ export interface CompanyValue {
 // ── Data ──────────────────────────────────────────────────────
 
 /** Company values list. */
-export const COMPANY_VALUES: readonly CompanyValue[] = [
+export const COMPANY_VALUES: CompanyValue[] = [
   { label: 'Compromiso' },
   { label: 'Honestidad' },
   { label: 'Calidad' },
@@ -83,8 +82,15 @@ export const COMPANY_VALUES: readonly CompanyValue[] = [
   { label: 'Responsabilidad' },
 ] as const;
 
+export const COMPANY: { MISSION: string; VISSION: string } = {
+  MISSION:
+    'Capacitar e instruir a los infractores de las normas de tránsito colombianas mediante procesos pedagógicos integrales, promoviendo la reflexión, el respeto por la vida y la cultura vial. Nuestro compromiso es contribuir a la transformación del comportamiento ciudadano en las vías, fortaleciendo la seguridad vial y el cumplimiento normativo.',
+  VISSION:
+    'Ser en 2030 el centro de atención a infractores más reconocido en el departamento del Meta por su excelencia educativa, innovación metodológica y aporte significativo a la reducción de la siniestralidad vial, consolidando una ciudadanía más consciente, responsable y comprometida con la movilidad segura.',
+};
+
 /** Team members displayed on the About page. */
-export const TEAM_MEMBERS: readonly TeamMember[] = [
+export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: 'Carlos Rodríguez',
     role: 'Director General',
@@ -97,8 +103,7 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
   {
     name: 'María González',
     role: 'Instructora Principal',
-    description:
-      'Especialista en educación vial con certificación del Ministerio de Transporte.',
+    description: 'Especialista en educación vial con certificación del Ministerio de Transporte.',
     initials: 'MG',
     gradientFrom: 'from-accent',
     gradientTo: 'to-highlight',
@@ -106,8 +111,7 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
   {
     name: 'Andrea Martínez',
     role: 'Coordinadora Administrativa',
-    description:
-      'Encargada de atención al cliente y gestión de citas. Siempre dispuesta a ayudar.',
+    description: 'Encargada de atención al cliente y gestión de citas. Siempre dispuesta a ayudar.',
     initials: 'AM',
     gradientFrom: 'from-highlight',
     gradientTo: 'to-success',
@@ -117,76 +121,53 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
 /** Company history milestones for the timeline section. */
 export const TIMELINE_ITEMS: readonly TimelineItem[] = [
   {
-    year: '2014',
+    year: '2024',
     title: 'Fundación',
     description:
       'Abrimos nuestras puertas en Villavicencio con la misión de ofrecer educación vial de calidad.',
     badgeColor: 'bg-primary',
   },
   {
-    year: '2016',
-    title: 'Primeros 1.000 cursos',
+    year: '2025',
+    title: 'Consolidación del servicio',
     description:
-      'Alcanzamos nuestro primer gran hito: 1.000 conductores capacitados exitosamente.',
+      'Fortalecimos nuestros procesos de atención y formación para brindar una experiencia cada vez más eficiente.',
     badgeColor: 'bg-accent',
   },
   {
-    year: '2018',
-    title: 'Expansión de instalaciones',
-    description:
-      'Ampliamos nuestras instalaciones para ofrecer mayor comodidad y capacidad a nuestros usuarios.',
-    badgeColor: 'bg-highlight',
-  },
-  {
-    year: '2024',
-    title: '10 años de servicio',
-    description:
-      'Celebramos una década de compromiso con la seguridad vial en los Llanos Orientales.',
-    badgeColor: 'bg-success',
-  },
-  {
-    year: '2025',
+    year: '2026',
     title: 'Crecimiento continuo',
     description:
-      'Seguimos creciendo y mejorando para servir mejor a nuestra comunidad.',
-    badgeColor: 'bg-primary',
+      'Seguimos mejorando desde nuestra sede actual para servir mejor a nuestra comunidad.',
+    badgeColor: 'bg-highlight',
   },
 ] as const;
 
 /** Official certifications and endorsements. */
-export const CERTIFICATIONS: readonly Certification[] = [
+export const CERTIFICATIONS: Certification[] = [
   {
     name: 'MinTransporte',
     description: 'Habilitados por el Ministerio de Transporte de Colombia',
-    iconBg: 'bg-primary/10',
-    iconColor: 'text-primary',
-    iconPath:
-      'M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5m-4 0h4',
+    icon: Building2Icon,
+    classes: 'bg-primary/10 text-primary',
   },
   {
     name: 'RUNT',
     description: 'Integrados al Registro Único Nacional de Tránsito',
-    iconBg: 'bg-accent/10',
-    iconColor: 'text-accent',
-    iconPath:
-      'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4',
+    icon: DatabaseIcon,
+    classes: 'bg-accent/10 text-accent',
   },
   {
     name: 'SIMIT',
-    description:
-      'Sistema Integrado de Información sobre Multas y Sanciones',
-    iconBg: 'bg-highlight/10',
-    iconColor: 'text-highlight',
-    iconPath:
-      'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+    description: 'Sistema Integrado de Información sobre Multas y Sanciones',
+    icon: BadgeCheckIcon,
+    classes: 'bg-highlight/10 text-highlight',
   },
   {
     name: 'SuperTransporte',
     description: 'Supervisados por la Superintendencia de Transporte',
-    iconBg: 'bg-success/10',
-    iconColor: 'text-success',
-    iconPath:
-      'M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4z',
+    icon: LandmarkIcon,
+    classes: 'bg-success/10 text-success',
   },
 ] as const;
 
@@ -195,91 +176,69 @@ export const FACILITIES: readonly Facility[] = [
   {
     name: 'Sede Principal',
     subtitle: 'Fachada moderna y accesible',
-    gradientFrom: 'from-primary',
-    gradientTo: 'to-primary-dark',
-    iconPath:
-      'M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5m-4 0h4',
+    image: 'IMG_2815_lmf9bl',
     colSpan2: true,
   },
   {
     name: 'Recepción',
-    gradientFrom: 'from-accent',
-    gradientTo: 'to-highlight',
-    iconPath:
-      'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 0 0 1 1h3m10-11l2 2m-2-2v10a1 1 0 0 1-1 1h-3m-6 0a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1m-6 0h6',
+    image: 'IMG_2838_bfp9tu',
   },
   {
     name: 'Sala de Espera',
-    gradientFrom: 'from-highlight',
-    gradientTo: 'to-success',
-    iconPath:
-      'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
+    image: 'IMG_2858_uhaegq',
   },
   {
-    name: 'Aula de Capacitación',
+    name: 'Aula de Capacitación 1',
     subtitle: 'Capacidad para 20 personas',
-    gradientFrom: 'from-success',
-    gradientTo: 'to-primary',
-    iconPath:
-      'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z',
+    image: 'IMG_2805_fniavi',
+    colSpan2: true,
+  },
+  {
+    name: 'Aula de Capacitación 2',
+    subtitle: 'Capacidad para 8 personas',
+    image: 'IMG_2819_q59bxh',
     colSpan2: true,
   },
 ] as const;
 
 /** Advantages for the "Why Choose Us" section. */
-export const ADVANTAGES: readonly Advantage[] = [
+export const ADVANTAGES: Advantage[] = [
   {
     title: 'Certificados por MinTransporte',
-    description:
-      'Avalados oficialmente por el Ministerio de Transporte de Colombia',
-    iconBg: 'bg-primary/10',
-    iconColor: 'text-primary',
-    iconPath:
-      'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.946-.806 3.42 3.42 0 0 1 4.438 0 3.42 3.42 0 0 0 1.946.806 3.42 3.42 0 0 1 3.138 3.138 3.42 3.42 0 0 0 .806 1.946 3.42 3.42 0 0 1 0 4.438 3.42 3.42 0 0 0-.806 1.946 3.42 3.42 0 0 1-3.138 3.138 3.42 3.42 0 0 0-1.946.806 3.42 3.42 0 0 1-4.438 0 3.42 3.42 0 0 0-1.946-.806 3.42 3.42 0 0 1-3.138-3.138 3.42 3.42 0 0 0-.806-1.946 3.42 3.42 0 0 1 0-4.438 3.42 3.42 0 0 0 .806-1.946 3.42 3.42 0 0 1 3.138-3.138z',
+    description: 'Avalados oficialmente por el Ministerio de Transporte de Colombia',
+    icon: BadgeCheckIcon,
+    classes: 'bg-primary/10 text-primary',
   },
   {
     title: 'Horarios Flexibles',
-    description:
-      'Cursos en la mañana y en la tarde, adaptados a tu disponibilidad',
-    iconBg: 'bg-accent/10',
-    iconColor: 'text-accent',
-    iconPath: 'M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z',
+    description: 'Cursos en la mañana y en la tarde, adaptados a tu disponibilidad',
+    icon: Clock4Icon,
+    classes: 'bg-accent/10 text-accent',
   },
   {
     title: 'Atención Personalizada',
-    description:
-      'Grupos pequeños para garantizar una mejor experiencia de aprendizaje',
-    iconBg: 'bg-highlight/10',
-    iconColor: 'text-highlight',
-    iconPath:
-      'M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 0 1 9.288 0M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0z',
+    description: 'Grupos pequeños para garantizar una mejor experiencia de aprendizaje',
+    icon: UsersIcon,
+    classes: 'bg-highlight/10 text-highlight',
   },
   {
     title: 'Instalaciones Cómodas',
-    description:
-      'Aire acondicionado, parqueadero gratuito y espacios accesibles',
-    iconBg: 'bg-success/10',
-    iconColor: 'text-success',
-    iconPath:
-      'M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5m-4 0h4',
+    description: 'Aire acondicionado, parqueadero gratuito y espacios accesibles',
+    icon: Building2Icon,
+    classes: 'bg-success/10 text-success',
   },
   {
-    title: 'Ubicación Céntrica',
+    title: 'Fácil acceso en transporte público',
     description:
-      'En el centro de Villavicencio, fácil de encontrar y acceder',
-    iconBg: 'bg-primary/10',
-    iconColor: 'text-primary',
-    iconPath:
-      'M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.828 0l-4.244-4.243a8 8 0 1 1 11.314 0zM15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z',
+      'Ubicados en Villavicencio con rutas de transporte público cercanas para llegar de forma sencilla',
+    icon: BusIcon,
+    classes: 'bg-primary/10 text-primary',
   },
   {
     title: 'Experiencia Comprobada',
-    description:
-      'Más de una década de trayectoria exitosa y miles de clientes satisfechos',
-    iconBg: 'bg-accent/10',
-    iconColor: 'text-accent',
-    iconPath:
-      'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+    description: 'Más de 2 años de trayectoria exitosa y miles de clientes satisfechos',
+    icon: CircleCheckIcon,
+    classes: 'bg-accent/10 text-accent',
   },
 ] as const;
 
@@ -316,8 +275,8 @@ export const TESTIMONIALS: readonly Testimonial[] = [
 
 /** Stats displayed on the About page. */
 export const ABOUT_STATS = [
-  { value: '10+', label: 'Años de experiencia', highlight: false },
-  { value: '5.000+', label: 'Cursos realizados', highlight: true },
-  { value: '4.500+', label: 'Conductores capacitados', highlight: false },
+  { value: '2+', label: 'Años de experiencia', highlight: false },
+  { value: '1.000+', label: 'Cursos realizados', highlight: true },
+  { value: '1.500+', label: 'Conductores capacitados', highlight: false },
   { value: '100%', label: 'Certificados válidos', highlight: true },
 ] as const;

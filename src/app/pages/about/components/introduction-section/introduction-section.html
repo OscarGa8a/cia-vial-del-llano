@@ -1,0 +1,74 @@
+<section class="py-12 md:py-20 bg-white" aria-labelledby="about-intro-heading">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left — Text -->
+      <div>
+        <span
+          class="inline-block bg-primary/10 text-primary font-semibold text-sm px-4 py-2 rounded-full mb-4"
+        >
+          NUESTRA HISTORIA
+        </span>
+
+        <h2
+          id="about-intro-heading"
+          class="font-sans font-bold text-3xl md:text-4xl text-gray-900 mb-6"
+        >
+          Una historia de
+          <span class="text-accent">compromiso</span> con Villavicencio
+        </h2>
+
+        <div class="space-y-4 text-gray-600 text-lg">
+          <p>
+            <strong class="text-gray-900">CIA VIAL DEL LLANO</strong>
+            nació en 2024 con una misión clara: ofrecer a los conductores de Villavicencio y los
+            Llanos Orientales una solución profesional y confiable para cumplir con sus obligaciones
+            de tránsito.
+          </p>
+          <p>
+            Lo que comenzó como un pequeño centro de atención, hoy es una de las instituciones de
+            educación vial más reconocidas de la región. Hemos capacitado a más de
+            <strong class="text-primary">5.000 conductores</strong>, ayudándoles a obtener
+            descuentos significativos en sus multas mientras aprenden a ser mejores conductores.
+          </p>
+          <p>
+            Nuestro éxito se debe a un equipo comprometido, instalaciones de calidad y una filosofía
+            centrada en el
+            <strong class="text-primary">servicio al cliente</strong>. Cada persona que nos visita
+            es tratada con respeto, profesionalismo y la atención que merece.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right — Image placeholder -->
+      <div class="relative">
+        <div
+          class="aspect-square rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center relative"
+          aria-hidden="true"
+        >
+          <img
+            ngSrc="IMG_2815_lmf9bl"
+            fill
+            class="w-full h-full object-cover"
+            alt="Imagen de nuestras instalaciones"
+          />
+        </div>
+
+        <!-- Floating badge -->
+        <div
+          class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3"
+        >
+          <div
+            class="w-12 h-12 bg-highlight/10 rounded-xl flex items-center justify-center"
+            aria-hidden="true"
+          >
+            <app-icon [lucideIcon]="MedalIcon" [size]="28" class="text-highlight" />
+          </div>
+          <div>
+            <p class="font-sans font-bold text-2xl text-primary">+2</p>
+            <p class="text-gray-500 text-sm">años de experiencia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

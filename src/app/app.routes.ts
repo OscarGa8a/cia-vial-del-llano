@@ -28,8 +28,7 @@ export const routes: Routes = [
   },
   {
     path: 'nosotros',
-    loadComponent: () =>
-      import('./pages/about/about-page.component').then((m) => m.AboutPageComponent),
+    loadComponent: () => import('./pages/about/about').then((m) => m.About),
     title: 'Nosotros | CIA Vial del Llano',
   },
   {

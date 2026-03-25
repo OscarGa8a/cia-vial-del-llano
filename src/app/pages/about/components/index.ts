@@ -1,0 +1,11 @@
+export { CertificationsSection } from './certifications-section/certifications-section';
+export { FacilitiesSection } from './facilities-section/facilities-section';
+export { FinalCtaSection } from './final-cta-section/final-cta-section';
+export { HeroSection } from './hero-section/hero-section';
+export { IntroductionSection } from './introduction-section/introduction-section';
+export { MissionVisionValuesSection } from './mission-vision-values-section/mission-vision-values-section';
+export { StatsSection } from './stats-section/stats-section';
+export { TeamSection } from './team-section/team-section';
+export { TestimonialsSection } from './testimonials-section/testimonials-section';
+export { TimelineSection } from './timeline-section/timeline-section';
+export { WhyChooseUsSection } from './why-choose-us-section/why-choose-us-section';
