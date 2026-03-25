@@ -33,8 +33,7 @@ export const routes: Routes = [
   },
   {
     path: 'contacto',
-    loadComponent: () =>
-      import('./pages/contact/contact-page.component').then((m) => m.ContactPageComponent),
+    loadComponent: () => import('./pages/contact/contact').then((m) => m.Contact),
     title: 'Contacto | CIA Vial del Llano',
   },
   {

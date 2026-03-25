@@ -1,0 +1,82 @@
+<section class="py-12 md:py-20 bg-white" aria-labelledby="contact-options-heading">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2
+      id="contact-options-heading"
+      class="font-sans font-bold text-2xl sm:text-3xl text-text-primary text-center mb-4"
+    >
+      ¿Cómo prefieres <span class="text-primary">comunicarte</span>?
+    </h2>
+    <p class="text-text-secondary text-center mb-12 max-w-xl mx-auto">
+      Elige el canal que más te convenga. Respondemos en menos de 5 minutos.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- WhatsApp card (highlighted) -->
+      <a
+        [href]="whatsappLink()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative flex flex-col items-center gap-4 p-8 rounded-2xl bg-linear-to-br from-whatsapp to-green-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95"
+        aria-label="Contactar por WhatsApp"
+      >
+        <div
+          class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center animate-whatsapp-pulse"
+        >
+          <app-icon source="custom" name="whatsapp-custom" [size]="28" />
+        </div>
+        <h3 class="font-bold text-lg">WhatsApp</h3>
+        <p class="text-sm text-white/80 text-center">Respuesta inmediata</p>
+        <span
+          class="absolute top-3 right-3 text-xs bg-white/20 px-2 py-0.5 rounded-full font-medium"
+        >
+          Recomendado
+        </span>
+      </a>
+
+      <!-- Phone card -->
+      <a
+        [href]="'tel:' + phoneNumber"
+        class="card-hover group flex flex-col items-center gap-4 p-8 rounded-2xl border border-border bg-white text-center"
+        aria-label="Llamar por teléfono"
+      >
+        <div class="w-16 h-16 rounded-full bg-info-light flex items-center justify-center">
+          <app-icon [lucideIcon]="PhoneIcon" [size]="28" class="text-info" />
+        </div>
+        <h3 class="font-bold text-lg text-text-primary group-hover:text-primary transition-colors">
+          Teléfono
+        </h3>
+        <p class="text-sm text-text-secondary">{{ phoneNumber }}</p>
+      </a>
+
+      <!-- Email card -->
+      <a
+        [href]="'mailto:' + email"
+        class="card-hover group flex flex-col items-center gap-4 p-8 rounded-2xl border border-border bg-white text-center"
+        aria-label="Enviar correo electrónico"
+      >
+        <div class="w-16 h-16 rounded-full bg-accent-light flex items-center justify-center">
+          <app-icon [lucideIcon]="MailIcon" [size]="28" class="text-accent" />
+        </div>
+        <h3 class="font-bold text-lg text-text-primary group-hover:text-primary transition-colors">
+          Correo
+        </h3>
+        <p class="text-sm text-text-secondary">{{ email }}</p>
+      </a>
+
+      <!-- Location card -->
+      <a
+        routerLink="/ubicacion"
+        class="card-hover group flex flex-col items-center gap-4 p-8 rounded-2xl border border-border bg-white text-center"
+        aria-label="Ver ubicación de CIA Vial del Llano"
+      >
+        <div class="w-16 h-16 rounded-full bg-success-light flex items-center justify-center">
+          <app-icon [lucideIcon]="MapPinIcon" [size]="28" class="text-success" />
+        </div>
+        <h3 class="font-bold text-lg text-text-primary group-hover:text-primary transition-colors">
+          Ubicación
+        </h3>
+        <p class="text-sm text-text-secondary">{{ city }}</p>
+      </a>
+    </div>
+  </div>
+</section>

@@ -76,6 +76,7 @@ export class Header {
     { label: 'Ubicación', path: '/ubicacion' },
     { label: 'Preguntas', path: '/preguntas-frecuentes' },
     { label: 'Nosotros', path: '/nosotros' },
+    { label: 'Contacto', path: '/contacto' },
   ];
 
   /** Icon reference for the mobile menu toggle button. */
