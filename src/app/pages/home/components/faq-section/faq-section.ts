@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FAQS } from '@core/data/faqs.data';
 import { Faq } from '@core/models/faq.model';
 import { Icon } from '@shared/components';
@@ -17,7 +18,7 @@ import { ArrowRightIcon, ChevronDownIcon } from 'lucide-angular';
  */
 @Component({
   selector: 'app-faq-section',
-  imports: [Icon],
+  imports: [Icon, RouterLink],
   templateUrl: './faq-section.html',
   styleUrl: './faq-section.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
