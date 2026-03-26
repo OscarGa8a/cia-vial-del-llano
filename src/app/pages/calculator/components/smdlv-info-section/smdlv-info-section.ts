@@ -4,7 +4,7 @@ import { Icon } from '@shared/components';
 import { InfoIcon } from 'lucide-angular';
 
 /**
- * Informational card explaining what the SMDLV is and its 2025 value.
+ * Informational card explaining what the SMDLV is and its 2026 value.
  * Helps users understand how fine amounts are derived.
  */
 @Component({
@@ -20,7 +20,7 @@ export class SmdlvInfoSection {
     style: 'currency',
     currency: 'COP',
     maximumFractionDigits: 0,
-  }).format(CONFIG.smdlvDaily2025);
+  }).format(CONFIG.smdlvDaily2026);
 
   /** Icon reference for use in the template. */
   protected readonly InfoIcon = InfoIcon;

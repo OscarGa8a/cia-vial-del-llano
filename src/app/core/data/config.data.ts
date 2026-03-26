@@ -53,11 +53,11 @@ export const CONFIG = {
     'Hola, quiero información sobre los cursos para descuento en comparendos.',
 
   /**
-   * SMDLV 2025 — Salario Mínimo Diario Legal Vigente (daily minimum wage).
+   * SMDLV 2026 — Salario Mínimo Diario Legal Vigente (daily minimum wage).
    * Base unit used to calculate all traffic fine amounts.
    * Category values: A=4×, B=8×, C=15×, D=30×, E=45×
    */
-  smdlvDaily2025: 58363.5,
+  smdlvDaily2026: 58363.5,
 
   stats: {
     courses: '1.000+',

@@ -2,7 +2,7 @@ import type { Infraction } from '../models/infraction.model';
 
 /**
  * Static list of Colombian traffic infractions (Ley 769 de 2002 and updates).
- * Monetary value = infraction.smdlv × CONFIG.smdlvDaily2025 — computed at runtime.
+ * Monetary value = infraction.smdlv × CONFIG.smdlvDaily2026 — computed at runtime.
  */
 export const INFRACTIONS: readonly Infraction[] = [
   // --- Categoría A (4 SMDLV) ---

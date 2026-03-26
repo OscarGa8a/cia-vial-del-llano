@@ -29,7 +29,7 @@ export class InfractionsTableSection {
   readonly infractionSelected = output<Infraction>();
 
   /** Daily SMDLV value used to calculate the displayed fine amount. */
-  protected readonly smdlvDaily = CONFIG.smdlvDaily2025;
+  protected readonly smdlvDaily = CONFIG.smdlvDaily2026;
 
   /** Lower-cased search term used to filter by code or description. */
   protected readonly searchTerm = signal<string>('');

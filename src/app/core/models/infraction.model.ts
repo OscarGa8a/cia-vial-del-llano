@@ -9,7 +9,7 @@ export type UrgencyStatus = 'green' | 'yellow' | 'red';
 
 /**
  * A single traffic infraction code defined in the Colombian traffic code.
- * Monetary value is derived at runtime: smdlv × CONFIG.smdlvDaily2025.
+ * Monetary value is derived at runtime: smdlv × CONFIG.smdlvDaily2026.
  */
 export interface Infraction {
   readonly code: string;

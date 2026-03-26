@@ -156,7 +156,7 @@ export class Calculator {
     infractionDate: Date,
     today: Date = new Date(),
   ): CalculationResult {
-    const originalValue = infraction.smdlv * CONFIG.smdlvDaily2025;
+    const originalValue = infraction.smdlv * CONFIG.smdlvDaily2026;
     const businessDaysElapsed = this.countBusinessDays(infractionDate, today);
     const tier = this.getDiscountTier(businessDaysElapsed, ticketType);
     const discountAmount = Math.round(originalValue * (tier.percent / 100));
