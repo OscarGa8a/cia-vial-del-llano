@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import {
   ContactInfoSection,
   GallerySection,
@@ -9,6 +9,8 @@ import {
   UbicationFinalCtaSection,
   UbicationHeroSection,
 } from './components';
+import { Seo } from '@core/services/seo';
+import { PAGE_SEO_CONFIG, SEO_CONFIG } from '@core/constants/seo';
 
 /**
  * Location (Ubicación) page showing company location, hours, directions, and contact info.
@@ -39,4 +41,24 @@ import {
   styleUrl: './ubication.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Ubication {}
+export class Ubication implements OnInit {
+  private readonly seo = inject(Seo);
+
+  ngOnInit(): void {
+    this.seo.updateMetaTags({
+      title: PAGE_SEO_CONFIG.ubication.title,
+      description: PAGE_SEO_CONFIG.ubication.description,
+      keywords: PAGE_SEO_CONFIG.ubication.keywords,
+      url: `${SEO_CONFIG.siteUrl}/ubicacion`,
+      type: 'website',
+    });
+
+    this.seo.addStructuredData(
+      this.seo.generateBreadcrumbSchema([
+        { name: 'Inicio', url: SEO_CONFIG.siteUrl },
+        { name: 'Ubicación', url: `${SEO_CONFIG.siteUrl}/ubicacion` },
+      ]),
+      'breadcrumb-schema',
+    );
+  }
+}

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
 import {
   ContactCtaSection,
   FaqContentSection,
@@ -10,6 +10,8 @@ import {
 import { FAQ_CATEGORIES, FAQ_PAGE_DATA } from '@core/data/faq-page.data';
 import { CategorizedFaq, FaqCategory } from '@core/models/faq.model';
 import { FaqGroup } from './components/faq-content-section/faq-content-section';
+import { Seo } from '@core/services/seo';
+import { PAGE_SEO_CONFIG, SEO_CONFIG } from '@core/constants/seo';
 
 /**
  * FAQ page component that displays frequently asked questions with search and category filtering.
@@ -36,7 +38,9 @@ import { FaqGroup } from './components/faq-content-section/faq-content-section';
   styleUrl: './faq.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Faq {
+export class Faq implements OnInit {
+  private readonly seo = inject(Seo);
+
   /** All available FAQ categories with display metadata. */
   protected readonly categories = FAQ_CATEGORIES;
 
@@ -91,6 +95,26 @@ export class Faq {
 
     return groups;
   });
+
+  // ── Lifecycle ───────────────────────────────────────────────
+
+  ngOnInit(): void {
+    this.seo.updateMetaTags({
+      title: PAGE_SEO_CONFIG.faq.title,
+      description: PAGE_SEO_CONFIG.faq.description,
+      keywords: PAGE_SEO_CONFIG.faq.keywords,
+      url: `${SEO_CONFIG.siteUrl}/preguntas-frecuentes`,
+      type: 'website',
+    });
+
+    this.seo.addStructuredData(
+      this.seo.generateBreadcrumbSchema([
+        { name: 'Inicio', url: SEO_CONFIG.siteUrl },
+        { name: 'Preguntas Frecuentes', url: `${SEO_CONFIG.siteUrl}/preguntas-frecuentes` },
+      ]),
+      'breadcrumb-schema',
+    );
+  }
 
   // ── Event handlers ──────────────────────────────────────────
 

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import {
   CertificationsSection,
   FacilitiesSection,
@@ -12,6 +12,8 @@ import {
   TimelineSection,
   WhyChooseUsSection,
 } from './components';
+import { Seo } from '@core/services/seo';
+import { PAGE_SEO_CONFIG, SEO_CONFIG } from '@core/constants/seo';
 
 /**
  * About page — Nosotros page for CIA Vial del Llano.
@@ -40,4 +42,24 @@ import {
   styleUrl: './about.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class About {}
+export class About implements OnInit {
+  private readonly seo = inject(Seo);
+
+  ngOnInit(): void {
+    this.seo.updateMetaTags({
+      title: PAGE_SEO_CONFIG.about.title,
+      description: PAGE_SEO_CONFIG.about.description,
+      keywords: PAGE_SEO_CONFIG.about.keywords,
+      url: `${SEO_CONFIG.siteUrl}/nosotros`,
+      type: 'website',
+    });
+
+    this.seo.addStructuredData(
+      this.seo.generateBreadcrumbSchema([
+        { name: 'Inicio', url: SEO_CONFIG.siteUrl },
+        { name: 'Nosotros', url: `${SEO_CONFIG.siteUrl}/nosotros` },
+      ]),
+      'breadcrumb-schema',
+    );
+  }
+}

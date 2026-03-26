@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import {
   HeroSection,
   CourseInfoSection,
@@ -9,6 +9,8 @@ import {
   FaqSection,
   FinalCtaSection,
 } from './components';
+import { Seo } from '@core/services/seo';
+import { PAGE_SEO_CONFIG, SEO_CONFIG } from '@core/constants/seo';
 
 /**
  * Courses page — dedicated page for pedagogical course information.
@@ -40,4 +42,24 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CoursesComponent {}
+export class CoursesComponent implements OnInit {
+  private readonly seo = inject(Seo);
+
+  ngOnInit(): void {
+    this.seo.updateMetaTags({
+      title: PAGE_SEO_CONFIG.courses.title,
+      description: PAGE_SEO_CONFIG.courses.description,
+      keywords: PAGE_SEO_CONFIG.courses.keywords,
+      url: `${SEO_CONFIG.siteUrl}/cursos`,
+      type: 'website',
+    });
+
+    this.seo.addStructuredData(
+      this.seo.generateBreadcrumbSchema([
+        { name: 'Inicio', url: SEO_CONFIG.siteUrl },
+        { name: 'Cursos', url: `${SEO_CONFIG.siteUrl}/cursos` },
+      ]),
+      'breadcrumb-schema',
+    );
+  }
+}

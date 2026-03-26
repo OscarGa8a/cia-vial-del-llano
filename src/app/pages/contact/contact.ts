@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import {
   ContactFormSection,
   ContactOptionsSection,
@@ -6,6 +6,8 @@ import {
   FinalCtaSection,
   HeroSection,
 } from './components';
+import { Seo } from '@core/services/seo';
+import { PAGE_SEO_CONFIG, SEO_CONFIG } from '@core/constants/seo';
 
 /**
  * Contact page — Contacto page for CIA Vial del Llano.
@@ -29,4 +31,24 @@ import {
   styleUrl: './contact.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Contact {}
+export class Contact implements OnInit {
+  private readonly seo = inject(Seo);
+
+  ngOnInit(): void {
+    this.seo.updateMetaTags({
+      title: PAGE_SEO_CONFIG.contact.title,
+      description: PAGE_SEO_CONFIG.contact.description,
+      keywords: PAGE_SEO_CONFIG.contact.keywords,
+      url: `${SEO_CONFIG.siteUrl}/contacto`,
+      type: 'website',
+    });
+
+    this.seo.addStructuredData(
+      this.seo.generateBreadcrumbSchema([
+        { name: 'Inicio', url: SEO_CONFIG.siteUrl },
+        { name: 'Contacto', url: `${SEO_CONFIG.siteUrl}/contacto` },
+      ]),
+      'breadcrumb-schema',
+    );
+  }
+}

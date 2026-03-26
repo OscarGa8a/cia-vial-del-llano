@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install",
+  "routes": [
+    {
+      "src": "/(.*\\.(?:css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|webp|avif|json|txt|xml))",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/render"
+    }
+  ],
+  "functions": {
+    "api/render.js": {
+      "includeFiles": "dist/cia-vial-del-llano/**"
+    }
+  }
+}

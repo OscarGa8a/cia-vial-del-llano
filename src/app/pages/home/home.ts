@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import {
   HeroSection,
   TrustBadgesSection,
@@ -10,6 +10,8 @@ import {
   FaqSection,
   FinalCtaSection,
 } from './components';
+import { Seo } from '@core/services/seo';
+import { PAGE_SEO_CONFIG, SEO_CONFIG } from '@core/constants/seo';
 
 /**
  * Home page — the main landing page of CIA Vial del Llano.
@@ -32,4 +34,19 @@ import {
     FinalCtaSection,
   ],
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  private readonly seo = inject(Seo);
+
+  ngOnInit(): void {
+    this.seo.updateMetaTags({
+      title: PAGE_SEO_CONFIG.home.title,
+      description: PAGE_SEO_CONFIG.home.description,
+      keywords: PAGE_SEO_CONFIG.home.keywords,
+      url: SEO_CONFIG.siteUrl,
+      type: 'website',
+    });
+
+    this.seo.addStructuredData(this.seo.generateOrganizationSchema(), 'org-schema');
+    this.seo.addStructuredData(this.seo.generateLocalBusinessSchema(), 'local-business-schema');
+  }
+}
