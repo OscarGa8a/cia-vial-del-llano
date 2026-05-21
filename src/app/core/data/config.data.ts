@@ -45,7 +45,7 @@ export const CONFIG = {
   social: {
     facebook: 'https://facebook.com/ciavialdelllano',
     instagram: 'https://instagram.com/ciavialdelllano',
-    whatsapp: 'https://wa.me/573212878660',
+    whatsapp: 'https://wa.me/573177865735',
   },
 
   /** Default WhatsApp message when no specific context is provided */
