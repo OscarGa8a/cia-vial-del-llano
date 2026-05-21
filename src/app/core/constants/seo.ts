@@ -1,7 +1,7 @@
 import { CONFIG } from '@core/data/config.data';
 
 /** Base site URL used to build canonical and absolute SEO asset links. */
-const SITE_URL = 'https://cia-vial-del-llano.vercel.app/';
+const SITE_URL = 'https://ciavialdelllano.com.co';
 
 /**
  * Global SEO defaults and structured-data helpers for the full application.
