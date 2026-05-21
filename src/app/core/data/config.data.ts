@@ -12,8 +12,8 @@ export const CONFIG = {
   },
   contact: {
     /** WhatsApp number in international format without + */
-    whatsappNumber: '573212878660',
-    phone: '+57 321 287 8660',
+    whatsappNumber: '573177865735',
+    phone: '+57 317 786 5735',
     email: 'ciavialdelllano@gmail.com',
   },
 
