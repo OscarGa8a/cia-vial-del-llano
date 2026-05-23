@@ -92,29 +92,13 @@ export const COMPANY: { MISSION: string; VISSION: string } = {
 /** Team members displayed on the About page. */
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Carlos Rodríguez',
-    role: 'Director General',
+    name: 'Edwin Castañeda',
+    role: 'Dueño y Fundador',
     description:
-      'Fundador de CIA VIAL DEL LLANO con más de 15 años de experiencia en el sector de tránsito.',
-    initials: 'CR',
+      'Fundador de CIA VIAL DEL LLANO con más de 20 años de experiencia en el sector de tránsito.',
+    initials: 'EC',
     gradientFrom: 'from-primary',
     gradientTo: 'to-primary-light',
-  },
-  {
-    name: 'María González',
-    role: 'Instructora Principal',
-    description: 'Especialista en educación vial con certificación del Ministerio de Transporte.',
-    initials: 'MG',
-    gradientFrom: 'from-accent',
-    gradientTo: 'to-highlight',
-  },
-  {
-    name: 'Andrea Martínez',
-    role: 'Coordinadora Administrativa',
-    description: 'Encargada de atención al cliente y gestión de citas. Siempre dispuesta a ayudar.',
-    initials: 'AM',
-    gradientFrom: 'from-highlight',
-    gradientTo: 'to-success',
   },
 ] as const;
 
@@ -276,7 +260,7 @@ export const TESTIMONIALS: readonly Testimonial[] = [
 /** Stats displayed on the About page. */
 export const ABOUT_STATS = [
   { value: '2+', label: 'Años de experiencia', highlight: false },
-  { value: '1.000+', label: 'Cursos realizados', highlight: true },
-  { value: '1.500+', label: 'Conductores capacitados', highlight: false },
+  { value: '5.000+', label: 'Cursos realizados', highlight: true },
+  { value: '5.000+', label: 'Conductores capacitados', highlight: false },
   { value: '100%', label: 'Certificados válidos', highlight: true },
 ] as const;
