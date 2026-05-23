@@ -24,8 +24,10 @@
         >
           <app-icon source="custom" name="whatsapp-custom" [size]="28" />
         </div>
-        <h3 class="font-bold text-lg">WhatsApp</h3>
-        <p class="text-sm text-white/80 text-center">Respuesta inmediata</p>
+        <div class="flex flex-col items-center gap-1">
+          <h3 class="font-bold text-lg">WhatsApp</h3>
+          <p class="text-sm text-white/80 text-center">Respuesta inmediata</p>
+        </div>
         <span
           class="absolute top-3 right-3 text-xs bg-white/20 px-2 py-0.5 rounded-full font-medium"
         >
@@ -42,10 +44,14 @@
         <div class="w-16 h-16 rounded-full bg-info-light flex items-center justify-center">
           <app-icon [lucideIcon]="PhoneIcon" [size]="28" class="text-info" />
         </div>
-        <h3 class="font-bold text-lg text-text-primary group-hover:text-primary transition-colors">
-          Teléfono
-        </h3>
-        <p class="text-sm text-text-secondary">{{ phoneNumber }}</p>
+        <div class="flex flex-col items-center gap-1">
+          <h3
+            class="font-bold text-lg text-text-primary group-hover:text-primary transition-colors"
+          >
+            Teléfono
+          </h3>
+          <p class="text-sm text-text-secondary">{{ phoneNumber }}</p>
+        </div>
       </a>
 
       <!-- Email card -->
@@ -57,10 +63,14 @@
         <div class="w-16 h-16 rounded-full bg-accent-light flex items-center justify-center">
           <app-icon [lucideIcon]="MailIcon" [size]="28" class="text-accent" />
         </div>
-        <h3 class="font-bold text-lg text-text-primary group-hover:text-primary transition-colors">
-          Correo
-        </h3>
-        <p class="text-sm text-text-secondary">{{ email }}</p>
+        <div class="flex flex-col items-center gap-1">
+          <h3
+            class="font-bold text-lg text-text-primary group-hover:text-primary transition-colors"
+          >
+            Correo
+          </h3>
+          <p class="text-sm text-text-secondary">{{ email }}</p>
+        </div>
       </a>
 
       <!-- Location card -->
@@ -72,10 +82,14 @@
         <div class="w-16 h-16 rounded-full bg-success-light flex items-center justify-center">
           <app-icon [lucideIcon]="MapPinIcon" [size]="28" class="text-success" />
         </div>
-        <h3 class="font-bold text-lg text-text-primary group-hover:text-primary transition-colors">
-          Ubicación
-        </h3>
-        <p class="text-sm text-text-secondary">{{ city }}</p>
+        <div class="flex flex-col items-center gap-1">
+          <h3
+            class="font-bold text-lg text-text-primary group-hover:text-primary transition-colors"
+          >
+            Ubicación
+          </h3>
+          <p class="text-sm text-text-secondary">{{ city }}</p>
+        </div>
       </a>
     </div>
   </div>
