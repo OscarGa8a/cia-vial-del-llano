@@ -43,9 +43,9 @@ export const CONFIG = {
   wazeUrl: 'https://waze.com/ul?ll=4.1505191414235805,-73.62014036418411&navigate=yes',
 
   social: {
-    facebook: 'https://facebook.com/ciavialdelllano',
+    facebook: 'https://facebook.com/profile.php?id=61590357297488',
     instagram: 'https://instagram.com/ciavialdelllano',
-    tiktok: 'https://tiktok.com/@ciavialdelllano',
+    tiktok: 'https://tiktok.com/@cia.vial.del.llano',
     whatsapp: 'https://wa.me/573177865735',
   },
 
