@@ -43,7 +43,7 @@
               <app-icon class="text-highlight" [lucideIcon]="Clock4Icon" [size]="24" />
             </div>
             <div class="grow">
-              <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2 justify-between mb-3">
                 <h3 class="font-sans font-bold text-lg text-text-primary">Horarios de Atención</h3>
                 <span
                   class="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full"
@@ -183,7 +183,7 @@
         <app-icon [lucideIcon]="MapPinIcon" [size]="20" />
         Abrir en Google Maps
       </a>
-      <a
+      <!-- <a
         [href]="config.wazeUrl"
         target="_blank"
         rel="noopener noreferrer"
@@ -193,7 +193,7 @@
         <app-icon [lucideIcon]="UsersIcon" [size]="20" />
 
         Abrir en Waze
-      </a>
+      </a> -->
       <button
         (click)="copyAddress()"
         class="inline-flex items-center justify-center gap-2 bg-white hover:bg-surface-alt text-text-primary font-semibold px-6 py-4 rounded-xl border-2 border-border transition-all duration-300 cursor-pointer"
