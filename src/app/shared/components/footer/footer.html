@@ -22,6 +22,33 @@
         <!-- Social Links -->
         <div class="flex gap-3">
           <a
+            [href]="config.social.facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 rounded-full bg-white/10 hover:bg-facebook/30 flex items-center justify-center transition-colors"
+            aria-label="Facebook de CIA Vial del Llano"
+          >
+            <app-icon source="custom" name="images/facebook.svg" [size]="16" />
+          </a>
+          <a
+            [href]="config.social.instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 rounded-full bg-white/10 hover:bg-instagram/30 flex items-center justify-center transition-colors"
+            aria-label="Instagram de CIA Vial del Llano"
+          >
+            <app-icon source="custom" name="images/instagram.svg" [size]="16" />
+          </a>
+          <a
+            [href]="config.social.tiktok"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 rounded-full bg-white/10 hover:bg-tiktok/20 flex items-center justify-center transition-colors"
+            aria-label="TikTok de CIA Vial del Llano"
+          >
+            <app-icon source="custom" name="images/tiktok.svg" [size]="16" />
+          </a>
+          <a
             [href]="config.social.whatsapp"
             target="_blank"
             rel="noopener noreferrer"

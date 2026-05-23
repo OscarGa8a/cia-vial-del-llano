@@ -7,6 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CONFIG } from '@core/data/config.data';
 import { Whatsapp } from '@core/services';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { distinctUntilChanged, fromEvent, map, startWith } from 'rxjs';
@@ -42,6 +43,9 @@ export class Header {
   private readonly whatsapp = inject(Whatsapp);
   /** Injected document reference for scroll state detection. */
   private readonly _doc = inject(DOCUMENT);
+
+  /** Global site configuration with social media URLs. */
+  protected readonly config = CONFIG;
 
   /** True when the document is scrolled beyond the header threshold. */
   protected readonly isScrolled = toSignal(
