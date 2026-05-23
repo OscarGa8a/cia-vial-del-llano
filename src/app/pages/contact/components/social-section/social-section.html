@@ -1,0 +1,72 @@
+<section class="py-12 md:py-20 bg-white" aria-labelledby="social-heading">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 id="social-heading" class="font-sans font-bold text-2xl sm:text-3xl text-text-primary mb-3">
+      Síguenos en <span class="text-primary">redes sociales</span>
+    </h2>
+    <p class="text-text-secondary text-center mb-10 max-w-lg mx-auto">
+      Enterate de novedades, tips de tránsito y promociones exclusivas.
+    </p>
+
+    <div class="flex items-center justify-center gap-4 sm:gap-6">
+      <!-- Facebook -->
+      <a
+        [href]="config.social.facebook"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-card group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl border border-border bg-white transition-all hover:scale-105 hover:shadow-lg active:scale-95"
+        aria-label="Seguir a CIA Vial del Llano en Facebook"
+      >
+        <div
+          class="w-14 h-14 rounded-full bg-facebook/10 flex items-center justify-center transition-colors group-hover:bg-facebook/20"
+        >
+          <app-icon source="custom" name="images/facebook.svg" />
+        </div>
+        <span
+          class="text-sm font-semibold text-text-primary group-hover:text-facebook transition-colors"
+        >
+          Facebook
+        </span>
+      </a>
+
+      <!-- Instagram -->
+      <a
+        [href]="config.social.instagram"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-card group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl border border-border bg-white transition-all hover:scale-105 hover:shadow-lg active:scale-95"
+        aria-label="Seguir a CIA Vial del Llano en Instagram"
+      >
+        <div
+          class="w-14 h-14 rounded-full bg-instagram/10 flex items-center justify-center transition-colors group-hover:bg-instagram/20"
+        >
+          <app-icon source="custom" name="images/instagram.svg" />
+        </div>
+        <span
+          class="text-sm font-semibold text-text-primary group-hover:text-instagram transition-colors"
+        >
+          Instagram
+        </span>
+      </a>
+
+      <!-- TikTok -->
+      <a
+        [href]="config.social.tiktok"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-card group flex flex-col items-center gap-3 p-6 sm:p-8 rounded-2xl border border-border bg-white transition-all hover:scale-105 hover:shadow-lg active:scale-95"
+        aria-label="Seguir a CIA Vial del Llano en TikTok"
+      >
+        <div
+          class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center transition-colors group-hover:bg-gray-200"
+        >
+          <app-icon source="custom" name="images/tiktok.svg" />
+        </div>
+        <span
+          class="text-sm font-semibold text-text-primary group-hover:text-text-primary transition-colors"
+        >
+          TikTok
+        </span>
+      </a>
+    </div>
+  </div>
+</section>

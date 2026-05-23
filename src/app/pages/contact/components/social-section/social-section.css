@@ -1,0 +1,10 @@
+.social-card {
+  min-width: 120px;
+}
+
+@media (max-width: 640px) {
+  .social-card {
+    min-width: 90px;
+    padding: 1rem;
+  }
+}
