@@ -8,18 +8,18 @@
     [class]="className()"
   />
 } @else if (localSource === 'custom') {
-  @switch (name()) {
-    @case ('whatsapp-custom') {
-      <svg
-        [attr.width]="localSize"
-        [attr.height]="localSize"
-        [attr.fill]="localColor"
-        [class]="className()"
-        fill="currentColor"
-        viewBox="0 0 32 32"
-      >
-        <path [attr.d]="customIcons['whatsapp-custom']" />
-      </svg>
-    }
+  @if (name() === 'whatsapp-custom') {
+    <svg
+      [attr.width]="localSize"
+      [attr.height]="localSize"
+      [attr.fill]="localColor"
+      [class]="className()"
+      fill="currentColor"
+      viewBox="0 0 32 32"
+    >
+      <path [attr.d]="customIcons['whatsapp-custom']" />
+    </svg>
+  } @else {
+    <img [src]="name()" [alt]="name()" [width]="localSize" [height]="localSize" />
   }
 }

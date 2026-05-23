@@ -13,7 +13,7 @@ export const CONFIG = {
   contact: {
     /** WhatsApp number in international format without + */
     whatsappNumber: '573177865735',
-    phone: '+57 317 786 5735',
+    phone: '317 786 5735',
     email: 'ciavialdelllano@gmail.com',
   },
 
@@ -32,19 +32,20 @@ export const CONFIG = {
     sunday: 'Domingos: Cerrado',
   },
 
-  /** Google Maps embed src URL */
+  /** Google Maps embed src URL — uses clean coordinates, no session params */
   mapEmbedUrl:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15952.123456789!2d-73.6366!3d4.1533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2e0e0e0e0e0e%3A0x0!2sVillavicencio%2C+Meta!5e0!3m2!1ses!2sco!4v1700000000000!5m2!1ses!2sco',
+    'https://www.google.com/maps?q=4.1505191414235805,-73.62014036418411&z=17&hl=es&output=embed',
 
-  /** Google Maps directions URL */
-  googleMapsUrl: 'https://maps.google.com/?q=Villavicencio,+Meta,+Colombia',
+  /** Google Maps directions URL — opens in app/web with exact pin */
+  googleMapsUrl: 'https://www.google.com/maps?q=4.1505191414235805,-73.62014036418411&z=17&hl=es',
 
   /** Waze navigation URL */
-  wazeUrl: 'https://waze.com/ul?ll=4.1533,-73.6366&navigate=yes',
+  wazeUrl: 'https://waze.com/ul?ll=4.1505191414235805,-73.62014036418411&navigate=yes',
 
   social: {
     facebook: 'https://facebook.com/ciavialdelllano',
     instagram: 'https://instagram.com/ciavialdelllano',
+    tiktok: 'https://tiktok.com/@ciavialdelllano',
     whatsapp: 'https://wa.me/573177865735',
   },
 
@@ -60,7 +61,7 @@ export const CONFIG = {
   smdlvDaily2026: 58363.5,
 
   stats: {
-    courses: '1.000+',
+    courses: '5.000+',
     satisfaction: '98%',
     yearsExperience: '2+',
   },

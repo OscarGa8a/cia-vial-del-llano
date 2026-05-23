@@ -3,3 +3,4 @@ export { ContactOptionsSection } from './contact-options-section/contact-options
 export { FaqQuickLinksSection } from './faq-quick-links-section/faq-quick-links-section';
 export { FinalCtaSection } from './final-cta-section/final-cta-section';
 export { HeroSection } from './hero-section/hero-section';
+export { SocialSection } from './social-section/social-section';

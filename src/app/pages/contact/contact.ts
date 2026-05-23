@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, type OnInit, inject } from '@angular/core';
 import {
   ContactFormSection,
   ContactOptionsSection,
   FaqQuickLinksSection,
   FinalCtaSection,
   HeroSection,
+  SocialSection,
 } from './components';
 import { Seo } from '@core/services/seo';
 import { PAGE_SEO_CONFIG, SEO_CONFIG } from '@core/constants/seo';
@@ -25,6 +26,7 @@ import { PAGE_SEO_CONFIG, SEO_CONFIG } from '@core/constants/seo';
     ContactOptionsSection,
     ContactFormSection,
     FaqQuickLinksSection,
+    SocialSection,
     FinalCtaSection,
   ],
   templateUrl: './contact.html',

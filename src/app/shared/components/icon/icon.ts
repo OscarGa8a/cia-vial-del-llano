@@ -1,5 +1,5 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
-import { LucideAngularModule, LucideIconData } from 'lucide-angular';
+import { LucideAngularModule, type LucideIconData } from 'lucide-angular';
 
 /** Supported icon library types. */
 type IconType = 'material' | 'lucide' | 'custom';
