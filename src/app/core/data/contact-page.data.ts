@@ -53,6 +53,8 @@ export interface ContactQuickLink {
 /** Subject options for the contact form. */
 export const CONTACT_SUBJECTS: readonly SubjectOption[] = [
   { value: 'curso', label: 'Información sobre cursos' },
+  { value: 'refrendacion', label: 'Información sobre refrendación de licencia' },
+  { value: 'examenes-medicos', label: 'Información sobre exámenes médicos' },
   { value: 'comparendo', label: 'Consulta sobre comparendos' },
   { value: 'descuento', label: 'Descuentos en multas' },
   { value: 'certificado', label: 'Certificados' },
