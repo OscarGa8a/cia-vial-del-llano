@@ -1,0 +1,64 @@
+<section
+  class="hero-gradient relative flex min-h-dvh flex-col justify-center overflow-hidden pb-0 pt-20 sm:h-dvh"
+  aria-labelledby="medical-exams-hero-heading"
+>
+  <div class="absolute inset-0 size-full">
+    <!-- TODO: Replace the public ID only when an approved Cloudinary asset is supplied. -->
+    <img
+      [ngSrc]="heroImagePublicId"
+      fill
+      priority
+      [attr.data-image-public-id]="heroImagePublicId"
+      class="size-full object-cover opacity-20"
+      alt=""
+    />
+  </div>
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl py-8">
+      <nav aria-label="Miga de pan" class="mb-6 flex items-center gap-2 text-sm text-white/60">
+        <a routerLink="/" class="transition-colors hover:text-white">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span class="font-semibold text-highlight">Exámenes médicos</span>
+      </nav>
+
+      <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/15 px-4 py-2 text-sm font-semibold text-success">
+        <app-icon [lucideIcon]="StethoscopeIcon" [size]="16" />
+        Servicio de exámenes médicos
+      </div>
+
+      <h1 id="medical-exams-hero-heading" class="font-sans text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+        Exámenes médicos para <span class="text-highlight">licencia de conducción en Villavicencio</span>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-white sm:text-xl">
+        Solicita exámenes médicos para licencia de conducción en Villavicencio y confirma los detalles para tu caso.
+      </p>
+
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <button
+          type="button"
+          (click)="contact()"
+          class="inline-flex items-center justify-center gap-3 rounded-full bg-whatsapp px-8 py-4 text-lg font-semibold text-white shadow-xl transition-all hover:scale-105 hover:bg-whatsapp-hover active:scale-95"
+        >
+          <app-icon source="custom" name="whatsapp-custom" [size]="22" />
+          Solicitar exámenes médicos
+        </button>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/75">
+        @for (highlight of quickHighlights; track highlight) {
+          <div class="flex items-center gap-2">
+            <app-icon [lucideIcon]="CheckIcon" [size]="14" [strokeWidth]="3" class="text-success" />
+            <span>{{ highlight }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 hidden h-20 w-full overflow-hidden sm:block">
+    <svg class="absolute bottom-0 w-full" viewBox="0 0 1440 80" preserveAspectRatio="none" fill="white" aria-hidden="true">
+      <path d="M0,30 C300,10 1100,80 1440,35 L1440,80 L0,80 Z" />
+    </svg>
+  </div>
+</section>
