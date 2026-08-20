@@ -1,0 +1,34 @@
+<section class="bg-white py-14 sm:py-20" aria-labelledby="services-heading">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="inline-block rounded-full bg-accent-light px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-accent">
+        Servicios para tu licencia
+      </span>
+      <h2 id="services-heading" class="mt-4 font-sans text-3xl font-bold text-text-primary sm:text-4xl">Servicios para tus necesidades</h2>
+      <p class="mt-4 text-lg leading-8 text-text-secondary">Encuentra el servicio que necesitas y solicita los detalles para tu caso.</p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      @for (service of services; track service.id) {
+        <article class="group relative flex min-h-82 flex-col overflow-hidden rounded-3xl border border-border bg-gray-50 p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl">
+          <div class="absolute right-0 top-0 size-28 -translate-y-8 translate-x-8 rounded-full bg-highlight/15 transition-transform duration-300 group-hover:scale-125" aria-hidden="true"></div>
+          <div class="relative flex size-13 items-center justify-center rounded-2xl bg-primary text-highlight shadow-lg">
+            <app-icon [lucideIcon]="service.icon" [size]="27" />
+          </div>
+          <h3 class="relative mt-6 font-sans text-2xl font-bold text-primary">{{ service.title }}</h3>
+          <p class="relative mt-3 leading-7 text-text-secondary">{{ service.description }}</p>
+          <div class="relative mt-auto pt-7">
+            <a [routerLink]="service.route" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 font-semibold text-white transition-colors hover:bg-primary/90">
+              {{ service.id === 'license-renewal' ? 'Ver servicio de refrendación' : service.id === 'medical-exams' ? 'Ver exámenes médicos' : 'Ver servicio' }}
+              <app-icon [lucideIcon]="ArrowRightIcon" [size]="18" />
+            </a>
+            <button type="button" (click)="contact(service)" class="mt-4 inline-flex w-full items-center justify-center gap-2 text-sm font-semibold text-whatsapp transition-colors hover:text-whatsapp-hover">
+              <app-icon [lucideIcon]="MessageCircleIcon" [size]="17" />
+              Consultar por WhatsApp
+            </button>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
