@@ -1,0 +1,27 @@
+<section class="bg-white py-12 md:py-20" aria-labelledby="license-renewal-preparation-heading">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="mb-4 inline-block rounded-full bg-accent-light px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-accent">Antes de solicitar el servicio</span>
+      <h2 id="license-renewal-preparation-heading" class="mb-4 font-sans text-3xl font-bold text-text-primary sm:text-4xl">Prepárate para tu refrendación</h2>
+      <p class="text-lg leading-relaxed text-text-secondary">Reúne la información disponible para iniciar el proceso y confirma los detalles aplicables antes de avanzar.</p>
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <article class="rounded-2xl border border-border bg-surface-alt p-6 sm:p-8">
+        <h3 class="font-sans text-xl font-bold text-primary">Para iniciar</h3>
+        <ul class="mt-5 space-y-4" role="list">
+          @for (item of prepareItems; track item) {
+            <li class="flex gap-3 text-text-secondary"><span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary text-white"><app-icon [lucideIcon]="CheckIcon" [size]="14" /></span><span>{{ item }}</span></li>
+          }
+        </ul>
+      </article>
+      <article class="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+        <h3 class="font-sans text-xl font-bold text-primary">Confirma para tu caso</h3>
+        <ul class="mt-5 space-y-4" role="list">
+          @for (item of confirmItems; track item) {
+            <li class="flex gap-3 text-text-secondary"><span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-accent text-white"><app-icon [lucideIcon]="CheckIcon" [size]="14" /></span><span>{{ item }}</span></li>
+          }
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>

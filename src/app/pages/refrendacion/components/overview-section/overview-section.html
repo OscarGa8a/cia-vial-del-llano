@@ -1,0 +1,25 @@
+<section class="bg-white py-12 md:py-20" aria-labelledby="license-renewal-overview-heading">
+  <div class="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 sm:px-6 lg:flex-row lg:gap-16 lg:px-8">
+    <div class="w-full lg:w-3/5">
+      <span class="mb-4 inline-block rounded-full bg-primary-lighter px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">Refrendación o renovación</span>
+      <h2 id="license-renewal-overview-heading" class="mb-6 font-sans text-3xl font-bold text-text-primary sm:text-4xl">Renueva tu licencia de conducción</h2>
+      <p class="mb-6 text-lg leading-relaxed text-text-secondary">La refrendación es la renovación que actualiza la vigencia de tu licencia de conducción. Solicita el servicio de refrendación en Villavicencio con CIA Vial del Llano.</p>
+      <p class="mb-8 leading-relaxed text-text-secondary">Escríbenos para solicitar el servicio y confirmar los detalles disponibles para tu caso.</p>
+      <div class="grid gap-4 sm:grid-cols-3">
+        @for (highlight of highlights; track highlight.title) {
+          <article class="rounded-2xl border border-border p-4">
+            <div class="flex size-11 items-center justify-center rounded-xl bg-accent-light text-accent" aria-hidden="true">
+              <app-icon [lucideIcon]="highlight.icon" [size]="20" />
+            </div>
+            <h3 class="mt-4 font-sans font-bold text-text-primary">{{ highlight.title }}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">{{ highlight.description }}</p>
+          </article>
+        }
+      </div>
+    </div>
+    <div class="relative aspect-square w-full max-w-md overflow-hidden rounded-2xl lg:w-2/5">
+      <!-- TODO: Replace the public ID only when an approved Cloudinary asset is supplied. -->
+      <img [ngSrc]="referenceImagePublicId" fill [attr.data-image-public-id]="referenceImagePublicId" class="object-cover" alt="Imagen de referencia de una licencia refrendada" />
+    </div>
+  </div>
+</section>

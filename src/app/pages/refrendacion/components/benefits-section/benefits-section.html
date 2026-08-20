@@ -1,0 +1,18 @@
+<section class="bg-surface-alt py-12 md:py-20" aria-labelledby="license-renewal-benefits-heading">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-14 text-center">
+      <span class="mb-4 inline-block rounded-full bg-success-light px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-success">Servicio de refrendación</span>
+      <h2 id="license-renewal-benefits-heading" class="mb-4 font-sans text-3xl font-bold text-text-primary sm:text-4xl">¿Cuándo puedes necesitar la refrendación?</h2>
+      <p class="mx-auto max-w-2xl text-lg text-text-secondary">Solicita el servicio para confirmar la atención y las acciones que correspondan a tu licencia.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      @for (benefit of benefits; track benefit.title) {
+        <article class="card-hover flex flex-col items-center rounded-2xl border border-border bg-white p-7 text-center shadow-sm">
+          <div class="mb-5 flex size-14 items-center justify-center rounded-2xl" [class]="benefit.classes" aria-hidden="true"><app-icon [lucideIcon]="benefit.icon" [size]="22" /></div>
+          <h3 class="mb-2 font-sans text-lg font-bold text-text-primary">{{ benefit.title }}</h3>
+          <p class="text-sm leading-relaxed text-text-secondary">{{ benefit.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
