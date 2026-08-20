@@ -16,8 +16,8 @@
           <span class="font-sans font-bold text-lg">CIA Vial del Llano</span>
         </div>
         <p class="text-white/70 text-sm leading-relaxed mb-4">
-          Centro Integral de Atención habilitado y vigilado por el Ministerio de Transporte. Cursos
-          pedagógicos certificados para obtener descuento en comparendos y fotomultas.
+          Información clara sobre cursos pedagógicos, refrendación de licencia y exámenes médicos.
+          Contáctanos por WhatsApp para resolver tus dudas.
         </p>
         <!-- Social Links -->
         <div class="flex gap-3">
@@ -50,6 +50,8 @@
           </a>
           <a
             [href]="config.social.whatsapp"
+                data-whatsapp-service="general"
+                data-whatsapp-placement="footer-social"
             target="_blank"
             rel="noopener noreferrer"
             class="w-9 h-9 rounded-full bg-whatsapp/80 hover:bg-whatsapp flex items-center justify-center transition-colors"
@@ -125,18 +127,18 @@
       <!-- Column 4: Legal / Trust -->
       <div>
         <h3 class="font-sans font-bold text-sm uppercase tracking-wide text-white/50 mb-4">
-          Entidades
+          Servicios
         </h3>
         <div class="flex flex-col gap-2 mb-6">
-          @for (badge of trustBadges; track badge) {
+          @for (service of serviceLinks; track service.id) {
             <div class="flex items-center gap-2 text-sm text-white/70">
               <div class="w-1.5 h-1.5 rounded-full bg-highlight shrink-0"></div>
-              {{ badge }}
+              <a [routerLink]="service.route" class="text-white/70 hover:text-white transition-colors">{{ service.title }}</a>
             </div>
           }
         </div>
         <p class="text-xs text-white/40 leading-relaxed">
-          Habilitados y vigilados por las entidades oficiales del sector transporte colombiano.
+          La información detallada se confirma directamente por nuestros canales de contacto.
         </p>
       </div>
     </div>

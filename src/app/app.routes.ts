@@ -12,6 +12,18 @@ export const routes: Routes = [
     title: 'Curso Pedagógico | CIA Vial del Llano',
   },
   {
+    path: 'refrendacion',
+    loadComponent: () =>
+      import('./pages/refrendacion/refrendacion').then((m) => m.Refrendacion),
+    title: 'Refrendación de Licencia en Villavicencio | CIA Vial del Llano',
+  },
+  {
+    path: 'examenes-medicos',
+    loadComponent: () =>
+      import('./pages/examenes-medicos/examenes-medicos').then((m) => m.ExamenesMedicos),
+    title: 'Exámenes médicos para licencia en Villavicencio | CIA Vial',
+  },
+  {
     path: 'calculadora',
     loadComponent: () => import('./pages/calculator/calculator').then((m) => m.Calculator),
     title: 'Calculadora de Multas | CIA Vial del Llano',
