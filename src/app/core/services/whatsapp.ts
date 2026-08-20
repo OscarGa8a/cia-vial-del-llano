@@ -1,6 +1,8 @@
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CONFIG } from '../data/config.data';
+import type { Service } from '@core/models/service.model';
+import { Analytics } from './analytics';
 
 /**
  * Service for generating WhatsApp deep links and opening WhatsApp chats.
@@ -9,6 +11,7 @@ import { CONFIG } from '../data/config.data';
 @Injectable({ providedIn: 'root' })
 export class Whatsapp {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly analytics = inject(Analytics);
 
   /**
    * Generates a WhatsApp deep link URL with an optional pre-filled message.
@@ -25,9 +28,15 @@ export class Whatsapp {
    * No-op during server-side rendering.
    * @param message - Optional message text.
    */
-  openChat(message?: string): void {
+  openChat(message?: string, tracking?: { service: Service['id']; placement: string }): void {
+    if (tracking) this.analytics.trackWhatsappClick(tracking.service, tracking.placement);
     if (!isPlatformBrowser(this.platformId)) return;
     window.open(this.generateLink(message), '_blank', 'noopener,noreferrer');
+  }
+
+  /** Opens a service-specific WhatsApp conversation and records its CTA placement. */
+  openServiceChat(service: Service, placement: string): void {
+    this.openChat(service.whatsappMessage, { service: service.id, placement });
   }
 
   /**

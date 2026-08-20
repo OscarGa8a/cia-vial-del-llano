@@ -1,0 +1,13 @@
+.faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 200ms ease;
+}
+
+.faq-content > div {
+  overflow: hidden;
+}
+
+.faq-content.open {
+  grid-template-rows: 1fr;
+}
