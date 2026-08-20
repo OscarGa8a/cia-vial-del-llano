@@ -16,7 +16,7 @@ export const SEO_CONFIG = {
 
   defaultTitle: 'CIA Vial del Llano | Cursos para Descuento en Comparendos',
   defaultDescription:
-    'Reducí tus multas de tránsito hasta un 50% con el curso pedagógico de CIA Vial del Llano en Villavicencio, Meta. Ley 1383 de 2010. Atención presencial.',
+    'Información sobre cursos pedagógicos, refrendación de licencia y exámenes médicos de CIA Vial del Llano.',
   defaultKeywords: [
     'cursos comparendos',
     'descuento multas tránsito',
@@ -167,14 +167,36 @@ export const PAGE_SEO_CONFIG: Record<string, PageSeoEntry> = {
     ],
   },
   contact: {
-    title: 'Contacto | CIA Vial del Llano - +57 321 287 8660',
+    title: 'Contacto | CIA Vial del Llano - +57 317 786 5735',
     description:
-      'Contactanos para información sobre cursos y descuentos en comparendos. WhatsApp: +57 321 287 8660. Email: ciavialdelllano@gmail.com.',
+      'Contáctanos para información sobre nuestros servicios. WhatsApp: +57 317 786 5735. Email: ciavialdelllano@gmail.com.',
     keywords: [
       'contacto CIA Vial del Llano',
       'WhatsApp cursos comparendos',
       'teléfono Villavicencio',
       'email CIA Vial',
     ],
+  },
+  licenseRenewal: {
+    title: 'Refrendación de Licencia en Villavicencio | CIA Vial del Llano',
+    description:
+          'Solicita el servicio de refrendación o renovación de licencia de conducción en Villavicencio con CIA Vial del Llano y confirma los detalles para tu caso.',
+    keywords: [
+          'refrendación de licencia Villavicencio',
+          'renovación de licencia Villavicencio',
+          'licencia de conducción Villavicencio',
+          'CIA Vial del Llano',
+        ],
+  },
+  medicalExams: {
+    title: 'Exámenes médicos para licencia en Villavicencio | CIA Vial',
+    description:
+          'Solicita exámenes médicos para licencia de conducción en Villavicencio con CIA Vial del Llano y confirma los detalles para tu caso.',
+    keywords: [
+          'exámenes médicos para licencia Villavicencio',
+          'exámenes médicos licencia de conducción',
+          'exámenes médicos Villavicencio',
+          'CIA Vial del Llano',
+        ],
   },
 };
