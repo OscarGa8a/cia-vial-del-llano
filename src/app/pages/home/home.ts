@@ -11,12 +11,10 @@ import {
   FinalCtaSection,
 } from './components';
 import { Seo } from '@core/services/seo';
+import { ServicesSection } from './components/services-section/services-section';
 import { PAGE_SEO_CONFIG, SEO_CONFIG } from '@core/constants/seo';
 
-/**
- * Home page — the main landing page of CIA Vial del Llano.
- * Orchestrates all section components in the correct visual order.
- */
+/** Home page — the main landing page of CIA Vial del Llano. */
 @Component({
   selector: 'app-home',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +24,7 @@ import { PAGE_SEO_CONFIG, SEO_CONFIG } from '@core/constants/seo';
     HeroSection,
     TrustBadgesSection,
     DiscountsSection,
+    ServicesSection,
     StepsSection,
     CalculatorPreviewSection,
     TestimonialsSection,
