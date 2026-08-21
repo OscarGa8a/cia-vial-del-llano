@@ -18,7 +18,7 @@ describe('LicenseRenewalHeroSection', () => {
     const element = fixture.nativeElement as HTMLElement;
     expect(element.querySelector('h1')?.textContent).toContain('Refrendación de licencia de conducción en Villavicencio');
     expect(element.querySelector('img')?.getAttribute('data-image-public-id')).toContain(
-      'TODO_CLOUDINARY_PUBLIC_ID_LICENSE_RENEWAL',
+      'banner_endorsement_bwzq91',
     );
     expect(element.textContent).toContain('Confirmación según tu caso');
     expect(element.querySelector('button')?.textContent?.trim()).toBe('Solicitar refrendación');

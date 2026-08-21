@@ -9,6 +9,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MedicalExamsPurposeSection {
-  /** TODO: Replace only after the user supplies the approved Cloudinary public ID. */
-  protected readonly referenceImagePublicId = 'TODO_CLOUDINARY_PUBLIC_ID_MEDICAL_EXAMS_PURPOSE';
+  protected readonly referenceImagePublicId = 'certificado_exams_z25lwz';
 }

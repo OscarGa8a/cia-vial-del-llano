@@ -8,7 +8,7 @@
       <p class="mt-4 text-lg leading-8 text-text-secondary">Encuentra el servicio que necesitas y solicita los detalles para tu caso.</p>
     </div>
 
-    <div class="mt-12 grid gap-6 md:grid-cols-3">
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       @for (service of services; track service.id) {
         <article class="group relative flex min-h-82 flex-col overflow-hidden rounded-3xl border border-border bg-gray-50 p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl">
           <div class="absolute right-0 top-0 size-28 -translate-y-8 translate-x-8 rounded-full bg-highlight/15 transition-transform duration-300 group-hover:scale-125" aria-hidden="true"></div>
@@ -19,10 +19,10 @@
           <p class="relative mt-3 leading-7 text-text-secondary">{{ service.description }}</p>
           <div class="relative mt-auto pt-7">
             <a [routerLink]="service.route" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 font-semibold text-white transition-colors hover:bg-primary/90">
-              {{ service.id === 'license-renewal' ? 'Ver servicio de refrendación' : service.id === 'medical-exams' ? 'Ver exámenes médicos' : 'Ver servicio' }}
+              Ver servicio
               <app-icon [lucideIcon]="ArrowRightIcon" [size]="18" />
             </a>
-            <button type="button" (click)="contact(service)" class="mt-4 inline-flex w-full items-center justify-center gap-2 text-sm font-semibold text-whatsapp transition-colors hover:text-whatsapp-hover">
+            <button type="button" (click)="contact(service)" class="mt-4 inline-flex w-full items-center justify-center cursor-pointer gap-2 text-sm font-semibold text-whatsapp transition-colors hover:text-whatsapp-hover">
               <app-icon [lucideIcon]="MessageCircleIcon" [size]="17" />
               Consultar por WhatsApp
             </button>

@@ -19,8 +19,7 @@ export class MedicalExamsHeroSection {
   private readonly whatsapp = inject(Whatsapp);
   private readonly service = getServiceById(SERVICE_IDS.MEDICAL_EXAMS);
 
-  /** TODO: Replace only after the user supplies the approved Cloudinary public ID. */
-  protected readonly heroImagePublicId = 'TODO_CLOUDINARY_PUBLIC_ID_MEDICAL_EXAMS';
+  protected readonly heroImagePublicId = 'banner_medical_exams_ipillx';
   protected readonly quickHighlights = [
     'Servicio en Villavicencio',
     'Solicitud por WhatsApp',
