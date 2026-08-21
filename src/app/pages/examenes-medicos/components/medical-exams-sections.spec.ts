@@ -7,7 +7,7 @@ import { MedicalExamsProcessSection } from './process-section/process-section';
 import { MedicalExamsPurposeSection } from './purpose-section/purpose-section';
 
 describe('medical exams page sections', () => {
-  it('renders the purpose image placeholder and the three medical exam areas', async () => {
+  it('renders the purpose image and the three medical exam areas', async () => {
     await TestBed.configureTestingModule({
       imports: [MedicalExamsPurposeSection, MedicalExamsEvaluationsSection],
     }).compileComponents();
@@ -16,7 +16,7 @@ describe('medical exams page sections', () => {
     purpose.detectChanges();
     const purposeElement = purpose.nativeElement as HTMLElement;
     expect(purposeElement.querySelector('img')?.getAttribute('data-image-public-id')).toBe(
-      'TODO_CLOUDINARY_PUBLIC_ID_MEDICAL_EXAMS_PURPOSE',
+      'certificado_exams_z25lwz',
     );
     expect(purposeElement.querySelector('img')?.alt).toBe(
       'Imagen de referencia para exámenes médicos de licencia',

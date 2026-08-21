@@ -16,7 +16,7 @@ describe('license renewal page sections', () => {
     overview.detectChanges();
     const overviewElement = overview.nativeElement as HTMLElement;
     expect(overviewElement.querySelector('img')?.getAttribute('data-image-public-id')).toBe(
-      'TODO_CLOUDINARY_PUBLIC_ID_REFRENDED_LICENSE',
+      'certificado_refrendacion_hlppvi',
     );
     expect(overviewElement.textContent).toContain('Solicita el servicio de refrendación');
     expect(overviewElement.textContent).toContain('confirmar los detalles disponibles');

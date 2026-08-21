@@ -21,8 +21,7 @@ export class LicenseRenewalHeroSection {
   private readonly whatsapp = inject(Whatsapp);
   private readonly service = getServiceById(SERVICE_IDS.LICENSE_RENEWAL);
 
-  /** TODO: Replace only after the user supplies the approved Cloudinary public ID. */
-  protected readonly heroImagePublicId = 'TODO_CLOUDINARY_PUBLIC_ID_LICENSE_RENEWAL';
+  protected readonly heroImagePublicId = 'banner_endorsement_bwzq91';
   protected readonly quickHighlights = [
     'Servicio de refrendación',
     'Atención en Villavicencio',

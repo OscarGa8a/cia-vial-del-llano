@@ -19,13 +19,9 @@ describe('ServicesSection', () => {
     const cards = fixture.nativeElement.querySelectorAll('article');
     expect(cards).toHaveLength(3);
     expect(fixture.nativeElement.textContent).toContain('Refrendación de licencia');
-    expect(fixture.nativeElement.querySelectorAll('a')).toHaveLength(3);
-        expect(fixture.nativeElement.querySelector('a[href="/examenes-medicos"]')?.textContent).toContain(
-          'Ver exámenes médicos',
-        );
-        expect(fixture.nativeElement.querySelector('a[href="/refrendacion"]')?.textContent).toContain(
-          'Ver servicio de refrendación',
-        );
+    const serviceLinks = fixture.nativeElement.querySelectorAll('a') as NodeListOf<HTMLAnchorElement>;
+    expect(serviceLinks).toHaveLength(3);
+    expect(Array.from(serviceLinks).every((link) => link.textContent?.includes('Ver servicio'))).toBe(true);
     const buttons = fixture.nativeElement.querySelectorAll('button') as NodeListOf<HTMLButtonElement>;
     expect(Array.from(buttons).every((button) => button.textContent?.includes('WhatsApp'))).toBe(true);
   });

@@ -20,7 +20,7 @@ describe('MedicalExamsHeroSection', () => {
       'Exámenes médicos para licencia de conducción en Villavicencio',
     );
     expect(element.querySelector('img')?.getAttribute('data-image-public-id')).toContain(
-      'TODO_CLOUDINARY_PUBLIC_ID_MEDICAL_EXAMS',
+      'banner_medical_exams_ipillx',
     );
     expect(element.textContent).toContain('Detalles por confirmar');
     expect(element.querySelectorAll('button')).toHaveLength(1);
