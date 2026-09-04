@@ -14,7 +14,7 @@ export const SEO_CONFIG = {
   siteUrl: SITE_URL,
   cloudinaryBaseUrl: CONFIG.cloudinary,
 
-  defaultTitle: 'CIA Vial del Llano | Cursos para Descuento en Comparendos',
+  defaultTitle: 'CIA Vial del Llano | Cursos de Comparendos - Villavicencio',
   defaultDescription:
     'Información sobre cursos pedagógicos, refrendación de licencia y exámenes médicos de CIA Vial del Llano.',
   defaultKeywords: [
@@ -95,7 +95,7 @@ export interface PageSeoEntry {
  */
 export const PAGE_SEO_CONFIG: Record<string, PageSeoEntry> = {
   home: {
-    title: 'Cursos para Descuento en Comparendos | CIA Vial - Villavicencio',
+    title: 'CIA Vial del Llano | Cursos de Comparendos - Villavicencio',
     description:
       'Reducí tus multas de tránsito hasta un 50% con el curso pedagógico de CIA Vial del Llano en Villavicencio, Meta. Ley 1383 de 2010. Atención presencial.',
     keywords: [

@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home').then((m) => m.HomeComponent),
-    title: 'CIA Vial del Llano | Cursos para Descuento en Comparendos',
+    title: 'CIA Vial del Llano | Cursos de Comparendos - Villavicencio',
   },
   {
     path: 'cursos',
