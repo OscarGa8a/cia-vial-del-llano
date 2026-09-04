@@ -16,7 +16,7 @@ const ACTIVE_SERVICE_ROUTES = [
 ] as const;
 
 describe('Header', () => {
-  it('renders Inicio before the clearly labeled mobile services group', async () => {
+  it('renders Inicio before the clearly labeled mobile services group and includes WhatsApp CTA', async () => {
     await TestBed.configureTestingModule({
       imports: [Header],
       providers: [provideRouter([])],
@@ -29,8 +29,14 @@ describe('Header', () => {
     const mobileMenu = compiled.querySelector('#mobile-menu') as HTMLElement;
     expect(mobileMenu.querySelectorAll('a')).toHaveLength(0);
 
-    (compiled.querySelector('[aria-controls="mobile-menu"]') as HTMLButtonElement).click();
+    const toggleBtn = compiled.querySelector('[aria-controls="mobile-menu"]') as HTMLButtonElement;
+    expect(toggleBtn.getAttribute('aria-label')).toBe('Abrir menú de navegación');
+
+    toggleBtn.click();
     fixture.detectChanges();
+
+    expect(toggleBtn.getAttribute('aria-label')).toBe('Cerrar menú de navegación');
+    expect(mobileMenu.classList).toContain('overflow-y-auto');
 
     const nav = mobileMenu.querySelector('nav') as HTMLElement;
     const links = Array.from(nav.querySelectorAll('a')).map((link) => link.textContent?.trim());
@@ -40,7 +46,16 @@ describe('Header', () => {
       'Cursos pedagógicos',
       'Refrendación de licencia',
       'Exámenes médicos',
+      'Calculadora',
+      'Ubicación',
+      'Preguntas',
+      'Nosotros',
+      'Contacto',
+      'Contactar por WhatsApp',
     ]));
+
+    const whatsappBtn = nav.querySelector('a[aria-label="Contactar por WhatsApp"]');
+    expect(whatsappBtn).toBeTruthy();
   });
 
   it('keeps Cursos out of the desktop top-level navigation', async () => {
