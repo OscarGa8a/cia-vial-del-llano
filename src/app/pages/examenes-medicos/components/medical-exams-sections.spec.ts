@@ -44,7 +44,7 @@ describe('medical exams page sections', () => {
     const processElement = process.nativeElement as HTMLElement;
     expect(processElement.querySelectorAll('ol > li')).toHaveLength(4);
     expect(processElement.textContent).toContain('Continúa con la información confirmada');
-    expect(processElement.querySelector('button')?.textContent).toContain('Solicitar exámenes médicos');
+    expect(processElement.querySelector('button')?.textContent).toContain('Solicitar exámenes');
     processElement.querySelector('button')?.click();
     expect(openServiceChat).toHaveBeenCalledWith(
       expect.objectContaining({ id: 'medical-exams' }),
